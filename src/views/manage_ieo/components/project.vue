@@ -151,7 +151,7 @@
 
 <script>
     import Numberbox from '../../components/dialog/numberbox';
-    import wangeditor from './wangeditor';
+    import wangeditor from '../../my_components/wangeditor/wangeditor';
     import currenyApi from '../../../api/currency';
     import ieoApi from '../../../api/ieo';
     import util from '../../../libs/util';

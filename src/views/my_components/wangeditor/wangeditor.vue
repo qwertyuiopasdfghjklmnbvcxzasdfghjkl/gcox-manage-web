@@ -50,6 +50,7 @@
                 'italic',
                 'underline',
                 'image',  // 插入图片
+                'table',
                 'foreColor',  // 文字颜色
                 'undo',  // 撤销
                 'redo',  // 重复
