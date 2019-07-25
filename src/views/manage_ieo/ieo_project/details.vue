@@ -113,7 +113,7 @@
 
 <script>
     import Numberbox from '../../components/dialog/numberbox';
-    import wangeditor from '../components/wangeditor';
+    import wangeditor from '../../my_components/wangeditor/wangeditor';
     import util from '../../../libs/util';
 
     export default {
