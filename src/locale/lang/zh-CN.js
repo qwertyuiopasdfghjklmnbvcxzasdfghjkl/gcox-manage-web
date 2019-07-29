@@ -516,7 +516,10 @@ export const exchange = {
     m4fsxfsq: '卖方手续费收取',
     cjsj: '成交时间',
     gzusd: '估值（USD）',
-    dqm: '地区码'
+    dqm: '地区码',
+    bpsdz: '表皮书地址',
+    gw: '官网',
+    qkcx: '区块查询',
 }
 export const risk = {
     bbycyj: '币币异常预警',
