@@ -137,6 +137,16 @@
                 <FormItem :label="vm.$t('exchange.ddqks')" prop="confirmBlock">
                     <InputNumber style="width:100%;" name="confirmBlock" v-model="formLeft.confirmBlock"></InputNumber>
                 </FormItem>
+
+                <FormItem :label="vm.$t('exchange.bpsdz')" prop="whitePaperUrl">
+                    <Input style="width:100%;" name="whitePaperUrl" v-model="formLeft.whitePaperUrl"></Input>
+                </FormItem>
+                <FormItem :label="vm.$t('exchange.gw')" prop="officialWebsite">
+                    <Input style="width:100%;" name="officialWebsite" v-model="formLeft.officialWebsite"></Input>
+                </FormItem>
+                <FormItem :label="vm.$t('exchange.qkcx')" prop="blockQueryUrl">
+                    <Input style="width:100%;" name="blockQueryUrl" v-model="formLeft.blockQueryUrl"></Input>
+                </FormItem>
                 <Button type="primary" @click="addCurreny()">{{vm.$t('common.tj')}}</Button>
             </Form>
         </Card>
@@ -203,7 +213,10 @@
                     totalIssuance: null, //发行总量
                     totalCirculation: null, //流通总量
                     issuePrice: null, //发行价格
-                    propertyId: null
+                    propertyId: null,
+                    whitePaperUrl: null,
+                    officialWebsite: null,
+                    blockQueryUrl: null,
                 },
                 ruleInline: {
                     symbol: [
@@ -308,7 +321,16 @@
                     ],
                     propertyId: [
                         {required: true, message: vm.$t('common.qsr') + vm.$t('common.propertyId')},
-                    ]
+                    ],
+                    whitePaperUrl: [
+                        {required: true, message: vm.$t('common.qsr') + vm.$t('common.bpsdz')},
+                    ],
+                    officialWebsite: [
+                        {required: true, message: vm.$t('common.qsr') + vm.$t('common.gw')},
+                    ],
+                    blockQueryUrl: [
+                        {required: true, message: vm.$t('common.qsr') + vm.$t('common.qkcx')},
+                    ],
                 },
                 symbolTypeList: [],
             };
