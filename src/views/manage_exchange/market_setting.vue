@@ -109,7 +109,7 @@
             <Col span="6">{{vm.$t('exchange.zxxdje')}}</Col>
             <Col span="6">{{item.minPlaceOrderAmount || 0}}</Col>
             <Col span="6">
-                <InputNumber style="width:113px;" :min="0.001" v-model="minPlaceOrderAmount"></InputNumber>
+                <numberbox style="width:113px; border:1px solid #dddee1"  v-model="minPlaceOrderAmount"></numberbox>
             </Col>
             <Col span="6" style="text-align:right;">
                 <Button type="primary" @click="tabs('minPlaceOrderAmount')">{{vm.$t('common.bc')}}</Button>
@@ -119,7 +119,7 @@
             <Col span="6">{{vm.$t('exchange.zxjysl')}}</Col>
             <Col span="6">{{item.minPlaceOrderQuantity || 0}}</Col>
             <Col span="6">
-                <InputNumber style="width:113px;" :min="0.001" v-model="minPlaceOrderQuantity"></InputNumber>
+                <numberbox style="width:113px; border:1px solid #dddee1" v-model="minPlaceOrderQuantity"></numberbox>
             </Col>
             <Col span="6" style="text-align:right;">
                 <Button type="primary" @click="tabs('minPlaceOrderQuantity')">{{vm.$t('common.bc')}}</Button>
@@ -129,7 +129,7 @@
             <Col span="6">{{vm.$t('exchange.gdjg')}}</Col>
             <Col span="6">{{item.fixedPrice || 0}}</Col>
             <Col span="6">
-                <InputNumber style="width:113px;" v-model="fixedPrice"></InputNumber>
+                <numberbox style="width:113px; border:1px solid #dddee1" v-model="fixedPrice"></numberbox>
             </Col>
             <Col span="6" style="text-align:right;">
                 <Button type="primary" @click="tabs('fixedPrice')">{{vm.$t('common.bc')}}</Button>
