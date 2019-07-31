@@ -197,10 +197,13 @@
         },
         methods: {
             tabs (propName) {
-                if (!this[propName]) {
-                    this.$Message.error({content: this.vm.$t('common.bnwk')});
-                    return;
+                if(propName !== 'feeFixedAmount'){
+                    if (!this[propName]) {
+                        this.$Message.error({content: this.vm.$t('common.bnwk')});
+                        return;
+                    }
                 }
+
                 let data = {
                     symbolFeeId: this.data1.symbolFeeId,
                 };
