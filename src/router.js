@@ -590,23 +590,23 @@ export const financeRouter = [
             }
         ]
     },
-    {
-        path: '/thirdparty',
-        name: 'thirdparty',
-        title: 'nav.dsfczlb',
-        component: Main,
-        icon: 'android-exit',
-        meta: {
-            roles: ['ROLE_ADMIN', 'ROLE_FINANCE'],
-        },
-        children: [
-            {
-                path: 'thirdparty_index', title: 'nav.dsfczlb', name: 'thirdparty_index', component: resolve => {
-                    require(['./views/manage_finance/thirdparty.vue'], resolve);
-                }
-            }
-        ]
-    },
+    // {
+    //     path: '/thirdparty',
+    //     name: 'thirdparty',
+    //     title: 'nav.dsfczlb',
+    //     component: Main,
+    //     icon: 'android-exit',
+    //     meta: {
+    //         roles: ['ROLE_ADMIN', 'ROLE_FINANCE'],
+    //     },
+    //     children: [
+    //         {
+    //             path: 'thirdparty_index', title: 'nav.dsfczlb', name: 'thirdparty_index', component: resolve => {
+    //                 require(['./views/manage_finance/thirdparty.vue'], resolve);
+    //             }
+    //         }
+    //     ]
+    // },
     {
         path: '/finance_withdraw',
         name: 'finance_withdraw',
@@ -641,58 +641,58 @@ export const financeRouter = [
             }
         ]
     },
-    {
-        path: '/bank_data',
-        name: 'bank_data',
-        title: 'nav.ussdyhzl',
-        component: Main,
-        icon: 'card',
-        meta: {
-            roles: ['ROLE_ADMIN', 'ROLE_FINANCE'],
-        },
-        children: [
-            {
-                path: 'index', title: 'nav.ussdyhzl', name: 'bank_data_index', component: resolve => {
-                    require(['./views/manage_finance/bank_data.vue'], resolve);
-                }
-            }
-        ]
-    },
-    {
-        path: '/ussd_list',
-        name: 'ussd_list',
-        title: 'nav.ussdtxjl',
-        component: Main,
-        icon: 'document-text',
-        meta: {
-            roles: ['ROLE_ADMIN', 'ROLE_FINANCE'],
-        },
-        children: [
-            {
-                path: 'index', title: 'nav.ussdtxjl', name: 'ussd_list_index',
-                component: resolve => {
-                    require(['./views/manage_finance/ussd_list.vue'], resolve);
-                }
-            }
-        ]
-    },{
-        path: '/sato_list',
-        name: 'sato_list',
-        title: 'nav.satotxjl',
-        component: Main,
-        icon: 'shuffle',
-        meta: {
-            roles: ['ROLE_ADMIN', 'ROLE_FINANCE'],
-        },
-        children: [
-            {
-                path: 'index', title: 'nav.satotxjl', name: 'sato_list_index',
-                component: resolve => {
-                    require(['./views/manage_finance/sato_list.vue'], resolve);
-                }
-            }
-        ]
-    },
+    // {
+    //     path: '/bank_data',
+    //     name: 'bank_data',
+    //     title: 'nav.ussdyhzl',
+    //     component: Main,
+    //     icon: 'card',
+    //     meta: {
+    //         roles: ['ROLE_ADMIN', 'ROLE_FINANCE'],
+    //     },
+    //     children: [
+    //         {
+    //             path: 'index', title: 'nav.ussdyhzl', name: 'bank_data_index', component: resolve => {
+    //                 require(['./views/manage_finance/bank_data.vue'], resolve);
+    //             }
+    //         }
+    //     ]
+    // },
+    // {
+    //     path: '/ussd_list',
+    //     name: 'ussd_list',
+    //     title: 'nav.ussdtxjl',
+    //     component: Main,
+    //     icon: 'document-text',
+    //     meta: {
+    //         roles: ['ROLE_ADMIN', 'ROLE_FINANCE'],
+    //     },
+    //     children: [
+    //         {
+    //             path: 'index', title: 'nav.ussdtxjl', name: 'ussd_list_index',
+    //             component: resolve => {
+    //                 require(['./views/manage_finance/ussd_list.vue'], resolve);
+    //             }
+    //         }
+    //     ]
+    // },{
+    //     path: '/sato_list',
+    //     name: 'sato_list',
+    //     title: 'nav.satotxjl',
+    //     component: Main,
+    //     icon: 'shuffle',
+    //     meta: {
+    //         roles: ['ROLE_ADMIN', 'ROLE_FINANCE'],
+    //     },
+    //     children: [
+    //         {
+    //             path: 'index', title: 'nav.satotxjl', name: 'sato_list_index',
+    //             component: resolve => {
+    //                 require(['./views/manage_finance/sato_list.vue'], resolve);
+    //             }
+    //         }
+    //     ]
+    // },
     {
         path: '/finance_user',
         name: 'finance_user',
@@ -727,23 +727,23 @@ export const financeRouter = [
             },
         ]
     },
-    {
-        path: '/usds_recharge',
-        name: 'usds_recharge',
-        title: 'nav.ussdcz',
-        component: Main,
-        icon: 'radio-waves',
-        meta: {
-            roles: ['ROLE_ADMIN', 'ROLE_USSD_RECHARGE'],
-        },
-        children: [
-            {
-                path: 'index', title: 'nav.ussdcz', name: 'usds_recharge_index', component: resolve => {
-                    require(['./views/manage_finance/usds_recharge.vue'], resolve);
-                }
-            }
-        ]
-    },
+    // {
+    //     path: '/usds_recharge',
+    //     name: 'usds_recharge',
+    //     title: 'nav.ussdcz',
+    //     component: Main,
+    //     icon: 'radio-waves',
+    //     meta: {
+    //         roles: ['ROLE_ADMIN', 'ROLE_USSD_RECHARGE'],
+    //     },
+    //     children: [
+    //         {
+    //             path: 'index', title: 'nav.ussdcz', name: 'usds_recharge_index', component: resolve => {
+    //                 require(['./views/manage_finance/usds_recharge.vue'], resolve);
+    //             }
+    //         }
+    //     ]
+    // },
     {
         path: '/internal_transfer',
         name: 'internal_transfer',
@@ -761,23 +761,23 @@ export const financeRouter = [
             }
         ]
     },
-    {
-        path: '/change_sato_data',
-        name: 'change_sato_data',
-        title: 'nav.satoslxg',
-        component: Main,
-        icon: 'ios-compose',
-        meta: {
-            roles: ['ROLE_ADMIN', 'ROLE_SATO_RECHARGE'],
-        },
-        children: [
-            {
-                path: 'index', title: 'nav.satoslxg', name: 'change_sato_data_index', component: resolve => {
-                    require(['./views/manage_finance/change_sato_data.vue'], resolve);
-                }
-            }
-        ]
-    },
+    // {
+    //     path: '/change_sato_data',
+    //     name: 'change_sato_data',
+    //     title: 'nav.satoslxg',
+    //     component: Main,
+    //     icon: 'ios-compose',
+    //     meta: {
+    //         roles: ['ROLE_ADMIN', 'ROLE_SATO_RECHARGE'],
+    //     },
+    //     children: [
+    //         {
+    //             path: 'index', title: 'nav.satoslxg', name: 'change_sato_data_index', component: resolve => {
+    //                 require(['./views/manage_finance/change_sato_data.vue'], resolve);
+    //             }
+    //         }
+    //     ]
+    // },
     {
         path: '/virtual',
         name: 'virtual',
@@ -1070,23 +1070,23 @@ export const operationRouter = [
 ];
 
 export const reportRouter = [
-    {
-        path: '/report',
-        name: 'report',
-        title: 'nav.dsfdcsj',
-        component: Main,
-        icon: 'android-archive',
-        meta: {
-            roles: ['ROLE_ADMIN', 'ROLE_REPORT_MANAGER'],
-        },
-        children: [
-            {
-                path: 'report_index', title: 'nav.dsfdcsj', name: 'report_index', component: resolve => {
-                    require(['./views/manage_report/export_data.vue'], resolve);
-                }
-            }
-        ]
-    },
+    // {
+    //     path: '/report',
+    //     name: 'report',
+    //     title: 'nav.dsfdcsj',
+    //     component: Main,
+    //     icon: 'android-archive',
+    //     meta: {
+    //         roles: ['ROLE_ADMIN', 'ROLE_REPORT_MANAGER'],
+    //     },
+    //     children: [
+    //         {
+    //             path: 'report_index', title: 'nav.dsfdcsj', name: 'report_index', component: resolve => {
+    //                 require(['./views/manage_report/export_data.vue'], resolve);
+    //             }
+    //         }
+    //     ]
+    // },
     {
         path: '/report_daily',
         name: 'report_daily',
@@ -1198,26 +1198,26 @@ export const systemConfigRouter = [
             }
         ]
     },
-    {
-        path: '/yollon',
-        name: 'yollon',
-        title: 'nav.scskzhsz',
-        component: Main,
-        icon: 'cash',
-        meta: {
-            roles: ['ROLE_ADMIN'],
-        },
-        children: [
-            {
-                path: 'yollon_index',
-                title: 'nav.scskzhsz',
-                name: 'yollon_index',
-                component: resolve => {
-                    require(['./views/manage_systemconfig/yollon.vue'], resolve);
-                }
-            }
-        ]
-    },
+    // {
+    //     path: '/yollon',
+    //     name: 'yollon',
+    //     title: 'nav.scskzhsz',
+    //     component: Main,
+    //     icon: 'cash',
+    //     meta: {
+    //         roles: ['ROLE_ADMIN'],
+    //     },
+    //     children: [
+    //         {
+    //             path: 'yollon_index',
+    //             title: 'nav.scskzhsz',
+    //             name: 'yollon_index',
+    //             component: resolve => {
+    //                 require(['./views/manage_systemconfig/yollon.vue'], resolve);
+    //             }
+    //         }
+    //     ]
+    // },
     {
         path: '/addaddress',
         name: 'addaddress',

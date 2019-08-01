@@ -66,7 +66,7 @@
                     // {id: 'community', path: 'community_data_index', name: '社区管理', menus: communityRouter},
                     // {id: 'vote', path: 'vote_data_count_index', name: '投票挖矿管理', menus: voteRouter},
                     {id: 'finance', path: 'finance_finance_index', name: this.$t('nav.cwgl'), menus: financeRouter},
-                    {id: 'mall', path: 'mall_index', name: this.$t('nav.scddgl'), menus: mallRouter},
+                    // {id: 'mall', path: 'mall_index', name: this.$t('nav.scddgl'), menus: mallRouter},
                     {id: 'risk', path: 'risk_exchange_index', name: this.$t('nav.fxkzgl'), menus: riskRouter},
                     {id: 'operation', path: 'operation_distribute_index', name: this.$t('nav.ywtggl'), menus: operationRouter},
                     {name: this.$t('report.tjbbgl'), menus: reportRouter},
