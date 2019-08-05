@@ -135,7 +135,8 @@
                                             let data = params.row;
                                             data.state = params.row.state === 0 ? 1: 0
                                             extendApi.updataCms(data, (res) => {
-                                                this.$Message.success({content: this.$t('operation.fbcg')})
+                                                this.$Message.success({content: params.row.state === 0 ?
+                                                        this.$t('operation.xscg'): this.$t('operation.fbcg')})
                                                 this.getList()
                                             }, (msg) => {
                                                 this.$Message.error({content: msg})
