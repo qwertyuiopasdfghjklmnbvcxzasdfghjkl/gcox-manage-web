@@ -153,9 +153,9 @@
     </div>
 </template>
 <script>
-    import currenyApi from '../../api/currency';
-    import until from '../../libs/util';
-    import numberbox from '../components/dialog/numberbox';
+    import currenyApi from '../../../api/currency';
+    import until from '../../../libs/util';
+    import numberbox from '../../components/dialog/numberbox';
 
     export default {
         data () {

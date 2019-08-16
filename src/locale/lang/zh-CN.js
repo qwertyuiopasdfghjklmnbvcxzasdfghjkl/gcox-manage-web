@@ -520,6 +520,13 @@ export const exchange = {
     bpsdz: '表皮书地址',
     gw: '官网',
     qkcx: '区块查询',
+    zfbfb: '振幅百分比',
+    zfje: '涨幅金额',
+    zhangfbfb: '涨幅百分比',
+    wtpl: '委托频率',
+    slfw: '数量范围',
+    ty: '停用',
+    xzjgfp: '新增价格分片'
 }
 export const risk = {
     bbycyj: '币币异常预警',
@@ -892,7 +899,7 @@ export const fund = {
     tjpz: '添加配置',
     zzlx: '转账类型',
     zzzt: '转账状态',
-    jyyfs: '交易已发送'
+    jyyfs: '交易已发送',
 }
 export const nav = {
     kycsh: 'KYC审核',
@@ -975,6 +982,7 @@ export const nav = {
     xjxm: '新建项目',
     ieocs: 'IEO参数',
     cmsgl: 'CMS管理',
+    jgfpgl: '价格分片管理'
 }
 export const home = {
     zyh: '总用户',

@@ -216,8 +216,8 @@
 </template>
 
 <script>
-    import currenyApi from '../../api/currency';
-    import numberbox from '../components/dialog/numberbox';
+    import currenyApi from '../../../api/currency';
+    import numberbox from '../../components/dialog/numberbox';
     import Cookies from 'js-cookie';
 
     export default {
