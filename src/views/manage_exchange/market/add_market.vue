@@ -81,7 +81,7 @@
     </div>
 </template>
 <script>
-    import currenyApi from '../../api/currency';
+    import currenyApi from '../../../api/currency';
 
     export default {
         props: ['type'],

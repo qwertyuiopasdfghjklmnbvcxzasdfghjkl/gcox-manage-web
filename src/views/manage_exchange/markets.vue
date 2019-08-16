@@ -52,8 +52,8 @@
 
 <script>
     import util from '../../libs/util';
-    import add_market from './add_market';
-    import market_setting from './market_setting';
+    import add_market from './market/add_market';
+    import market_setting from './market/market_setting';
     import currenyApi from '../../api/currency';
 
     export default {
