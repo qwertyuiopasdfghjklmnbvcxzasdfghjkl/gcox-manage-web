@@ -36,6 +36,10 @@
             <p slot="title">NEO{{$t('monitoring.tbqks')}}</p>
             <Table :columns="columns2" :data="data8"></Table>
         </Card>
+        <Card style="margin-top:30px;">
+            <p slot="title">ACM{{$t('monitoring.tbqks')}}</p>
+            <Table :columns="columns2" :data="data9"></Table>
+        </Card>
     </div>
 </template>
 <script>
@@ -56,6 +60,7 @@
                 data6: [],
                 data7: [],
                 data8: [],
+                data9: [],
                 columns2: [
                     {
                         title: this.$t('monitoring.fwt'),
@@ -142,6 +147,9 @@
                 });
                 monitApi.findNodeList('findNEONode', (res) => {
                     this.data8.push(res);
+                });
+                monitApi.findNodeList('findACMNode', (res) => {
+                    this.data9.push(res);
                 });
             },
             changePage (page) {
