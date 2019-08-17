@@ -1,7 +1,7 @@
 <template>
     <Card style="width:600px;">
         <p slot="title">
-            {{vm.$t('exchange.xzjgfp')}}
+            {{item ? vm.$t('exchange.xgjgfp') : vm.$t('exchange.xzjgfp')}}
             <i class="ivu-icon ivu-icon-close" style="float:right;cursor:pointer;" @click="closeDialog"></i>
         </p>
         <Form ref="formValidate" :model="form" :rules="ruleInline" :label-width="100" class="cont" style="margin:0 20px;">
@@ -10,10 +10,10 @@
                 <numberbox v-model="form.amplitudeRate " name="amplitudeRate"></numberbox><span>%</span>
             </FormItem>
             <FormItem :label="vm.$t('exchange.zfje')" prop="changeAmount">
-                <numberbox v-model="form.changeAmount " name="changeAmount"></numberbox>
+                <numberbox v-model="form.changeAmount " name="changeAmount" :minus="true"></numberbox>
             </FormItem>
             <FormItem :label="vm.$t('exchange.zhangfbfb')" prop="changeRate">
-                <numberbox v-model="form.changeRate " name="changeRate"></numberbox><span>%</span>
+                <numberbox v-model="form.changeRate " name="changeRate" :minus="true"></numberbox><span>%</span>
             </FormItem>
             <FormItem :label="vm.$t('exchange.wtpl')" prop="interval">
                 <numberbox v-model="form.interval " name="interval"></numberbox><span>/s</span>
@@ -45,7 +45,7 @@
                 </RadioGroup>
             </FormItem>
             <FormItem>
-                <Button type="primary" style="width:100%;" @click="add">{{vm.$t('common.bc')}}</Button>
+                <Button type="primary" style="width:300px;" @click="add">{{vm.$t('common.bc')}}</Button>
             </FormItem>
         </Form>
     </Card>
