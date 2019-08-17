@@ -526,7 +526,8 @@ export const exchange = {
     wtpl: '委托频率',
     slfw: '数量范围',
     ty: '停用',
-    xzjgfp: '新增价格分片'
+    xzjgfp: '新增价格分片',
+    xgjgfp: '修改价格分片',
 }
 export const risk = {
     bbycyj: '币币异常预警',
