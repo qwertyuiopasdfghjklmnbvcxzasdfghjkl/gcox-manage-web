@@ -212,6 +212,16 @@
                 <Button type="primary" @click="tabs('pullInterval')">{{vm.$t('common.bc')}}</Button>
             </Col>
         </Row>
+        <Row style="margin-top:10px;border-bottom:1px solid #e9eaec;padding-bottom:5px;">
+            <Col span="6">{{vm.$t('exchange.zdwtjg')}}</Col>
+            <Col span="6">{{item.basePrice||"无"}}</Col>
+            <Col span="6">
+                <InputNumber style="width:113px;" v-model="basePrice" :min="0"></InputNumber>
+            </Col>
+            <Col span="6" style="text-align:right;">
+                <Button type="primary" @click="tabs('basePrice')">{{vm.$t('common.bc')}}</Button>
+            </Col>
+        </Row>
     </Card>
 </template>
 
@@ -248,7 +258,8 @@
                 buyFixedPriceRate: null,
                 sellFixedPriceRate: null,
                 pullInterval: null,
-                role: true
+                role: true,
+                basePrice: null
             };
         },
         components: {

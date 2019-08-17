@@ -75,6 +75,10 @@
                     <InputNumber style="width:100%;" v-model="formLeft.pullInterval||3000"
                                  name="pullInterval"></InputNumber>
                 </FormItem>
+                <FormItem :label="vm.$t('exchange.zdwtjg')" prop="basePrice">
+                    <InputNumber style="width:100%;" v-model="formLeft.basePrice" :min="0"
+                                 name="basePrice"></InputNumber>
+                </FormItem>
                 <Button type="primary" @click="getAddMarket()">{{vm.$t('common.tj')}}</Button>
             </Form>
         </Card>
@@ -114,7 +118,8 @@
                     pullGemini: null,
                     buyFixedPriceRate: null,
                     sellFixedPriceRate: null,
-                    pullInterval: null
+                    pullInterval: null,
+                    basePrice: null
                 },
                 ruleInline: {
                     market: [
@@ -225,6 +230,7 @@
                                 minPlaceOrderAmount: this.formLeft.minPlaceOrderAmount,
                                 minPlaceOrderQuantity: this.formLeft.minPlaceOrderQuantity,
                                 state: this.formLeft.state,
+                                basePrice: this.formLeft.basePrice,
                                 marketType: 0
                             }, (res) => {
                                 this.$Message.success({content: this.vm.$t('common.tjcg')});

@@ -528,6 +528,7 @@ export const exchange = {
     ty: '停用',
     xzjgfp: '新增价格分片',
     xgjgfp: '修改价格分片',
+    zdwtjg: '自动委托价格',
 }
 export const risk = {
     bbycyj: '币币异常预警',
