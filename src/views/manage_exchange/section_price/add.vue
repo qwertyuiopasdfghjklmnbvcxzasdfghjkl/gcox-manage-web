@@ -24,12 +24,18 @@
                 <numberbox v-model="quantityRange2" name="quantityRange2" style="width: 138px"></numberbox>
             </FormItem>
             <FormItem :label="vm.$t('common.kssj')" prop="startAt">
-                <DatePicker type="datetime" v-model="form.startAt" :placeholder="vm.$t('common.kssj')"
+                <DatePicker type="datetime" v-model="form.startAt"
+                            :placeholder="vm.$t('common.kssj')"
+                            :disabled="item"
+                            :readonly="item"
                             format="yyyy-MM-dd HH:mm:ss"
                             style="width: 300px"></DatePicker>
             </FormItem>
             <FormItem :label="vm.$t('common.jssj')" prop="endAt">
-                <DatePicker type="datetime" v-model="form.endAt" :placeholder="vm.$t('common.jssj')"
+                <DatePicker type="datetime" v-model="form.endAt"
+                            :placeholder="vm.$t('common.jssj')"
+                            :disabled="item"
+                            :readonly="item"
                             format="yyyy-MM-dd HH:mm:ss"
                             style="width: 300px"></DatePicker>
             </FormItem>

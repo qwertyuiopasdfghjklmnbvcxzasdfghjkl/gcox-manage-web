@@ -196,7 +196,8 @@
                                         click: () => {
                                             util.setDialog(user_permission, {
                                                 userId: params.row.userId,
-                                                version: params.row.version
+                                                version: params.row.version,
+                                                item: params.row
                                             });
                                         }
                                     }

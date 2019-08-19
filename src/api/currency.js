@@ -585,6 +585,7 @@ curreny.getTransaction = getTransaction;
 // 分页查找价格分片
 const sectionPriceList = function ( data, success, error) {
     api.post(`api/bm/bbManage/sectionPriceScheduleManage/findSectionPriceList/${data.pageSize}/${data.page}`,
+        {market: data.market},
         (res) => {
         if (res.rst === 1) {
             success && success(res.data,res.total);
