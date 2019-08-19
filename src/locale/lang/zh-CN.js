@@ -95,7 +95,9 @@ export const common = {
     m: '秒',
     lslflm: '0天0时0分0秒',
     xz: '新增',
-    bccg: '保存成功'
+    bccg: '保存成功',
+    shz: '审核中',
+    rzsb: '认证失败',
 };
 export const login = {
     login: '登录',
