@@ -2,7 +2,7 @@
     <div class="coin_setting">
         <Card style="width:500px;">
             <p slot="title">
-                {{type == 1 ? vm.$t('exchange.xzzssc') : vm.$t('exchange.xzxnsc')}}
+                {{type | filterMarket}}
                 <i class="ivu-icon ivu-icon-close" style="float:right;cursor:pointer;" @click="closeDialog"></i>
             </p>
             <Form ref="formItem" :model="formLeft" :rules="ruleInline" label-position="left" :label-width="100">
@@ -215,7 +215,7 @@
                             });
                         }
                     });
-                } else if (this.type == 0) {
+                } else if (this.type == 0 || this.type == 2) {
                     this.$refs.formItem.validate((valid) => {
                         if (valid) {
                             currenyApi.insertMarket({
@@ -231,7 +231,7 @@
                                 minPlaceOrderQuantity: this.formLeft.minPlaceOrderQuantity,
                                 state: this.formLeft.state,
                                 basePrice: this.formLeft.basePrice,
-                                marketType: 0
+                                marketType: this.type
                             }, (res) => {
                                 this.$Message.success({content: this.vm.$t('common.tjcg')});
                                 this.$emit('okCallback');
@@ -242,6 +242,12 @@
                         }
                     });
                 }
+            }
+        },
+        filters:{
+            filterMarket(id){
+                let arr =[window.vm.$t('exchange.xzxnsc'), window.vm.$t('exchange.xzzssc'), window.vm.$t('exchange.xzdzsp')]
+                return arr[id]
             }
         }
     };

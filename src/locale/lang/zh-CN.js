@@ -531,6 +531,9 @@ export const exchange = {
     xzjgfp: '新增价格分片',
     xgjgfp: '修改价格分片',
     zdwtjg: '自动委托价格',
+    dzsp: '大宗商品',
+    dzspscgl: '大宗商品管理',
+    xzdzsp: '新增大宗商品',
 }
 export const risk = {
     bbycyj: '币币异常预警',
