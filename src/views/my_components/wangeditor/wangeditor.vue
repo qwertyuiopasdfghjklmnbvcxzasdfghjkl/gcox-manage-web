@@ -51,6 +51,7 @@
                 'underline',
                 'image',  // 插入图片
                 'table',
+                'link',  // 插入链接
                 'foreColor',  // 文字颜色
                 'undo',  // 撤销
                 'redo',  // 重复
@@ -109,11 +110,16 @@
 <style lang="less">
     .cont {
         text-align: left;
+        position: relative;
+        z-index: 0;
         ul{
             list-style-type: initial;
         }
         ol{
             list-style-type: decimal;
+        }
+        a{
+            color: #00B5FF;
         }
     }
 </style>

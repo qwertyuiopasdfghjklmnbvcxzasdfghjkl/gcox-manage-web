@@ -73,16 +73,16 @@
                         {required: true}
                     ],
                     titleCn: [
-                        {required: true, message: vm.$t('common.qsr')+vm.$t('operation.zwbt'), trigger: 'blur'}
+                        {required: false, message: vm.$t('common.qsr')+vm.$t('operation.zwbt')}
                     ],
                     titleEn: [
-                        {required: true, message: vm.$t('common.qsr')+vm.$t('operation.ywbt'), trigger: 'blur'}
+                        {required: false, message: vm.$t('common.qsr')+vm.$t('operation.ywbt')}
                     ],
                     bodyCn: [
-                        {required: true, message: vm.$t('common.qsr')+vm.$t('operation.zwzw'),trigger: 'blur'}
+                        {required: false, message: vm.$t('common.qsr')+vm.$t('operation.zwzw')}
                     ],
                     bodyEn: [
-                        {required: true, message: vm.$t('common.qsr')+vm.$t('operation.ywzw'),trigger: 'blur'}
+                        {required: false, message: vm.$t('common.qsr')+vm.$t('operation.ywzw')}
                     ],
                     state: [
                         {required: true}
