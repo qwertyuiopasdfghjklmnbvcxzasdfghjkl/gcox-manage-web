@@ -54,7 +54,7 @@
                         },
                     // {title: this.$t('system.cjr'), key: 'creator'},
                     {title: this.$t('exchange.wtpl'), key: 'interval',
-                        render:(h,params)=>{return h('span',params.row.interval+'/s')}
+                        render:(h,params)=>{return h('span',params.row.interval+'/ms')}
                         },
                     {title: this.$t('exchange.slfw'), key: 'quantityRange'},
                     {title: this.$t('common.kssj'), key: 'startAt'},

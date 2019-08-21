@@ -16,7 +16,7 @@
                 <numberbox v-model="form.changeRate " name="changeRate" :minus="true"></numberbox><span>%</span>
             </FormItem>
             <FormItem :label="vm.$t('exchange.wtpl')" prop="interval">
-                <numberbox v-model="form.interval " name="interval"></numberbox><span>/s</span>
+                <numberbox v-model="form.interval " name="interval"></numberbox><span>/ms</span>
             </FormItem>
             <FormItem :label="vm.$t('exchange.slfw')" prop="quantityRange">
                 <numberbox v-model="quantityRange1" name="quantityRange1" style="width: 138px"></numberbox>
@@ -26,16 +26,16 @@
             <FormItem :label="vm.$t('common.kssj')" prop="startAt">
                 <DatePicker type="datetime" v-model="form.startAt"
                             :placeholder="vm.$t('common.kssj')"
-                            :disabled="item"
-                            :readonly="item"
+                            :disabled="Boolean(item)"
+                            :readonly="Boolean(item)"
                             format="yyyy-MM-dd HH:mm:ss"
                             style="width: 300px"></DatePicker>
             </FormItem>
             <FormItem :label="vm.$t('common.jssj')" prop="endAt">
                 <DatePicker type="datetime" v-model="form.endAt"
                             :placeholder="vm.$t('common.jssj')"
-                            :disabled="item"
-                            :readonly="item"
+                            :disabled="Boolean(item)"
+                            :readonly="Boolean(item)"
                             format="yyyy-MM-dd HH:mm:ss"
                             style="width: 300px"></DatePicker>
             </FormItem>
@@ -129,7 +129,7 @@
         created(){
             this.getAllMarket();
             if(this.item){
-                this.form = this.item
+                this.form = JSON.parse(JSON.stringify(this.item))
                 this.quantityRange1 = this.item.quantityRange.split('-')[0]
                 this.quantityRange2 = this.item.quantityRange.split('-')[1]
             }

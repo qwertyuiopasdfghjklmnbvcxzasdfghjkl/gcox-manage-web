@@ -147,11 +147,12 @@
         </Row>
         <Row style="margin-top:10px;border-bottom:1px solid #e9eaec;padding-bottom:5px;">
             <Col span="6">{{vm.$t('exchange.sclx')}}</Col>
-            <Col span="6">{{item.marketType === 1 ? vm.$t('exchange.zssc'): vm.$t('exchange.xnsc')}}</Col>
+            <Col span="6">{{item.marketType | filterMarket}}</Col>
             <Col span="6">
                 <Select v-model="marketType" style="width:113px" :disabled="role">
                     <Option :value="1">{{vm.$t('exchange.zssc')}}</Option>
                     <Option :value="0">{{vm.$t('exchange.xnsc')}}</Option>
+                    <Option :value="2">{{vm.$t('exchange.dzsp')}}</Option>
                 </Select>
             </Col>
             <Col span="6" style="text-align:right;">
@@ -325,6 +326,12 @@
                 }, (msg) => {
                     this.$Message.error({content: msg});
                 });
+            }
+        },
+        filters:{
+            filterMarket(id){
+                let arr = [window.vm.$t('exchange.xnsc'), window.vm.$t('exchange.zssc'), window.vm.$t('exchange.dzsp')]
+                return arr[id]
             }
         }
     };
