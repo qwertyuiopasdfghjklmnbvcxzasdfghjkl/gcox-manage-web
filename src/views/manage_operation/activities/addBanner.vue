@@ -108,13 +108,23 @@ export default {
                     { validator: xxx1, message: vm.$t('operation.qsryhttpktwz'), trigger: 'blur' }
                 ],
                 imgCht: [
-                    { required: true, message: vm.$t('common.qsr')+vm.$t('operation.fttp'), trigger: 'blur' },
-                    { validator: xxx, message: vm.$t('kyc.znscpnghjpeghbmpdtp'), trigger: 'blur' }
+                    { required: false, message: vm.$t('common.qsr')+vm.$t('operation.fttp')},
                 ],
                 jumpAddressCht: [
-                    { required: true, message: vm.$t('common.qsr')+vm.$t('operation.fttptzdz'), trigger: 'blur' },
-                    { validator: xxx1, message: vm.$t('operation.qsryhttpktwz'), trigger: 'blur' }
+                    { required: false, message: vm.$t('common.qsr')+vm.$t('operation.fttptzdz')},
                 ],
+            }
+        }
+    },
+    watch:{
+        'formLeft.imgCht'(e){
+            if(e){
+                this.ruleInline.imgCht.push({ validator: xxx, message: vm.$t('kyc.znscpnghjpeghbmpdtp'), trigger: 'blur' })
+            }
+        },
+        'formLeft.jumpAddressCht'(e){
+            if(e){
+                this.ruleInline.imgCht.push({ validator: xxx1, message: vm.$t('operation.qsryhttpktwz'), trigger: 'blur' })
             }
         }
     },
