@@ -10,21 +10,6 @@
                 <Col span="10">{{this.datas.symbol || 0}}</Col>
                 <Col span="6"></Col>
             </Row>
-            <!-- <Row style="margin-top：10px;border-bottom:1px solid #e9eaec;height:40px; line-height:40px;">
-              <Col span="5">权限名称</Col>
-              <Col span="8">当前状态</Col>
-              <Col span="3">修改</Col>
-            </Row>
-            <Row style="margin-top：10px;border-bottom:1px solid #e9eaec;height:40px; line-height:40px;">
-              <Col span="5">代号</Col>
-              <Col span="8">{{this.datas.symbol || 0}}</Col>
-              <Col span="8">
-                   <Input v-model="symbol" style="width: 150px" />
-              </Col>
-              <Col span="3">
-                  <Button type="primary" @click="tabs('symbol')">保存</Button>
-              </Col>
-            </Row> -->
             <Row style="margin-top：10px;border-bottom:1px solid #e9eaec;height:45px; line-height:40px;">
                 <Col span="5">{{vm.$t('exchange.ywqc')}}</Col>
                 <Col span="8">{{this.datas.caption || 0}}</Col>
@@ -251,11 +236,6 @@
                 this.$emit('removeDialog');
             },
             tabsImage (propName) {
-                // let data = {
-                //     symbolId: this.item.symbolId,
-                //     symbol: this.item.symbol
-                // }
-                // data[propName] = this.datas[propName]
                 var formData = new FormData();
                 console.log(this.$refs);
                 formData.append('iconFile', this.$refs.form.files[0]);

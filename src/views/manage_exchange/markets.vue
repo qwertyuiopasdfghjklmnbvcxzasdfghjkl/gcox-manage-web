@@ -46,25 +46,25 @@
                           style="text-align:center;margin-top:20px;"></Page>
                 </Card>
             </TabPane>
-            <TabPane :label="$t('exchange.dzsp')">
-                <Card>
-                    <p slot="title">{{$t('exchange.dzspscgl')}}
-                        <span class="refresh" @click="reshAll"></span>
-                    </p>
-                    <Row>
-                        <span>{{$t('exchange.scmc')}}</span>
-                        <Input v-model="symbol" style="width: 300px"></Input>
-                        <Button type="primary" @click="getMarketList2()">{{$t('common.cx')}}</Button>
-                        <Button type="primary" @click="add_market2()" style="float:right;">{{$t('exchange.xzdzsp')}}</Button>
-                    </Row>
-                </Card>
-                <Card style="margin-top:10px;">
-                    <p slot="title">{{$t('exchange.zbzl')}}</p>
-                    <Table :columns="columns3" :data="data4"></Table>
-                    <Page :current="curPage4" :total="total4" @on-change="changePage4"
-                          style="text-align:center;margin-top:20px;"></Page>
-                </Card>
-            </TabPane>
+            <!--<TabPane :label="$t('exchange.dzsp')">-->
+                <!--<Card>-->
+                    <!--<p slot="title">{{$t('exchange.dzspscgl')}}-->
+                        <!--<span class="refresh" @click="reshAll"></span>-->
+                    <!--</p>-->
+                    <!--<Row>-->
+                        <!--<span>{{$t('exchange.scmc')}}</span>-->
+                        <!--<Input v-model="symbol" style="width: 300px"></Input>-->
+                        <!--<Button type="primary" @click="getMarketList2()">{{$t('common.cx')}}</Button>-->
+                        <!--<Button type="primary" @click="add_market2()" style="float:right;">{{$t('exchange.xzdzsp')}}</Button>-->
+                    <!--</Row>-->
+                <!--</Card>-->
+                <!--<Card style="margin-top:10px;">-->
+                    <!--<p slot="title">{{$t('exchange.zbzl')}}</p>-->
+                    <!--<Table :columns="columns3" :data="data4"></Table>-->
+                    <!--<Page :current="curPage4" :total="total4" @on-change="changePage4"-->
+                          <!--style="text-align:center;margin-top:20px;"></Page>-->
+                <!--</Card>-->
+            <!--</TabPane>-->
         </Tabs>
     </div>
 </template>

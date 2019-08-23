@@ -519,7 +519,7 @@ export const exchange = {
     cjsj: '成交时间',
     gzusd: '估值（USD）',
     dqm: '地区码',
-    bpsdz: '表皮书地址',
+    bpsdz: '白皮书地址',
     gw: '官网',
     qkcx: '区块查询',
     zfbfb: '振幅百分比',
@@ -534,6 +534,9 @@ export const exchange = {
     dzsp: '大宗商品',
     dzspscgl: '大宗商品管理',
     xzdzsp: '新增大宗商品',
+    ygm: '已购买',
+    ymc: '已卖出',
+    kmed: '可卖额度',
 }
 export const risk = {
     bbycyj: '币币异常预警',
@@ -989,7 +992,9 @@ export const nav = {
     xjxm: '新建项目',
     ieocs: 'IEO参数',
     cmsgl: 'CMS管理',
-    jgfpgl: '价格分片管理'
+    jgfpgl: '价格分片管理',
+    apptghd: 'APP推广活动',
+    m1m2: '买1卖2',
 }
 export const home = {
     zyh: '总用户',
