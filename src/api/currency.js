@@ -193,10 +193,8 @@ const findUserWithdrawAddrList = function (curPage, userId, success, error) {
 curreny.findUserWithdrawAddrList = findUserWithdrawAddrList;
 
 // 用户管理--分发记录
-const findUserDistributeRecordList = function (curPage, userId, success, error) {
-    api.post(`api/bm/bbManage/userManage/findUserDistributeRecordList/10/${curPage}`, {
-        userId: userId
-    }, (res) => {
+const findUserDistributeRecordList = function (data, success, error) {
+    api.get(`api/bm/stake/dispense/record`, data, (res) => {
         if (res.rst === 1) {
             success && success(res.data, res.total);
         } else {
@@ -281,6 +279,42 @@ const findUserCurrentAssetsByBTC = function (data, success, error) {
     }, error);
 };
 curreny.findUserCurrentAssetsByBTC = findUserCurrentAssetsByBTC;
+
+// 挖矿帐户列表
+const findMiningList = function (data, success, error) {
+    api.get(`api/bm/stake/accounts`, data, (res) => {
+        if (res.rst === 1) {
+            success && success(res);
+        } else {
+            error && error(res.msg);
+        }
+    }, error);
+};
+curreny.findMiningList = findMiningList;
+
+// 锁仓记
+const findStakeList = function (data, success, error) {
+    api.get(`api/bm/stake/record`, data, (res) => {
+        if (res.rst === 1) {
+            success && success(res);
+        } else {
+            error && error(res.msg);
+        }
+    }, error);
+};
+curreny.findStakeList = findStakeList;
+
+// 锁仓数据统计
+const findStatisticsList = function ( success, error) {
+    api.get(`api/bm/stake/statistics`, (res) => {
+        if (res.rst === 1) {
+            success && success(res);
+        } else {
+            error && error(res.msg);
+        }
+    }, error);
+};
+curreny.findStatisticsList = findStatisticsList;
 
 // 币种管理--查询所有有效币种
 const findAllValidSymbolList = function (success, error) {
