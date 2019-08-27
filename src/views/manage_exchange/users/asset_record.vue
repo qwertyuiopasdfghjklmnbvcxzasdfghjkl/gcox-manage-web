@@ -46,10 +46,17 @@
                           style="text-align:center;margin-top:20px;"></Page>
                 </TabPane>
                 <TabPane :label="vm.$t('exchange.ffjl')" name="name6">
-                    <Table :columns="columns6" :data="data6"></Table>
-                    <Page :current="curPage5" :total="total5"
-                          @on-change="changePage5" :page-size="10"
-                          style="text-align:center;margin-top:20px;"></Page>
+                    <div>
+                        <p style="text-align: right; margin-bottom: 10px;">
+                            <Button type="primary" @click="download()">{{vm.$t('systemlog.dc')}}</Button>
+                        </p>
+
+
+                        <Table :columns="columns6" :data="data6"></Table>
+                        <Page :current="curPage5" :total="total5"
+                              @on-change="changePage5" :page-size="10"
+                              style="text-align:center;margin-top:20px;"></Page>
+                    </div>
                 </TabPane>
                 <TabPane :label="vm.$t('exchange.wkzhlb')" name="name7">
                     <Table :columns="columns7" :data="data7"></Table>
@@ -66,9 +73,18 @@
                         <span>{{vm.$t('exchange.rxzje')}}:{{statistics.dailyVoteAmount}}</span>
                         <span>{{vm.$t('exchange.rxzhs')}}:{{statistics.dailyUserCount}}</span>
                     </Card>
+                    <p style="text-align: right; margin: 10px auto;">
+                        <Button type="primary" @click="downloadList()">{{vm.$t('systemlog.dc')}}</Button>
+                    </p>
                     <Table :columns="columns8" :data="data8" style="margin-top: 10px"></Table>
                     <Page :current="curPage8" :total="total8"
                           @on-change="changePage8" :page-size="10"
+                          style="text-align:center;margin-top:20px;"></Page>
+                </TabPane>
+                <TabPane :label="vm.$t('exchange.bbjyjl')">
+                    <Table :columns="columns9" :data="data9"></Table>
+                    <Page :current="curPage9" :total="total9"
+                          @on-change="changePage9" :page-size="10"
                           style="text-align:center;margin-top:20px;"></Page>
                 </TabPane>
             </Tabs>
@@ -78,10 +94,10 @@
 
 <script>
     import currenyApi from '../../../api/currency';
-
+    import util from '../../../libs/util';
     export default {
         props: ['userId'],
-        data () {
+        data() {
             const vm = window.vm;
             return {
                 vm: vm,
@@ -101,6 +117,8 @@
                 total7: 0,
                 curPage8: 1,
                 total8: 0,
+                curPage9: 1,
+                total9: 0,
                 statistics: {},
                 columns1: [
                     {
@@ -277,8 +295,8 @@
                     {
                         title: vm.$t('common.qblx'),
                         key: 'type',
-                        render:(h, params) =>{
-                            return h('div',this.wallet(params.row.type))
+                        render: (h, params) => {
+                            return h('div', this.wallet(params.row.type))
                         }
                     }
                 ],
@@ -331,16 +349,36 @@
                     {
                         title: vm.$t('exchange.jllx'),
                         key: 'type',
-                        render:(h, params) =>{
-                            return h('div',this.swType(params.row.type))
+                        render: (h, params) => {
+                            return h('div', this.swType(params.row.type))
                         }
                     }
                 ],
                 data8: [],
+                columns9: [
+                    {title: vm.$t('common.sj'), key: 'exchangeTime'},
+                    {title: vm.$t('exchange.sc'), key: 'market'},
+                    {
+                        title: vm.$t('exchange.fx'), key: 'direction',
+                        render: (h, params) => {
+                            return h('div', params.row.direction == 1 ? vm.$t('exchange.m1') : vm.$t('exchange.m4'));
+                        }
+                    },
+                    {title: vm.$t('exchange.cjjj'), key: 'averagePrice'},
+                    {title: vm.$t('exchange.cjl'), key: 'exchangeQuantity'},
+                    {
+                        title: vm.$t('exchange.cjje'), key: 'exchangeAmount',
+                        render: (h, params) => {
+                            return h('div', (params.row.exchangeAmount).toFixed(8));
+                        }
+                    },
+                    {title: vm.$t('exchange.sxf'), key: 'fee'}
+                ],
+                data9: [],
                 totalAssets: []
             };
         },
-        created () {
+        created() {
             this.getAssetsList();
             this.getRecordList();
             this.getWithdraw();
@@ -351,6 +389,7 @@
             this.getAccountsList();
             this.getStakeList();
             this.getStatisticsList();
+            this.tradeCurreny();
         },
         methods: {
             // reshAll () {
@@ -362,7 +401,7 @@
             //     this.getDistribute();
             //     this.allRecord();
             // },
-            switchStaus (state) {
+            switchStaus(state) {
                 switch (state) {
                     case 1:
                         return '提现中';
@@ -372,14 +411,14 @@
                         break;
                 }
             },
-            allRecord () {
+            allRecord() {
                 currenyApi.findUserCurrentAssetsByBTC({
                     userId: this.userId
                 }, (res) => {
                     this.totalAssets = res;
                 });
             },
-            getAccountsList () {
+            getAccountsList() {
                 currenyApi.findMiningList({
                     page: this.curPage7,
                     size: 10,
@@ -388,7 +427,7 @@
                     this.total7 = res.total;
                 });
             },
-            getStakeList () {
+            getStakeList() {
                 currenyApi.findStakeList({
                     page: this.curPage7,
                     size: 10,
@@ -397,16 +436,16 @@
                     this.total8 = res.total;
                 });
             },
-            getStatisticsList () {
-                currenyApi.findStatisticsList( (res) => {
+            getStatisticsList() {
+                currenyApi.findStatisticsList((res) => {
                     console.log(res)
                     this.statistics = res.data
                 });
             },
-            closeDialog () {
+            closeDialog() {
                 this.$emit('removeDialog');
             },
-            getAssetsList () {
+            getAssetsList() {
                 currenyApi.findUserCurrentAssetsList(this.curPage, this.userId, (res, total) => {
                     this.total = total;
                     this.data1 = res;
@@ -414,11 +453,11 @@
                     this.$Message.error({content: msg});
                 });
             },
-            changePage (page) {
+            changePage(page) {
                 this.curPage = page;
                 this.getAssetsList();
             },
-            getRecordList () {
+            getRecordList() {
                 currenyApi.findUserRechargeRecordList(this.curPage1, this.userId, (res, total) => {
                     this.total1 = total;
                     this.data2 = res;
@@ -426,11 +465,11 @@
                     this.$Message.error({content: msg});
                 });
             },
-            changePage1 (page) {
+            changePage1(page) {
                 this.curPage1 = page;
                 this.getRecordList();
             },
-            getWithdraw () {
+            getWithdraw() {
                 currenyApi.findUserWithdrawRecordList(this.curPage2, this.userId, (res, total) => {
                     this.total2 = total;
                     this.data3 = res;
@@ -438,11 +477,11 @@
                     this.$Message.error({content: msg});
                 });
             },
-            changePage2 (page) {
+            changePage2(page) {
                 this.curPage2 = page;
                 this.getWithdraw();
             },
-            getRecharge () {
+            getRecharge() {
                 currenyApi.findUserRechargeAddrList(this.curPage3, this.userId, (res, total) => {
                     this.total3 = total;
                     this.data4 = res;
@@ -450,11 +489,11 @@
                     this.$Message.error({content: msg});
                 });
             },
-            changePage3 (page) {
+            changePage3(page) {
                 this.curPage3 = page;
                 this.getRecharge();
             },
-            getWithdrawAddrList () {
+            getWithdrawAddrList() {
                 currenyApi.findUserWithdrawAddrList(this.curPage4, this.userId, (res, total) => {
                     this.total4 = total;
                     this.data5 = res;
@@ -462,12 +501,12 @@
                     this.$Message.error({content: msg});
                 });
             },
-            changePage4 (page) {
+            changePage4(page) {
                 this.curPage4 = page;
                 this.getWithdrawAddrList();
             },
-            getDistribute () {
-                let data ={
+            getDistribute() {
+                let data = {
                     page: this.curPage5,
                     size: 10
                 }
@@ -478,26 +517,26 @@
                     this.$Message.error({content: msg});
                 });
             },
-            changePage5 (page) {
+            changePage5(page) {
                 this.curPage5 = page;
                 this.getDistribute();
             },
-            changePage7 (page) {
+            changePage7(page) {
                 this.curPage7 = page;
                 this.getAccountsList();
             },
-            changePage8 (page) {
-                this.curPage8 = page; // GET /stake/record
+            changePage8(page) {
+                this.curPage8 = page;
                 this.getStakeList();
             },
-            wallet(id){
+            wallet(id) {
                 let wallet = {
                     1: this.vm.$t('common.zqb'),
                     2: this.vm.$t('common.fzqb'),
                 }
                 return wallet[id]
             },
-            swType(id){
+            swType(id) {
                 let wallet = {
                     1: this.vm.$t('exchange.yhsc'),
                     2: this.vm.$t('exchange.scxtjl'),
@@ -506,6 +545,24 @@
                     5: this.vm.$t('exchange.tjyhscjl'),
                 }
                 return wallet[id]
+            },
+            tradeCurreny() {
+                currenyApi.findUserExchangeRecordList(this.curPage9, this.userId, (res, total) => {
+                    this.total9 = total;
+                    this.data9 = res;
+                }, (msg) => {
+                    this.$Message.error({content: msg});
+                });
+            },
+            changePage9(page) {
+                this.curPage9 = page;
+                this.tradeCurreny();
+            },
+            download() {
+                window.location.href = `${util.baseURL}api/bm/stake/dispense/record?export=1`
+            },
+            downloadList() {
+                window.location.href = `${util.baseURL}api/bm/stake/record?export=1`
             }
         }
     };
@@ -519,7 +576,8 @@
         cursor: pointer;
         color: #2d8cf0;
     }
-    .flex span{
+
+    .flex span {
         display: inline-block;
         padding-right: 25px;
     }
