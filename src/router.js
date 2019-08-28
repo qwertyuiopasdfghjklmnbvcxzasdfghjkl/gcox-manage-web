@@ -514,7 +514,76 @@ export const exchangeRouter = [
         ]
     }
 ];
-
+export const lockRouter = [
+    {
+        path: '/lock',
+        name: 'lock',
+        title: 'exchange.sjtj',
+        component: Main,
+        icon: 'stats-bars',
+        meta: {
+            roles: ['ROLE_ADMIN','ROLE_OPERATION','ROLE_CUSTOMER'],
+        },
+        children: [
+            {
+                path: 'data-list', title: 'exchange.sjtj', name: 'data-list', component: resolve => {
+                    require(['./views/manage_lock/data-list.vue'], resolve);
+                }
+            },
+        ]
+    },
+    {
+        path: '/lock-search',
+        name: 'lockSearch',
+        title: 'nav.yhsccx',
+        component: Main,
+        icon: 'eye',
+        meta: {
+            roles: ['ROLE_ADMIN','ROLE_OPERATION','ROLE_CUSTOMER'],
+        },
+        children: [
+            {
+                path: 'lock-search', title: 'nav.yhsccx', name: 'lock-search', component: resolve => {
+                    require(['./views/manage_lock/lock-search.vue'], resolve);
+                }
+            }
+        ]
+    },
+    {
+        path: '/lock-list',
+        name: 'lockList',
+        title: 'exchange.scjl',
+        component: Main,
+        icon: 'ios-list',
+        meta: {
+            roles: ['ROLE_ADMIN','ROLE_OPERATION','ROLE_CUSTOMER'],
+        },
+        children: [
+            {
+                path: 'lock-list', title: 'exchange.scjl', name: 'lock-list', component: resolve => {
+                    require(['./views/manage_lock/lock-list.vue'], resolve);
+                }
+            }
+        ]
+    },
+    {
+        path: '/lock-up',
+        name: 'lock-up',
+        title: 'exchange.scffjl',
+        component: Main,
+        icon: 'ios-barcode',
+        meta: {
+            roles: ['ROLE_ADMIN','ROLE_OPERATION','ROLE_CUSTOMER'],
+        },
+        children: [
+            {
+                path: 'lock-up-list', title: 'exchange.scffjl', name: 'lock-up-list', component: resolve => {
+                    require(['./views/manage_lock/lock-up-list.vue'], resolve);
+                }
+            }
+        ]
+    },
+];
 export const ieoRouter = [
     {
         path: '/ieo',
@@ -1000,6 +1069,23 @@ export const operationRouter = [
             {
                 path: 'index', title: 'nav.tghd', name: 'operation_activity_index', component: resolve => {
                     require(['./views/manage_operation/promotion_activities.vue'], resolve);
+                }
+            }
+        ]
+    },
+    {
+        path: '/app_activities',
+        name: 'app_activities',
+        title: 'nav.apptghd',
+        component: Main,
+        icon: 'ios-bell',
+        meta: {
+            roles: ['ROLE_ADMIN', 'ROLE_OPERATION'],
+        },
+        children: [
+            {
+                path: 'index', title: 'nav.apptghd', name: 'app_activities_index', component: resolve => {
+                    require(['./views/manage_operation/app_activities.vue'], resolve);
                 }
             }
         ]
@@ -1863,6 +1949,7 @@ export const routers = [
     ...exchangeRouter,
     ...communityRouter,
     ...voteRouter,
+    ...lockRouter,
     ...ieoRouter,
     ...financeRouter,
     ...riskRouter,
