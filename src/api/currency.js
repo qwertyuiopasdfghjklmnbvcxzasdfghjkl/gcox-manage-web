@@ -122,6 +122,18 @@ const findUserExchangeRecordList = function (curPage, userId, success, error) {
 };
 curreny.findUserExchangeRecordList = findUserExchangeRecordList;
 
+// 用户帐户明细
+const financialStatistics = function ( data, success, error) {
+    api.get(`api/bm/financialManage/financialStatistics/accounts`, data, (res) => {
+        if (res.rst === 1) {
+            success && success(res.data, res.total);
+        } else {
+            error && error(res.msg);
+        }
+    }, error);
+};
+curreny.financialStatistics = financialStatistics;
+
 // 用户管理--当前资产记录
 const findUserCurrentAssetsList = function (curPage, userId, success, error) {
     api.post(`api/bm/bbManage/userManage/findUserCurrentAssetsList/10/${curPage}`, {
@@ -629,6 +641,32 @@ const sectionPriceList = function ( data, success, error) {
     }, error)
 };
 curreny.sectionPriceList = sectionPriceList;
+
+// 分页查找买1卖2
+const findSymbolTransactionList = function ( data, success, error) {
+    api.post(`api/bm/bbManage/symbolTransactionManage/findSymbolTransactionList/${data.pageSize}/${data.page}`,
+        data, (res) => {
+        if (res.rst === 1) {
+            success && success(res.data,res.total);
+        } else {
+            error && error(res.msg);
+        }
+    }, error)
+};
+curreny.findSymbolTransactionList = findSymbolTransactionList;
+
+// 修改买1卖2
+const updateSymbolTransaction = function ( data, success, error) {
+    api.post(`api/bm/bbManage/symbolTransactionManage/updateSymbolTransaction`,
+        data, (res) => {
+        if (res.rst === 1) {
+            success && success(res);
+        } else {
+            error && error(res.msg);
+        }
+    }, error)
+};
+curreny.updateSymbolTransaction = updateSymbolTransaction;
 
 // 新增价格分片
 const addSectionPrice = function ( data, success, error) {

@@ -87,6 +87,15 @@
                           @on-change="changePage9" :page-size="10"
                           style="text-align:center;margin-top:20px;"></Page>
                 </TabPane>
+                <TabPane :label="vm.$t('exchange.yebgmx')">
+                    <p style="text-align: right; margin: 10px auto;">
+                        <Button type="primary" @click="download10()">{{vm.$t('systemlog.dc')}}</Button>
+                    </p>
+                    <Table :columns="columns10" :data="data10"></Table>
+                    <Page :current="curPage10" :total="total10"
+                          @on-change="changePage10" :page-size="10"
+                          style="text-align:center;margin-top:20px;"></Page>
+                </TabPane>
             </Tabs>
         </Card>
     </div>
@@ -119,6 +128,8 @@
                 total8: 0,
                 curPage9: 1,
                 total9: 0,
+                curPage10: 1,
+                total10: 0,
                 statistics: {},
                 columns1: [
                     {
@@ -375,6 +386,16 @@
                     {title: vm.$t('exchange.sxf'), key: 'fee'}
                 ],
                 data9: [],
+                columns10: [
+                    {title: vm.$t('mall.cjsj'), key: 'createdAt'},
+                    {title: vm.$t('common.kyye'), key: 'availableBalance'},
+                    {title: vm.$t('common.djje'), key: 'frozenBalance'},
+                    {title: vm.$t('common.zje'), key: 'totalBalance'},
+                    {title: vm.$t('common.bz'), key: 'symbol'},
+                    {title: vm.$t('exchange.mb'), key: 'target'},
+                    {title: vm.$t('finance.lx'), key: 'type'}
+                ],
+                data10: [],
                 totalAssets: []
             };
         },
@@ -390,6 +411,7 @@
             this.getStakeList();
             this.getStatisticsList();
             this.tradeCurreny();
+            this.getStatistic();
         },
         methods: {
             // reshAll () {
@@ -558,11 +580,29 @@
                 this.curPage9 = page;
                 this.tradeCurreny();
             },
+            getStatistic() {
+                currenyApi.financialStatistics({
+                    page: this.curPage10,
+                    size: 10
+                }, (res, total) => {
+                    this.total10 = total;
+                    this.data10 = res;
+                }, (msg) => {
+                    this.$Message.error({content: msg});
+                });
+            },
+            changePage10(page) {
+                this.curPage10 = page;
+                this.getStatistic();
+            },
             download() {
                 window.location.href = `${util.baseURL}api/bm/stake/dispense/record?export=1`
             },
             downloadList() {
                 window.location.href = `${util.baseURL}api/bm/stake/record?export=1`
+            },
+            download10() {
+                window.location.href = `${util.baseURL}api/bm/financialManage/financialStatistics/accounts?export=1`
             }
         }
     };

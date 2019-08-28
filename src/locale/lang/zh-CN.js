@@ -557,6 +557,8 @@ export const exchange = {
     rxzbs: '日新增笔数',
     rxzje: '日新增金额',
     rxzhs: '日新增用户数',
+    yebgmx: '余额变更明细',
+    mb: '目标',
 }
 export const risk = {
     bbycyj: '币币异常预警',

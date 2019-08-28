@@ -449,6 +449,20 @@ export const exchangeRouter = [
         ]
     },
     {
+        path: '/buy-sell',
+        name: 'buy-sell',
+        title: 'nav.m1m2',
+        component: Main,
+        icon: 'ios-cart',
+        meta: {
+            roles: ['ROLE_ADMIN', 'ROLE_OPERATION'],
+        },
+        children: [
+            { path: 'index', title: 'nav.m1m2', name: 'buy-sell_index',
+                component: resolve => { require(['./views/manage_exchange/buy-sell.vue'], resolve); } }
+        ]
+    },
+    {
         path: '/exchange_address',
         name: 'exchange_address',
         title: 'nav.dzgl',
