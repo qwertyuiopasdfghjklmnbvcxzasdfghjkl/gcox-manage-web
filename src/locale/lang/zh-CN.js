@@ -559,6 +559,7 @@ export const exchange = {
     rxzhs: '日新增用户数',
     yebgmx: '余额变更明细',
     mb: '目标',
+    scffjl: '锁仓发放记录',
 }
 export const risk = {
     bbycyj: '币币异常预警',
@@ -1017,6 +1018,8 @@ export const nav = {
     jgfpgl: '价格分片管理',
     apptghd: 'APP推广活动',
     m1m2: '买1卖2',
+    scgl: '锁仓管理',
+    yhsccx: '用户锁仓查询',
 }
 export const home = {
     zyh: '总用户',
@@ -1129,4 +1132,24 @@ export const ieo = {
     tjdfbz: '添加付款币种',
     kkfbcg: '扣款发币成功',
     xmtp: '项目图片'
+}
+export const lock = {
+    zscyh: '总锁仓用户数',
+    zscbs: '总锁仓笔数',
+    zscje: '总锁仓金额',
+    rxzscyh: '日新增锁仓用户',
+    rxzscbs: '日新增锁仓笔数',
+    rxzscje: '日新增锁仓金额',
+    jszhid: '锁仓账户ID',
+    sczhzje: '锁仓账户总金额',
+    sczhdsf: '锁仓账户待释放',
+    sczhysf: '锁仓账户已释放',
+    scffjl: '锁仓分发记录',
+    scjlid: '锁仓记录ID',
+    scsl: '锁仓数量',
+    sclx: '锁仓类型',
+    yff: '已发放',
+    sysl: '剩余数量',
+    www: '未挖完',
+    yww: '已挖完',
 }

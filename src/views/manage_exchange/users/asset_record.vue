@@ -58,29 +58,29 @@
                               style="text-align:center;margin-top:20px;"></Page>
                     </div>
                 </TabPane>
-                <TabPane :label="vm.$t('exchange.wkzhlb')" name="name7">
-                    <Table :columns="columns7" :data="data7"></Table>
-                    <Page :current="curPage7" :total="total7"
-                          @on-change="changePage7" :page-size="10"
-                          style="text-align:center;margin-top:20px;"></Page>
-                </TabPane>
-                <TabPane :label="vm.$t('exchange.scjl')" name="name8">
-                    <Card class="flex">
-                        <span>{{vm.$t('exchange.zbs')}}:{{statistics.voteCount}}</span>
-                        <span>{{vm.$t('common.zje')}}:{{statistics.voteAmount}}</span>
-                        <span>{{vm.$t('exchange.zyhs')}}:{{statistics.userCount}}</span>
-                        <span>{{vm.$t('exchange.rxzbs')}}:{{statistics.dailyVoteCount}}</span>
-                        <span>{{vm.$t('exchange.rxzje')}}:{{statistics.dailyVoteAmount}}</span>
-                        <span>{{vm.$t('exchange.rxzhs')}}:{{statistics.dailyUserCount}}</span>
-                    </Card>
-                    <p style="text-align: right; margin: 10px auto;">
-                        <Button type="primary" @click="downloadList()">{{vm.$t('systemlog.dc')}}</Button>
-                    </p>
-                    <Table :columns="columns8" :data="data8" style="margin-top: 10px"></Table>
-                    <Page :current="curPage8" :total="total8"
-                          @on-change="changePage8" :page-size="10"
-                          style="text-align:center;margin-top:20px;"></Page>
-                </TabPane>
+                <!--<TabPane :label="vm.$t('exchange.wkzhlb')" name="name7">-->
+                    <!--<Table :columns="columns7" :data="data7"></Table>-->
+                    <!--<Page :current="curPage7" :total="total7"-->
+                          <!--@on-change="changePage7" :page-size="10"-->
+                          <!--style="text-align:center;margin-top:20px;"></Page>-->
+                <!--</TabPane>-->
+                <!--<TabPane :label="vm.$t('exchange.scjl')" name="name8">-->
+                    <!--<Card class="flex">-->
+                        <!--<span>{{vm.$t('exchange.zbs')}}:{{statistics.voteCount}}</span>-->
+                        <!--<span>{{vm.$t('common.zje')}}:{{statistics.voteAmount}}</span>-->
+                        <!--<span>{{vm.$t('exchange.zyhs')}}:{{statistics.userCount}}</span>-->
+                        <!--<span>{{vm.$t('exchange.rxzbs')}}:{{statistics.dailyVoteCount}}</span>-->
+                        <!--<span>{{vm.$t('exchange.rxzje')}}:{{statistics.dailyVoteAmount}}</span>-->
+                        <!--<span>{{vm.$t('exchange.rxzhs')}}:{{statistics.dailyUserCount}}</span>-->
+                    <!--</Card>-->
+                    <!--<p style="text-align: right; margin: 10px auto;">-->
+                        <!--<Button type="primary" @click="downloadList()">{{vm.$t('systemlog.dc')}}</Button>-->
+                    <!--</p>-->
+                    <!--<Table :columns="columns8" :data="data8" style="margin-top: 10px"></Table>-->
+                    <!--<Page :current="curPage8" :total="total8"-->
+                          <!--@on-change="changePage8" :page-size="10"-->
+                          <!--style="text-align:center;margin-top:20px;"></Page>-->
+                <!--</TabPane>-->
                 <TabPane :label="vm.$t('exchange.bbjyjl')">
                     <Table :columns="columns9" :data="data9"></Table>
                     <Page :current="curPage9" :total="total9"
@@ -443,6 +443,7 @@
             getAccountsList() {
                 currenyApi.findMiningList({
                     page: this.curPage7,
+                    userId: this.userId,
                     size: 10,
                 }, (res) => {
                     this.data7 = res.data;
@@ -452,6 +453,7 @@
             getStakeList() {
                 currenyApi.findStakeList({
                     page: this.curPage7,
+                    userId: this.userId,
                     size: 10,
                 }, (res) => {
                     this.data8 = res.data;
@@ -583,6 +585,7 @@
             getStatistic() {
                 currenyApi.financialStatistics({
                     page: this.curPage10,
+                    userId: this.userId,
                     size: 10
                 }, (res, total) => {
                     this.total10 = total;
@@ -596,13 +599,13 @@
                 this.getStatistic();
             },
             download() {
-                window.location.href = `${util.baseURL}api/bm/stake/dispense/record?export=1`
+                window.location.href = `${util.baseURL}api/bm/stake/dispense/record?export=1&userId=${this.userId}`
             },
             downloadList() {
-                window.location.href = `${util.baseURL}api/bm/stake/record?export=1`
+                window.location.href = `${util.baseURL}api/bm/stake/record?export=1&userId=${this.userId}`
             },
             download10() {
-                window.location.href = `${util.baseURL}api/bm/financialManage/financialStatistics/accounts?export=1`
+                window.location.href = `${util.baseURL}api/bm/financialManage/financialStatistics/accounts?export=1&userId=${this.userId}`
             }
         }
     };

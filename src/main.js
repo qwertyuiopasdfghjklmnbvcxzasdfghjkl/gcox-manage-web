@@ -11,6 +11,7 @@ import {
     exchangeRouter,
     communityRouter,
     voteRouter,
+    lockRouter,
     ieoRouter,
     financeRouter,
     mallRouter,
@@ -304,6 +305,7 @@ window.vm = new Vue({
         routers = routers.concat(exchangeRouter);
         routers = routers.concat(communityRouter);
         routers = routers.concat(voteRouter);
+        routers = routers.concat(lockRouter);
         routers = routers.concat(ieoRouter);
         routers = routers.concat(financeRouter);
         routers = routers.concat(mallRouter);
