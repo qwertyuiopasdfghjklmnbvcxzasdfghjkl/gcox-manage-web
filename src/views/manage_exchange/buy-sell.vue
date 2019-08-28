@@ -16,7 +16,7 @@
                             <Option v-for="data in sumbolList" :value="data.name">{{data.name}}</Option>
                         </Select>
                         {{$t('common.yhm')}}
-                        <Input v-model="value" style="width: 200px"></Input>
+                        <Input v-model="username" style="width: 200px"></Input>
                         <Button type="primary" @click="page=1;getList()">{{$t('common.cx')}}</Button>
                     </p>
                     <Table :columns="columns" :data="data" style="margin-top: 20px;"></Table>
@@ -39,18 +39,18 @@
                 page: 1,
                 size: 10,
                 total: 0,
-                symbol: 0,
+                symbol: 'ACM',
                 sumbolList: [],
                 data:[],
-                value:null,
+                username:null,
                 columns: [
-                    {title: 'ID', key: 'sectionId'},
-                    {title: this.$t('common.yhm'), key: 'market'},
-                    {title: this.$t('common.bz'), key: 'amplitudeRate'},
-                    {title: this.$t('exchange.ygm'), key: 'changeAmount'},
-                    {title: this.$t('exchange.ymc'), key: 'changeRate'},
-                    {title: this.$t('exchange.kmed'), key: 'interval'},
-                    {title: this.$t('common.gxsj'), key: 'startAt'},
+                    {title: 'ID', key: 'statisticsId'},
+                    {title: this.$t('common.yhm'), key: 'username'},
+                    {title: this.$t('common.bz'), key: 'symbol'},
+                    {title: this.$t('exchange.ygm'), key: 'purchased'},
+                    {title: this.$t('exchange.ymc'), key: 'sold'},
+                    {title: this.$t('exchange.kmed'), key: 'enableSellBalance'},
+                    {title: this.$t('common.gxsj'), key: 'updatedAt'},
                     {
                         title: this.$t('common.cz'), key: 'publicLinkId', render: (h, params) => {
                             return h('div', [
@@ -79,7 +79,6 @@
         created () {
             this.getList();
             this.getAll();
-            this.getAllMarket();
         },
         methods: {
             getAll () {
@@ -89,9 +88,10 @@
                 let data = {
                     page: this.page,
                     pageSize: this.size,
-                    symbol: this.symbol === 0 ? null : this.symbol
+                    symbol: this.symbol === 0 ? null : this.symbol,
+                    username: this.username
                 };
-                currencyApi.sectionPriceList(data, (res, total) => {
+                currencyApi.findSymbolTransactionList(data, (res, total) => {
                     this.data = res;
                     this.total = total;
                 });
