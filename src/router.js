@@ -1949,6 +1949,7 @@ export const routers = [
     ...exchangeRouter,
     ...communityRouter,
     ...voteRouter,
+    ...lockRouter,
     ...ieoRouter,
     ...financeRouter,
     ...riskRouter,
