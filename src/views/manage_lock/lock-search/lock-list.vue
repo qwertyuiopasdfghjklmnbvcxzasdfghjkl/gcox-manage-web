@@ -13,6 +13,7 @@
 
 <script>
     import LockListTab from '../lock/lock-list-tab'
+    import lock from '../../../api/lock'
     export default {
         components: {LockListTab},
         props: ['item'],
@@ -28,16 +29,27 @@
         },
         created() {
             this.getList()
+            console.log(this.item)
         },
         methods: {
             getList(){
-
+                lock.getRecord({
+                    page:this.page,
+                    size:this.size,
+                    username: this.item.username,
+                    userId:this.item.userId
+                },res=>{
+                    console.log(res)
+                    this.data = res.data
+                    this.total = res.total
+                })
             },
             closeDialog(){
                 this.$emit('removeDialog');
             },
             changePage(e){
-
+                this.page = e;
+                this.getList()
             }
         }
 

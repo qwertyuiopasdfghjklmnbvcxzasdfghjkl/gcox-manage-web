@@ -1152,4 +1152,8 @@ export const lock = {
     sysl: '剩余数量',
     www: '未挖完',
     yww: '已挖完',
+    scffjlid: '锁仓分发记录ID',
+    ffsl: '发放数量',
+    wwc: '未完成',
+    ywc: '已完成',
 }
