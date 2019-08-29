@@ -30,6 +30,16 @@ let lock = {
                 error && error(res.msg);
             }
         }, error)
+    },
+    // 分发记录
+    getDispense(data, success, error){
+        api.get(`api/bm/stake/dispense/record`,data,(res) => {
+            if (res.rst === 1) {
+                success && success(res);
+            } else {
+                error && error(res.msg);
+            }
+        }, error)
     }
 }
 export default lock
