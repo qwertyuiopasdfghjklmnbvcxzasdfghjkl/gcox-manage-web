@@ -11,15 +11,15 @@
                         {{$t('common.bzdh')}}：
                         <Input v-model="formData.projectSymbol" clearable style="width: 200px"
                                :placeholder="$t('common.bzdh')"></Input>
-                        {{$t('common.zt')}}：
-                        <Select v-model="formData.state" style="width: 200px">
-                            <Option :value="5">{{$t('common.qb')}}</Option>
-                            <Option :value="0">{{$t('exchange.xs')}}</Option>
-                            <Option :value="1">{{$t('ieo.jjks')}}</Option>
-                            <Option :value="2">{{$t('ieo.jxz')}}</Option>
-                            <Option :value="3">{{$t('ieo.yjs')}}</Option>
-                            <Option :value="4">{{$t('ieo.fbwc')}}</Option>
-                        </Select>
+                        <!--{{$t('common.zt')}}：-->
+                        <!--<Select v-model="formData.state" style="width: 200px">-->
+                            <!--<Option :value="5">{{$t('common.qb')}}</Option>-->
+                            <!--<Option :value="0">{{$t('exchange.xs')}}</Option>-->
+                            <!--<Option :value="1">{{$t('ieo.jjks')}}</Option>-->
+                            <!--<Option :value="2">{{$t('ieo.jxz')}}</Option>-->
+                            <!--<Option :value="3">{{$t('ieo.yjs')}}</Option>-->
+                            <!--<Option :value="4">{{$t('ieo.fbwc')}}</Option>-->
+                        <!--</Select>-->
                         <Button type="primary" @click="curPage=1;getList()">{{$t('common.cx')}}</Button>
                     </p>
                     <Table :columns="columns" :data="datas"></Table>
@@ -61,9 +61,9 @@
                         render: (h, params) => {
                             return h('div', {
                                 style: {
-                                    color: this.switchColor(params.row.state)
+                                    color: this.switchColor(this.getState(params.row))
                                 }
-                            }, this.switchStaus(params.row.state));
+                            }, this.switchStaus(this.getState(params.row)));
                         }
                     },
                     {key: 'totalSubscription', title: this.$t('ieo.zfs')},
@@ -97,20 +97,20 @@
                                         }
                                     }
                                 }, this.$t('ieo.xgsx')),
-                                h('Button', {
-                                    props: {type: 'primary', size: 'small'},
-                                    style: {margin: '3px'},
-                                    on: {
-                                        click: () => {
-                                            util.setDialog(updataState, {
-                                                item: params.row,
-                                                okCallback: () => {
-                                                    this.getList();
-                                                }
-                                            });
-                                        }
-                                    }
-                                }, this.$t('ieo.ztxg')),
+                                // h('Button', {
+                                //     props: {type: 'primary', size: 'small'},
+                                //     style: {margin: '3px'},
+                                //     on: {
+                                //         click: () => {
+                                //             util.setDialog(updataState, {
+                                //                 item: params.row,
+                                //                 okCallback: () => {
+                                //                     this.getList();
+                                //                 }
+                                //             });
+                                //         }
+                                //     }
+                                // }, this.$t('ieo.ztxg')),
                                 h('Button', {
                                     props: {type: 'primary', size: 'small'},
                                     style: {margin: '3px'},
@@ -150,12 +150,35 @@
                     projectSymbol: null,
                     state: 5,
                 },
+                now: new Date().getTime()
             };
         },
         created () {
             this.getList();
         },
         methods: {
+            getState (data) {
+                let start = new Date(data.startTime).getTime();
+                let end = new Date(data.endTime).getTime();
+                let n = data.remainingQuantity;
+                let does = data.completedAt;
+                let state = data.state;
+                if (state === 0) {
+                    return 0;
+                }
+                if (does) {
+                    return 4;
+                } else {
+                    if (this.now > end || n <= 0) {
+                        return 3;
+                    } else if (this.now > start && this.now < end) {
+                        return 2;
+                    } else if (this.now < start) {
+                        return 1;
+                    }
+                }
+                console.log(this.now, start, end, n);
+            },
             switchStaus (state) {//0：下线，1：即将开始，2：进行中，3：已结束，4：发币完成
                 switch (state) {
                     case 0:
@@ -179,7 +202,7 @@
                     case 2:
                         return '#3ba5f3';
                     case 3:
-                        return '#5a60f3';
+                        return '#b34cf3';
                     case 4:
                         return '#0a5ff3';
                     case 5:
