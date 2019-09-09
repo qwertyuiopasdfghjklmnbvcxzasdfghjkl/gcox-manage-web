@@ -37,6 +37,7 @@
 import extendApi from '../../../api/extend'
 import util from '../../../libs/util'
 export default {
+    props: ['type'],
     data () {
         const customValidator = (rule, value, callback) => {
             if (this.formLeft[rule.field] === null) {
@@ -81,11 +82,11 @@ export default {
             formLeft: {
                 adPosition: null,
                 img: '',
-                jumpAddress: '',
+                jumpAddress: '#',
                 imgEn: '',
-                jumpAddressEn: '',
+                jumpAddressEn: '#',
                 imgCht: '',
-                jumpAddressCht: ''
+                jumpAddressCht: '#'
             },
             ruleInline: {
                 adPosition: [
@@ -97,7 +98,7 @@ export default {
                 ],
                 jumpAddress: [
                     { required: true, message: vm.$t('common.qsr')+vm.$t('operation.zwtutzdz'), trigger: 'blur' },
-                    { validator: xxx1, message: vm.$t('operation.qsryhttpktwz'), trigger: 'blur' }
+                    // { validator: xxx1, message: vm.$t('operation.qsryhttpktwz'), trigger: 'blur' }
                 ],
                 imgEn: [
                     { required: true, message: vm.$t('common.qsr')+vm.$t('operation.ywtp'), trigger: 'blur' },
@@ -105,7 +106,7 @@ export default {
                 ],
                 jumpAddressEn: [
                     { required: true, message: vm.$t('common.qsr')+vm.$t('operation.ywtptzdz'), trigger: 'blur' },
-                    { validator: xxx1, message: vm.$t('operation.qsryhttpktwz'), trigger: 'blur' }
+                    // { validator: xxx1, message: vm.$t('operation.qsryhttpktwz'), trigger: 'blur' }
                 ],
                 imgCht: [
                     { required: false, message: vm.$t('common.qsr')+vm.$t('operation.fttp')},
@@ -137,6 +138,7 @@ export default {
             form.validate((valid) => {
                 if (valid) {
                     var formData = new FormData(form.$el)
+                    formData.append('adType',this.type)
                     extendApi.addBannerPage(formData, (res) => {
                         this.$Message.success({content: '添加成功'})
                         this.$emit('removeDialog')

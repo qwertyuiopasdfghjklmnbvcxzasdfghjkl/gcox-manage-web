@@ -132,7 +132,7 @@ export default {
   },
   methods: {
       getfindAllActivity () {
-          extendApi.findAllActivity(this.curPage, { },(res, total) => {
+          extendApi.findAllActivity(this.curPage, { adType:2},(res, total) => {
               this.total = total
               this.data1 = res
           })
@@ -143,6 +143,7 @@ export default {
       },
       addBanner () {
           util.setDialog(addBanner, {
+              type: 2,
               okCallback: () => {
                    this.getfindAllActivity()
               }
