@@ -141,9 +141,6 @@ export default {
         }
     },
     methods: {
-        closeDialog () {
-            this.$emit('removeDialog')
-        },
         iconValidator (prop, e) {
             this.formLeft[prop] = e.target.value
         },
@@ -165,6 +162,7 @@ export default {
             var formData = new FormData(form.$el)
             formData.append('adPosition', this.item.adPosition)
             formData.append('version', this.item.version)
+            formData.append('adType', this.item.adType)
             extendApi.updatePromotionActivity(formData, (res) => {
                 this.$Message.success({content: this.vm.$t('common.xgcg')})
                 this.$emit('removeDialog')
@@ -182,6 +180,7 @@ export default {
             var formData = new FormData(form.$el)
             formData.append('adPosition', this.item.adPosition)
             formData.append('version', this.item.version)
+            formData.append('adType', this.item.adType)
             extendApi.updatePromotionActivity(formData, (res) => {
                 this.$Message.success({content:　this.vm.$t('common.xgcg')})
                 this.$emit('removeDialog')
@@ -200,6 +199,7 @@ export default {
             var formData = new FormData(form.$el)
             formData.append('adPosition', this.item.adPosition)
             formData.append('version', this.item.version)
+            formData.append('adType', this.item.adType)
             extendApi.updatePromotionActivity(formData, (res) => {
                 this.$Message.success({content:　this.vm.$t('common.xgcg')})
                 this.$emit('removeDialog')
