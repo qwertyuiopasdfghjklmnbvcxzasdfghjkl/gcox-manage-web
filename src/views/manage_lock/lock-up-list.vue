@@ -45,6 +45,7 @@
                     username: null,
                     minerId: null,
                     status: 2,
+                    type: 1,
                     createdStart: null,
                     createdEnd: null,
                 },
@@ -59,7 +60,6 @@
             getList(){
                 let Data = JSON.stringify(this.form)
                 let formData = JSON.parse(Data)
-                formData.type = formData.type === 0 ? null : formData.type
                 formData.status = formData.status === 2 ? null : formData.status
                 formData.createdStart = formData.createdStart ? util.dateToStr(new Date(formData.createdStart)) : null;
                 formData.createdEnd = formData.createdEnd ? util.dateToStr(new Date(formData.createdEnd)) : null;
