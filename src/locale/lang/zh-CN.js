@@ -560,6 +560,8 @@ export const exchange = {
     yebgmx: '余额变更明细',
     mb: '目标',
     scffjl: '锁仓发放记录',
+    dczdtbsl: '单次最大提币数量',
+    drzdtbsl: '单日最大提币数量'
 }
 export const risk = {
     bbycyj: '币币异常预警',

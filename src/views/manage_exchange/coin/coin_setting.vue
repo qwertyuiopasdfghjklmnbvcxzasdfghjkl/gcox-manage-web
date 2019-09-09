@@ -34,6 +34,24 @@
                             <Button @click="tabs('minWithdrawQuantity')" type="primary">{{vm.$t('common.bc')}}</Button>
                         </Col>
                     </Row>
+                    <Row style="margin-top：10px;border-bottom:1px solid #e9eaec;height:40px; line-height:40px;">
+                        <Col span="8">{{vm.$t('exchange.dczdtbsl')}}</Col>
+                        <Col span="8">{{data1.withdrawOnceLimit || 0}}</Col>
+                        <Col span="8">
+                           <numberbox ref="price" style="width:80px;border:1px solid #dddee1;" type="text"
+                                       v-model="withdrawOnceLimit"/>
+                            <Button @click="tabs('withdrawOnceLimit')" type="primary">{{vm.$t('common.bc')}}</Button>
+                        </Col>
+                    </Row>
+                    <Row style="margin-top：10px;border-bottom:1px solid #e9eaec;height:40px; line-height:40px;">
+                        <Col span="8">{{vm.$t('exchange.drzdtbsl')}}</Col>
+                        <Col span="8">{{data1.withdrawDailyLimit || 0}}</Col>
+                        <Col span="8">
+                           <numberbox ref="price" style="width:80px;border:1px solid #dddee1;" type="text"
+                                       v-model="withdrawDailyLimit"/>
+                            <Button @click="tabs('withdrawDailyLimit')" type="primary">{{vm.$t('common.bc')}}</Button>
+                        </Col>
+                    </Row>
                     <Row style="margin-top：10px;border-bottom:1px solid #e9eaec;height:40px; line-height:40px; display:none">
                         <Col span="8">{{vm.$t('exchange.hssl')}}</Col>
                         <Col span="8">{{data1.convertQuantity || 0}}</Col>
@@ -173,6 +191,8 @@
                 value1: null,
                 minWithdrawQuantity2: null,
                 minWithdrawQuantity: null,
+                withdrawOnceLimit: null,
+                withdrawDailyLimit: null,
                 convertQuantity: null,
                 riseRatio: null,
                 feeFixedAmount: null,

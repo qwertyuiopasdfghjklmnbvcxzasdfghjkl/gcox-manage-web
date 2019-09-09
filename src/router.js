@@ -592,7 +592,7 @@ export const ieoRouter = [
         component: Main,
         icon: 'beaker',
         meta: {
-            roles: ['ROLE_ADMIN'],
+            roles: ['ROLE_ADMIN','ROLE_OPERATION'],
         },
         children: [
             {
@@ -609,7 +609,7 @@ export const ieoRouter = [
         component: Main,
         icon: 'ios-paper-outline',
         meta: {
-            roles: ['ROLE_ADMIN'],
+            roles: ['ROLE_ADMIN','ROLE_OPERATION'],
         },
         children: [
             {
@@ -626,7 +626,7 @@ export const ieoRouter = [
         component: Main,
         icon: 'android-add',
         meta: {
-            roles: ['ROLE_ADMIN'],
+            roles: ['ROLE_ADMIN','ROLE_OPERATION'],
         },
         children: [
             {
@@ -643,7 +643,7 @@ export const ieoRouter = [
         component: Main,
         icon: 'android-options',
         meta: {
-            roles: ['ROLE_ADMIN'],
+            roles: ['ROLE_ADMIN','ROLE_OPERATION'],
         },
         children: [
             {
