@@ -68,23 +68,23 @@ export default {
             //       ]);
             //   }
           },
-          {
-              title: this.$t('operation.fttpmc'),
-              key: 'activityImgNameCht',
-          },
-          {
-              title: this.$t('operation.fttptzdz'),
-              key: 'jumpAddressCht',
-            //   render: (h, params) => {
-            //       return h('div', [
-            //           h('span', [params.row.jumpAddress]),
-            //           h('Icon', {
-            //             props: {type: 'gear-b', size: 20},
-            //             style: {cursor: 'pointer', marginLeft: '10px',verticalAlign: 'middle'}
-            //           })
-            //       ]);
-            //   }
-          },
+          // {
+          //     title: this.$t('operation.fttpmc'),
+          //     key: 'activityImgNameCht',
+          // },
+          // {
+          //     title: this.$t('operation.fttptzdz'),
+          //     key: 'jumpAddressCht',
+          //   //   render: (h, params) => {
+          //   //       return h('div', [
+          //   //           h('span', [params.row.jumpAddress]),
+          //   //           h('Icon', {
+          //   //             props: {type: 'gear-b', size: 20},
+          //   //             style: {cursor: 'pointer', marginLeft: '10px',verticalAlign: 'middle'}
+          //   //           })
+          //   //       ]);
+          //   //   }
+          // },
           {
               title: this.$t('common.cz'),
               key: 'opreat',
