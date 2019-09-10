@@ -19,12 +19,12 @@
                     <FormItem :label="vm.$t('operation.ywtptzdz')" prop="jumpAddressEn">
                         <Input v-model="formLeft.jumpAddressEn" name="jumpAddressEn" @change="checkUrl('jumpAddressEn', $event)"></Input>
                     </FormItem>
-                    <FormItem :label="vm.$t('operation.fttp')" prop="imgCht">
-                        <input type="file" ref="imgCht" name="imgCht" @change="iconValidator('imgCht', $event)"/>
-                    </FormItem>
-                    <FormItem :label="vm.$t('operation.fttptzdz')" prop="jumpAddressCht">
-                        <Input v-model="formLeft.jumpAddressCht" name="jumpAddressCht" @change="checkUrl('jumpAddressCht', $event)"></Input>
-                    </FormItem>
+                    <!--<FormItem :label="vm.$t('operation.fttp')" prop="imgCht">-->
+                        <!--<input type="file" ref="imgCht" name="imgCht" @change="iconValidator('imgCht', $event)"/>-->
+                    <!--</FormItem>-->
+                    <!--<FormItem :label="vm.$t('operation.fttptzdz')" prop="jumpAddressCht">-->
+                        <!--<Input v-model="formLeft.jumpAddressCht" name="jumpAddressCht" @change="checkUrl('jumpAddressCht', $event)"></Input>-->
+                    <!--</FormItem>-->
                     <div class="bannerBtn">
                         <Button type="primary" @click="addCurreny()">{{vm.$t('common.tj')}}</Button>
                          <Button  @click="closeDialog()">{{vm.$t('common.qx')}}</Button>
@@ -53,29 +53,7 @@ export default {
                 return callback()
             }
         }
-        let self = this
-        const xxx1 = (rule, value, callback) => {
-            var reg = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/
-            if (reg.test(value) === false) {
-                return callback(new Error())
-            } else {
-                return callback()
-            }
-        }
-        // const xxx2 = (rule, value, callback) => {
-        //     let isTrue = util.limitUploadImage(self.$refs.imgEn)
-        //         if (!isTrue) {
-        //             return callback(new Error())
-        //         }
-        //         return callback()
-        // }
-        // const xxx3 = (rule, value, callback) => {
-        //     let isTrue = util.limitUploadImage(self.$refs.imgCht)
-        //         if (!isTrue) {
-        //             return callback(new Error())
-        //         }
-        //         return callback()
-        // }
+
         const vm = window.vm;
         return {
             vm: vm,
@@ -85,8 +63,8 @@ export default {
                 jumpAddress: '#',
                 imgEn: '',
                 jumpAddressEn: '#',
-                imgCht: '',
-                jumpAddressCht: '#'
+                // imgCht: '',
+                // jumpAddressCht: '#'
             },
             ruleInline: {
                 adPosition: [
@@ -95,39 +73,38 @@ export default {
                 ],
                 img: [
                     { required: true, message: vm.$t('common.qsr')+vm.$t('operation.zwtp'), trigger: 'blur' },
+                    { validator: xxx, message: vm.$t('kyc.znscpnghjpeghbmpdtp'), trigger: 'blur' }
                 ],
                 jumpAddress: [
-                    { required: true, message: vm.$t('common.qsr')+vm.$t('operation.zwtutzdz'), trigger: 'blur' },
-                    // { validator: xxx1, message: vm.$t('operation.qsryhttpktwz'), trigger: 'blur' }
+                    { required: false, message: vm.$t('common.qsr')+vm.$t('operation.zwtutzdz') },
                 ],
                 imgEn: [
                     { required: true, message: vm.$t('common.qsr')+vm.$t('operation.ywtp'), trigger: 'blur' },
                     { validator: xxx, message: vm.$t('kyc.znscpnghjpeghbmpdtp'), trigger: 'blur' }
                 ],
                 jumpAddressEn: [
-                    { required: true, message: vm.$t('common.qsr')+vm.$t('operation.ywtptzdz'), trigger: 'blur' },
-                    // { validator: xxx1, message: vm.$t('operation.qsryhttpktwz'), trigger: 'blur' }
+                    { required: false, message: vm.$t('common.qsr')+vm.$t('operation.ywtptzdz') },
                 ],
-                imgCht: [
-                    { required: false, message: vm.$t('common.qsr')+vm.$t('operation.fttp')},
-                ],
-                jumpAddressCht: [
-                    { required: false, message: vm.$t('common.qsr')+vm.$t('operation.fttptzdz')},
-                ],
+                // imgCht: [
+                //     { required: false, message: vm.$t('common.qsr')+vm.$t('operation.fttp')},
+                // ],
+                // jumpAddressCht: [
+                //     { required: false, message: vm.$t('common.qsr')+vm.$t('operation.fttptzdz')},
+                // ],
             }
         }
     },
     watch:{
-        'formLeft.imgCht'(e){
-            if(e){
-                this.ruleInline.imgCht.push({ validator: xxx, message: vm.$t('kyc.znscpnghjpeghbmpdtp'), trigger: 'blur' })
-            }
-        },
-        'formLeft.jumpAddressCht'(e){
-            if(e){
-                this.ruleInline.imgCht.push({ validator: xxx1, message: vm.$t('operation.qsryhttpktwz'), trigger: 'blur' })
-            }
-        }
+        // 'formLeft.imgCht'(e){
+        //     if(e){
+        //         this.ruleInline.imgCht.push({ validator: xxx, message: vm.$t('kyc.znscpnghjpeghbmpdtp'), trigger: 'blur' })
+        //     }
+        // },
+        // 'formLeft.jumpAddressCht'(e){
+        //     if(e){
+        //         this.ruleInline.imgCht.push({ validator: xxx1, message: vm.$t('operation.qsryhttpktwz'), trigger: 'blur' })
+        //     }
+        // }
     },
     methods: {
         closeDialog () {
