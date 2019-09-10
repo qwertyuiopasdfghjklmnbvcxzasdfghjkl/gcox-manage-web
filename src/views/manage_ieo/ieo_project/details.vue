@@ -68,7 +68,7 @@
             </FormItem>
             <FormItem :label="vm.$t('ieo.mfdbsl')+'：'">
                 <span>{{item.oneSymbolCount}}</span>
-                <Tag type="border" color="red">{{item.priceSymbol}}</Tag>
+                <Tag type="border" color="green">{{item.projectSymbol}}</Tag>
             </FormItem>
             <div>
                 <span>{{vm.$t('ieo.dfbz')+'：'}}</span>
