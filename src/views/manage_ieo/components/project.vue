@@ -92,8 +92,8 @@
                 <numberbox class="number_input w1" v-model="form.oneSymbolCount"></numberbox>
                 <Tag type="border" color="green" v-if="form.projectSymbol">{{form.projectSymbol}}</Tag>
             </FormItem>
-            <FormItem :label="vm.$t('ieo.dfbz')" class="tab" prop="paymentConfig">
-                <Table :columns="columns" :data="form.paymentConfig"></Table>
+            <FormItem :label="vm.$t('ieo.dfbz')" class="tab" prop="paymentConfigs">
+                <Table :columns="columns" :data="form.paymentConfigs"></Table>
                 <Button class="btn1" icon="plus-round" @click="add()">{{vm.$t('common.tj')}}</Button>
             </FormItem>
             <div>
@@ -168,6 +168,7 @@
                 symbolList: [],
                 needKyc: false,
                 utils: util,
+                paymentConfigs:[],
                 form: {
                     projectName: null,
                     startTime: null,
@@ -185,7 +186,8 @@
                     totalSubscription: null,
                     subscriptionPrice: null,
                     oneSymbolCount: null,
-                    paymentConfig: [],
+                    paymentConfigs: [],
+                    paymentConfig: null,
                     needKyc: 0,
                     subscriptionLimit: null,
                     subscriptionQuantityLimit: null,
@@ -248,7 +250,7 @@
                     oneSymbolCount: [
                         {required: true, message: vm.$t('common.qsr') + vm.$t('ieo.mfdbsl')}
                     ],
-                    paymentConfig: [
+                    paymentConfigs: [
                         {required: true, message: vm.$t('common.qsr') + vm.$t('ieo.dfbz')}
                     ],
                     needKyc: [
@@ -279,7 +281,7 @@
                 columns: [
                     {
                         key: 'symbolType', title: vm.$t('operation.bh'), render: (h, params) => {
-                            return ('span', params.index+1);
+                            return h('span', params.index+1);
                         }
                     },
                     {key: 'symbol', title: vm.$t('common.bz')},
@@ -296,7 +298,7 @@
                                                 symbolList: this.symbolList,
                                                 item: params.row,
                                                 okCallback: (res) => {
-                                                    this.form.paymentConfig[params.index] = res;
+                                                    this.form.paymentConfigs[params.index] = res;
                                                 }
                                             });
                                         }
@@ -306,7 +308,7 @@
                                     props: {type: 'warning', size: 'small'},
                                     on: {
                                         click: () => {
-                                            this.form.paymentConfig.splice(params.index, 1);
+                                            this.form.paymentConfigs.splice(params.index, 1);
                                         }
                                     }
                                 }, vm.$t('common.sc'))
@@ -330,7 +332,7 @@
             this.getdataSymbol();
             if (this.cont) {
                 this.form = this.cont;
-                this.form.paymentConfig = JSON.parse(this.form.paymentConfig);
+                this.form.paymentConfigs = JSON.parse(this.form.paymentConfig);
                 this.needKyc = this.form.needKyc === 1;
                 console.log(this.form);
             }
@@ -345,24 +347,17 @@
                 this.$refs.form.validate((valid) => {
                     if (valid) {
                         this.form.projectDetail = this.form.projectDetail.toString();
-                        this.form.paymentConfig =
-                            typeof this.form.paymentConfig ===
-                            'string' ? this.form.paymentConfig :
-                                JSON.stringify(this.form.paymentConfig);
-
-                        let D = JSON.stringify(this.form)
-                        let data = JSON.parse(D)
-                        data.startTime = util.dateToStr(new Date(this.form.startTime))
-                        data.endTime = util.dateToStr(new Date(this.form.endTime))
-                        data.paidTime = util.dateToStr(new Date(this.form.paidTime))
-                        data.releaseTime = util.dateToStr(new Date(this.form.releaseTime))
-
+                        this.form.paymentConfig = JSON.stringify(this.form.paymentConfigs);
+                        this.form.startTime = util.dateToStr(new Date(this.form.startTime))
+                        this.form.endTime = util.dateToStr(new Date(this.form.endTime))
+                        this.form.paidTime = util.dateToStr(new Date(this.form.paidTime))
+                        this.form.releaseTime = util.dateToStr(new Date(this.form.releaseTime))
+                        console.log(this.form)
                         let formData = new FormData();
                         let i;
-                        for (i in data) {
-                            formData.append(i, data[i]);
+                        for (i in this.form) {
+                            formData.append(i, this.form[i]);
                         }
-
                         ieoApi.addProject(formData, (res) => {
                             this.$Message.success({content: this.vm.$t('common.tjcg')});
                             this.$router.push({name: 'ieo_project_index'});
@@ -382,7 +377,7 @@
                         this.form.projectDetail = this.form.projectDetail.toString();
                         this.form.participationRules = this.form.participationRules.toString();
                         this.form.subscriptionNotice = this.form.subscriptionNotice.toString();
-                        this.form.paymentConfig = JSON.stringify(this.form.paymentConfig);
+                        this.form.paymentConfig = JSON.stringify(this.form.paymentConfigs);
 
                         this.form.startTime = util.dateToStr(new Date(this.form.startTime))
                         this.form.endTime = util.dateToStr(new Date(this.form.endTime))
@@ -416,7 +411,7 @@
                 util.setDialog(add, {
                     symbolList: this.symbolList,
                     okCallback: (res) => {
-                        this.form.paymentConfig.push(res);
+                        this.form.paymentConfigs.push(res);
                     }
                 });
             },

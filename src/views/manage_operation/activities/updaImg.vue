@@ -1,6 +1,6 @@
 <template>
-  <div class="updaImge">
-      <Card>
+  <!--<div class="updaImge">-->
+      <Card style="width: 1000px;">
           <p slot="title">{{vm.$t('operation.bnxg')}}
               <i class="ivu-icon ivu-icon-close" style="float:right;cursor:pointer;" @click="closeDialog"></i>
           </p>
@@ -12,25 +12,27 @@
                         <img :src="image" />
                     </div>
                 </Col>
-                <Form ref="formItem" :model="formLeft"  label-position="left" :label-width="100" style="max-height:680px;overflow:auto;display: flex;justify-content: space-around;">
+                <Form ref="formItem" :model="formLeft"  label-position="left" style="max-height:680px;overflow:auto;display: flex;justify-content: space-around;">
                     <Col span="5">
                         <FormItem label="" prop="img">
                             <input type="file" ref="img" name="img" @change="iconValidator('img', $event)"/>
                         </FormItem>
                     </Col>
-                    <Col span="5">
-                        <FormItem label="" >
-                            {{this.item.activityImgName}}
-                        </FormItem>
-                    </Col>
-                    <Col span="5">
-                        <FormItem label="" >
-                            {{vm.$t('operation.tzdz')}}
-                        </FormItem>
-                    </Col>
-                    <Col span="5">
+                    <!--<Col span="5">-->
+                        <!--<FormItem label="" >-->
+                            <!--{{this.item.activityImgName}}-->
+                        <!--</FormItem>-->
+                    <!--</Col>-->
+                    <!--<Col span="5">-->
+                        <!--<FormItem label="" >-->
+                            <!--{{vm.$t('operation.tzdz')}}-->
+                        <!--</FormItem>-->
+                    <!--</Col>-->
+                    <Col span="10">
+
                         <FormItem label="" prop="jumpAddress">
-                            <Input v-model="formLeft.jumpAddress" name="jumpAddress"></Input>
+                            {{vm.$t('operation.tzdz')}}
+                            <Input v-model="formLeft.jumpAddress" name="jumpAddress" style="width: 200px"></Input>
                         </FormItem>
                     </Col>
                     <Button type="primary" @click="updaImg">{{vm.$t('common.qd')}}</Button>
@@ -45,66 +47,68 @@
                         <img :src="image1" />
                     </div>
                 </Col>
-                    <Form ref="formItem1" :model="formLeft1" label-position="left" :label-width="100" style="max-height:680px;overflow:auto;display: flex;justify-content: space-around;">
+                    <Form ref="formItem1" :model="formLeft1" label-position="left" style="max-height:680px;overflow:auto;display: flex;justify-content: space-around;">
                        <Col span="5">
                            <FormItem label="" prop="imgEn">
                                 <input type="file" ref="imgEn" name="imgEn" @change="iconValidator1('imgEn', $event)"/>
                             </FormItem>
                        </Col>
-                        <Col span="5">
-                           <FormItem label="" >
-                                {{this.item.activityImgNameEn}}
-                            </FormItem>
-                       </Col>
-                       <Col span="5">
-                           <FormItem label="" >
-                               {{vm.$t('operation.tzdz')}}
-                            </FormItem>
-                       </Col>
-                       <Col span="5">
+                        <!--<Col span="5">-->
+                           <!--<FormItem label="" >-->
+                                <!--{{this.item.activityImgNameEn}}-->
+                            <!--</FormItem>-->
+                       <!--</Col>-->
+                       <!--<Col span="5">-->
+                           <!--<FormItem label="" >-->
+                               <!--{{vm.$t('operation.tzdz')}}-->
+                            <!--</FormItem>-->
+                       <!--</Col>-->
+                       <Col span="10">
+
                            <FormItem label="" prop="jumpAddressEn">
-                                <Input v-model="formLeft1.jumpAddressEn" name="jumpAddressEn"></Input>
+                               {{vm.$t('operation.tzdz')}}
+                                <Input v-model="formLeft1.jumpAddressEn" name="jumpAddressEn" style="width: 200px"></Input>
                             </FormItem>
                        </Col>
                         <Button type="primary" @click="updaImgEn">{{vm.$t('common.qd')}}</Button>
                     </Form>
             </Row>
         </div>
-        <div class="allUpdata">
-            <span>{{vm.$t('operation.ftbn')}}</span>
-            <Row style="width:100%;">
-                <Col span="4">
-                    <div class="allUpdata-left" style="width:150px;height:150px;background:#ccc;">
-                        <img :src="image2" />
-                    </div>
-                </Col>
-                <Form ref="formItem2" :model="formLeft2" label-position="left" :label-width="100" style="max-height:680px;overflow:auto;display: flex;justify-content: space-around;">
-                    <Col span="5">
-                        <FormItem label="" prop="imgCht">
-                            <input type="file" ref="imgCht" name="imgCht" @change="iconValidator2('imgCht', $event)"/>
-                        </FormItem>
-                    </Col>
-                    <Col span="5">
-                        <FormItem label="" >
-                            {{this.item.activityImgNameCht}}
-                        </FormItem>
-                    </Col>
-                    <Col span="5">
-                        <FormItem label="" >
-                            {{vm.$t('operation.tzdz')}}
-                        </FormItem>
-                    </Col>
-                    <Col span="5">
-                        <FormItem label="" prop="jumpAddressCht">
-                            <Input v-model="formLeft2.jumpAddressCht" name="jumpAddressCht"></Input>
-                        </FormItem>
-                    </Col>
-                    <Button type="primary" @click="updaImgCht">{{vm.$t('common.qd')}}</Button>
-                </Form>
-            </Row>
-        </div>
+        <!--<div class="allUpdata">-->
+            <!--<span>{{vm.$t('operation.ftbn')}}</span>-->
+            <!--<Row style="width:100%;">-->
+                <!--<Col span="4">-->
+                    <!--<div class="allUpdata-left" style="width:150px;height:150px;background:#ccc;">-->
+                        <!--<img :src="image2" />-->
+                    <!--</div>-->
+                <!--</Col>-->
+                <!--<Form ref="formItem2" :model="formLeft2" label-position="left" :label-width="100" style="max-height:680px;overflow:auto;display: flex;justify-content: space-around;">-->
+                    <!--<Col span="5">-->
+                        <!--<FormItem label="" prop="imgCht">-->
+                            <!--<input type="file" ref="imgCht" name="imgCht" @change="iconValidator2('imgCht', $event)"/>-->
+                        <!--</FormItem>-->
+                    <!--</Col>-->
+                    <!--<Col span="5">-->
+                        <!--<FormItem label="" >-->
+                            <!--{{this.item.activityImgNameCht}}-->
+                        <!--</FormItem>-->
+                    <!--</Col>-->
+                    <!--<Col span="5">-->
+                        <!--<FormItem label="" >-->
+                            <!--{{vm.$t('operation.tzdz')}}-->
+                        <!--</FormItem>-->
+                    <!--</Col>-->
+                    <!--<Col span="5">-->
+                        <!--<FormItem label="" prop="jumpAddressCht">-->
+                            <!--<Input v-model="formLeft2.jumpAddressCht" name="jumpAddressCht"></Input>-->
+                        <!--</FormItem>-->
+                    <!--</Col>-->
+                    <!--<Button type="primary" @click="updaImgCht">{{vm.$t('common.qd')}}</Button>-->
+                <!--</Form>-->
+            <!--</Row>-->
+        <!--</div>-->
       </Card>
-  </div>
+  <!--</div>-->
 </template>
 <script>
 import extendApi from '../../../api/extend'
@@ -151,6 +155,7 @@ export default {
             this.formLeft2[prop] = e.target.value
         },
         closeDialog () {
+            this.$emit('okCallback')
             this.$emit('removeDialog')
         },
         updaImg () {
@@ -165,8 +170,6 @@ export default {
             formData.append('adType', this.item.adType)
             extendApi.updatePromotionActivity(formData, (res) => {
                 this.$Message.success({content: this.vm.$t('common.xgcg')})
-                this.$emit('removeDialog')
-                this.$emit('okCallback')
             }, (msg) => {
                 this.$Message.error({content:　msg})
             })
@@ -183,8 +186,6 @@ export default {
             formData.append('adType', this.item.adType)
             extendApi.updatePromotionActivity(formData, (res) => {
                 this.$Message.success({content:　this.vm.$t('common.xgcg')})
-                this.$emit('removeDialog')
-                this.$emit('okCallback')
             }, (msg) => {
                 this.$Message.error({content:　msg})
             })

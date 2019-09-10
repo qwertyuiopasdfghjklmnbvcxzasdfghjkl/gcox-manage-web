@@ -127,7 +127,9 @@
                 needKyc: null,
                 util: util,
                 columns: [
-                    {key: 'symbolType', title: vm.$t('operation.bh')},
+                    {key: 'symbolType', title: vm.$t('operation.bh'), render: (h, params) => {
+                            return h('span', params.index+1);
+                        }},
                     {key: 'symbol', title: vm.$t('common.bz')},
                     {key: 'symbolCount', title: vm.$t('ieo.mfsl')},
                 ],
