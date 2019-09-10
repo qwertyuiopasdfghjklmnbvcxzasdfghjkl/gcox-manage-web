@@ -62,11 +62,13 @@
         },
         methods: {
             switchStaus (state) {
-                return this.symbolTypeList.map((res) => {
+                let symbol = null;
+                this.symbolTypeList.map((res) => {
                     if (res.code == state) {
-                        return res.name;
+                        symbol = res.name;
                     }
                 });
+                return symbol
             },
             save () {
                 this.$refs.formValidate.validate((valid) => {
