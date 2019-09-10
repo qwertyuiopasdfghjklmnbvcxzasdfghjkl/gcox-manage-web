@@ -1,6 +1,11 @@
 <template>
     <Card>
-        <p slot="title">{{$t('exchange.jysjtj')}}</p>
+        <p slot="title">{{$t('nav.yhsccx')}}</p>
+        <p style="margin-bottom: 10px">
+            {{$t('common.yhm')}}
+            <Input v-model="form.username" style="width: 200px"></Input>
+            <Button type="primary" @click="form.page=1;getList()">{{$t('common.cx')}}</Button>
+        </p>
         <Table :columns="columns" :data="data"></Table>
         <Page :current="page" :total="total"
               @on-change="changePage" :page-size="size"
@@ -20,6 +25,9 @@
                 total: 0,
                 size: 10,
                 data: [],
+                form:{
+                    username:  null,
+                },
                 columns: [
                     {key: 'username', title: this.$t('common.yhm')},
                     {key: 'accountId', title: this.$t('lock.jszhid')},
@@ -66,7 +74,11 @@
         },
         methods: {
             getList() {
-                lock.getAccounts({page: this.page, size: this.size}, res => {
+                let data = {page: this.page, size: this.size}
+                if(this.form.username){
+                    data.username = this.form.username
+                }
+                lock.getAccounts(data, res => {
                     this.data = res.data;
                     this.total = res.total;
                 })

@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <Form ref="form" :model="form" :rules="ruleInline" :label-width="142" style="margin:0 20px;">
+        <Form ref="form" :model="form" :rules="ruleInline" :label-width="180" style="margin:0 20px;">
             <div class="law">
                 <FormItem :label="vm.$t('ieo.xmmc')" prop="projectName">
                     <Input v-model="form.projectName" :maxlength="32" class="w1"></Input>

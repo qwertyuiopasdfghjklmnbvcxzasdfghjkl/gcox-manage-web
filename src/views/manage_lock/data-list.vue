@@ -1,6 +1,6 @@
 <template>
     <Card>
-        <p slot="title">{{$t('exchange.jysjtj')}}</p>
+        <p slot="title">{{$t('exchange.sjtj')}}</p>
         <Table :columns="columns" :data="data"></Table>
     </Card>
 </template>

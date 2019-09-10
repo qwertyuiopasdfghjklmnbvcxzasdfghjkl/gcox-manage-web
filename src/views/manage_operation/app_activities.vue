@@ -108,7 +108,7 @@ export default {
                         props: {type: 'primary', size: 'small'},
                         on: {
                             click: () => {
-                                debugger
+                                // debugger
                                 extendApi.deleteBannerPage({
                                     promotionActivityId: params.row.promotionActivityId
                                 }, (res) => {
