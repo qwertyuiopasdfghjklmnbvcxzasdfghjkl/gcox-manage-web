@@ -284,6 +284,9 @@ Sentry.init({
     integrations: [new Integrations.Vue({Vue, attachProps: true})],
 });
 
+// window.console.log = ()=>{};
+// window.console.error = ()=>{};
+
 window.vm = new Vue({
     el: '#app',
     i18n: i18n,

@@ -349,12 +349,20 @@
                             typeof this.form.paymentConfig ===
                             'string' ? this.form.paymentConfig :
                                 JSON.stringify(this.form.paymentConfig);
+
+                        let D = JSON.stringify(this.form)
+                        let data = JSON.parse(D)
+                        data.startTime = util.dateToStr(new Date(this.form.startTime))
+                        data.endTime = util.dateToStr(new Date(this.form.endTime))
+                        data.paidTime = util.dateToStr(new Date(this.form.paidTime))
+                        data.releaseTime = util.dateToStr(new Date(this.form.releaseTime))
+
                         let formData = new FormData();
                         let i;
-                        console.log(this.form);
-                        for (i in this.form) {
-                            formData.append(i, this.form[i]);
+                        for (i in data) {
+                            formData.append(i, data[i]);
                         }
+
                         ieoApi.addProject(formData, (res) => {
                             this.$Message.success({content: this.vm.$t('common.tjcg')});
                             this.$router.push({name: 'ieo_project_index'});
@@ -375,6 +383,12 @@
                         this.form.participationRules = this.form.participationRules.toString();
                         this.form.subscriptionNotice = this.form.subscriptionNotice.toString();
                         this.form.paymentConfig = JSON.stringify(this.form.paymentConfig);
+
+                        this.form.startTime = util.dateToStr(new Date(this.form.startTime))
+                        this.form.endTime = util.dateToStr(new Date(this.form.endTime))
+                        this.form.paidTime = util.dateToStr(new Date(this.form.paidTime))
+                        this.form.releaseTime = util.dateToStr(new Date(this.form.releaseTime))
+
                         let formData = new FormData();
                         let i;
                         for (i in this.form) {
