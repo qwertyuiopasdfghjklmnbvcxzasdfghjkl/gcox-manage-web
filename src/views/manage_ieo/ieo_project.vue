@@ -84,7 +84,7 @@
                                     }
                                 }, this.$t('kyc.ckxq')),
                                 h('Button', {
-                                    props: {type: 'primary', size: 'small'},
+                                    props: {type: 'primary', size: 'small',disabled: (this.getState(params.row)===3)||this.getState(params.row)===4},
                                     style: {margin: '3px'},
                                     on: {
                                         click: () => {
@@ -165,16 +165,17 @@
                 let state = data.state;
                 if (state === 0) {
                     return 0;
-                }
-                if (does) {
-                    return 4;
-                } else {
-                    if (this.now > end || n <= 0) {
-                        return 3;
-                    } else if (this.now > start && this.now < end) {
-                        return 2;
-                    } else if (this.now < start) {
-                        return 1;
+                }else{
+                    if (does) {
+                        return 4;
+                    } else {
+                        if (this.now > end || n <= 0) {
+                            return 3;
+                        } else if (this.now > start && this.now < end) {
+                            return 2;
+                        } else if (this.now < start) {
+                            return 1;
+                        }
                     }
                 }
                 console.log(this.now, start, end, n);

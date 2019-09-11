@@ -1,5 +1,5 @@
 <template>
-    <Card class="box" style="width: 1000px;">
+    <Card class="box" style="width: 1200px;">
         <p slot="title">
             {{vm.$t('ieo.xmxq')}}
             <i class="ivu-icon ivu-icon-close" style="float:right;cursor:pointer;" @click="closeDialog"></i>
@@ -9,32 +9,41 @@
                 <FormItem :label="vm.$t('ieo.xmmc')+'：'">
                     <span>{{item.projectName}}</span>
                 </FormItem>
+
                 <FormItem :label="vm.$t('common.kssj')+'：'">
                     <span>{{item.startTime}}</span>
                 </FormItem>
+                <FormItem :label="vm.$t('ieo.xmmcyw')+'：'">
+                    <span>{{item.projectNameEn}}</span>
+                </FormItem>
 
+                <FormItem :label="vm.$t('ieo.jzsj')+'：'">
+                    <span>{{item.endTime}}</span>
+                </FormItem>
                 <FormItem>
                     <label class="green_title">{{vm.$t('common.bzdh')}}：</label>
                     <span>{{item.projectSymbol}}</span>
                 </FormItem>
-                <FormItem :label="vm.$t('ieo.jzsj')+'：'">
-                    <span>{{item.endTime}}</span>
-                </FormItem>
 
+                <FormItem :label="vm.$t('ieo.kksj')+'：'">
+                    <span>{{item.paidTime}}</span>
+                </FormItem>
                 <FormItem :label="vm.$t('ieo.bzlogo')+'：'">
                     <span><img :src="util.baseURL+item.projectLogo" height="50"></span>
                 </FormItem>
-                <FormItem :label="vm.$t('ieo.kksj')+'：'">
-                    <span>{{item.paidTime}}</span>
+
+                <FormItem :label="vm.$t('ieo.fbsj')+'：'">
+                    <span>{{item.releaseTime}}</span>
                 </FormItem>
                 <FormItem :label="vm.$t('ieo.xmtp')+'：'">
                     <span><img :src="util.baseURL+item.projectThumb" height="50"></span>
                 </FormItem>
-                <FormItem :label="vm.$t('ieo.fbsj')+'：'">
-                    <span>{{item.releaseTime}}</span>
-                </FormItem>
+                <div></div>
                 <FormItem :label="vm.$t('ieo.xmjj')+'：'">
-                    <span>{{item.projectProfile}}</span>
+                    <div class="detail">{{item.projectProfile}}</div>
+                </FormItem>
+                <FormItem :label="vm.$t('ieo.xmjjyw')+'：'">
+                    <div class="detail">{{item.projectProfileEn}}</div>
                 </FormItem>
 
             </div>
@@ -94,19 +103,31 @@
                 </FormItem>
             </div>
             <p><br><br></p>
-            <FormItem :label="vm.$t('ieo.xmffbsbzh')+'：'" prop="productNameEn">
+            <FormItem :label="vm.$t('ieo.xmffbsbzh')+'：'">
                 <span>{{item.projectAccount}}</span>
             </FormItem>
 
-            <FormItem :label="vm.$t('ieo.rgxuzhi')+'：'" prop="productDescription">
-                <div class="detail" v-html="item.subscriptionNotice"></div>
-            </FormItem>
-            <FormItem :label="vm.$t('ieo.xmgz')+'：'" prop="productDescriptionEn">
-                <div class="detail" v-html="item.participationRules"></div>
-            </FormItem>
-            <FormItem :label="vm.$t('ieo.xmxq')+'：'" prop="productDescriptionEn">
-                <div v-html="item.projectDetail" class="detail"></div>
-            </FormItem>
+            <div class="law">
+                <FormItem :label="vm.$t('ieo.rgxuzhi')+'：'">
+                    <div class="detail" v-html="item.subscriptionNotice"></div>
+                </FormItem>
+                <FormItem :label="vm.$t('ieo.rgxuzhiyw')+'：'">
+                    <div class="detail" v-html="item.subscriptionNoticeEn"></div>
+                </FormItem>
+                <FormItem :label="vm.$t('ieo.xmgz')+'：'">
+                    <div class="detail" v-html="item.participationRules"></div>
+                </FormItem>
+                <FormItem :label="vm.$t('ieo.xmgzyw')+'：'">
+                    <div class="detail" v-html="item.participationRulesEn"></div>
+                </FormItem>
+                <FormItem :label="vm.$t('ieo.xmxq')+'：'">
+                    <div v-html="item.projectDetail" class="detail"></div>
+                </FormItem>
+                <FormItem :label="vm.$t('ieo.xmxqyw')+'：'">
+                    <div v-html="item.projectDetailEn" class="detail"></div>
+                </FormItem>
+            </div>
+
         </Form>
     </Card>
 </template>
@@ -120,29 +141,31 @@
         name: 'project',
         components: {Numberbox, wangeditor},
         props: ['item'],
-        data () {
+        data() {
             const vm = window.vm;
             return {
                 vm: vm,
                 needKyc: null,
                 util: util,
                 columns: [
-                    {key: 'symbolType', title: vm.$t('operation.bh'), render: (h, params) => {
-                            return h('span', params.index+1);
-                        }},
+                    {
+                        key: 'symbolType', title: vm.$t('operation.bh'), render: (h, params) => {
+                            return h('span', params.index + 1);
+                        }
+                    },
                     {key: 'symbol', title: vm.$t('common.bz')},
                     {key: 'symbolCount', title: vm.$t('ieo.mfsl')},
                 ],
             };
         },
-        created () {
+        created() {
             this.needKyc = this.item.needKyc === 1
         },
         methods: {
             // catchData (value) {
             //     this.content = value;      //在这里接受子组件传过来的参数，赋值给data里的参数
             // }
-            closeDialog () {
+            closeDialog() {
                 this.$emit('removeDialog');
             }
         }
@@ -169,8 +192,9 @@
             margin-left: 0;
         }
     }
-    .detail{
-        width: 750px;
+
+    .detail {
+        width: 500px;
         display: inline-block;
         border: 1px solid #e2e5e6;
         padding: 20px;
