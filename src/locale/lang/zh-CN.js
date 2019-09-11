@@ -1072,6 +1072,7 @@ export const mall = {
 }
 export const ieo = {
     xmmc: '项目名称',
+    xmmcyw: '项目名称英文',
     mfsl: '每份数量',
     bj: '编辑',
     xmbh: '项目编号',
@@ -1084,6 +1085,7 @@ export const ieo = {
     syfs: '剩余份数',
     bzlogo: '币种LOGO',
     xmjj: '项目简介',
+    xmjjyw: '项目简介英文',
     jzsj: '截止时间',
     xsd: '显示的',
     jjbz: '计价币种',
@@ -1102,8 +1104,11 @@ export const ieo = {
     grmcrgfsxx: '个人每次认购份数下限',
     xmffbsbzh: '项目方发币收币账号',
     rgxuzhi: '认购须知',
+    rgxuzhiyw: '认购须知英文',
     xmgz: '项目规则',
+    xmgzyw: '项目规则英文',
     xmxq: '项目详情',
+    xmxqyw: '项目详情英文',
     xgsx: '修改属性',
     ztxg: '状态修改',
     kkfb: '扣款发币',

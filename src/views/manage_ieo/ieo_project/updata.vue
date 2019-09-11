@@ -1,5 +1,5 @@
 <template>
-    <Card style="width: 1000px">
+    <Card style="width: 1400px">
         <p slot="title">
             {{vm.$t('ieo.xgsx')}}
             <i class="ivu-icon ivu-icon-close" style="float:right;cursor:pointer;" @click="closeDialog"></i>

@@ -16,7 +16,7 @@
                 </Select>
             </FormItem>
             <FormItem :label="vm.$t('ieo.mfsl')" prop="symbolCount">
-                <numberbox v-model="form.symbolCount" :maxlength="32" class="w1"></numberbox>
+                <numberbox v-model="form.symbolCount" :max-length="32" class="w1"></numberbox>
             </FormItem>
             <FormItem>
                 <Button type="primary" class="btn" size="large" @click="add()">

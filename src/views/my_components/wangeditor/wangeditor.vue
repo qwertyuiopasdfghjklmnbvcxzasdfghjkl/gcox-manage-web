@@ -9,7 +9,7 @@
 
     export default {
         name: 'editorElem',
-        data () {
+        data() {
             return {
                 editorContent: '',
                 editor: null
@@ -22,14 +22,24 @@
             //     console.log(this.content);
             // }
         },
-        created () {
+        created() {
             // console.log(this.content)
-            // if(this.content){
-            //     this.editor.txt.html(this.content)
-            // }
         },
-        mounted () {
-            this.editor = new E(this.$refs.editorElem);        //创建富文本实例
+        mounted() {
+
+
+            // if (this.content) {
+            //     this.editor.txt.html(this.content);
+            // }
+            this.$nextTick(() => {
+                    if (this.content) {
+                        this.editor.txt.html(this.content);
+                    }
+                }
+            )
+
+            this.editor = new E(this.$refs.editorElem);       //创建富文本实例
+
             this.editor.customConfig.onchange = (html) => {
                 this.editorContent = html;
                 this.catchData(html);  //把这个html通过catchData的方法传入父组件
@@ -99,11 +109,8 @@
             //         // result 必须是一个 JSON 格式字符串！！！否则报错
             //     }
             // };
-
             this.editor.create();
-            if (this.content) {
-                this.editor.txt.html(this.content);
-            }
+
         }
     };
 </script>
@@ -112,13 +119,16 @@
         text-align: left;
         position: relative;
         z-index: 0;
-        ul{
+
+        ul {
             list-style-type: initial;
         }
-        ol{
+
+        ol {
             list-style-type: decimal;
         }
-        a{
+
+        a {
             color: #00B5FF;
         }
     }
