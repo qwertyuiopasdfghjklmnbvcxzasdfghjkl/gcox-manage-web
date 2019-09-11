@@ -9,6 +9,7 @@
                 <Select v-model="form.symbol">
                     <Option v-for="item in symbolList"
                             :value="item.symbol"
+                            :disabled="item.disable"
                             :key="item.symbol">
                         {{ item.symbol }}
                     </Option>

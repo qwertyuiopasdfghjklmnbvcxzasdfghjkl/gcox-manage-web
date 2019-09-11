@@ -309,6 +309,11 @@
                                     on: {
                                         click: () => {
                                             this.form.paymentConfigs.splice(params.index, 1);
+                                            this.symbolList.map((next,i)=>{
+                                                if(next.symbol === params.row.symbol){
+                                                    this.symbolList[i].disable = false
+                                                }
+                                            })
                                         }
                                     }
                                 }, vm.$t('common.sc'))
@@ -412,6 +417,12 @@
                     symbolList: this.symbolList,
                     okCallback: (res) => {
                         this.form.paymentConfigs.push(res);
+                        this.symbolList.map((next,i)=>{
+                            if(next.symbol === res.symbol){
+                                this.symbolList[i].disable = true
+                            }
+                        })
+                        console.log(this.symbolList)
                     }
                 });
             },
