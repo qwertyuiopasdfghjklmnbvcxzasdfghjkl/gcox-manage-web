@@ -223,6 +223,26 @@
                 <Button type="primary" @click="tabs('basePrice')">{{vm.$t('common.bc')}}</Button>
             </Col>
         </Row>
+        <Row style="margin-top:10px;border-bottom:1px solid #e9eaec;padding-bottom:5px;">
+            <Col span="6">{{vm.$t('exchange.mrmyhxzmcsl')}}</Col>
+            <Col span="6">{{item.dailySellLimit||"无"}}</Col>
+            <Col span="6">
+                <InputNumber style="width:113px;" v-model="dailySellLimit" :min="0"></InputNumber>
+            </Col>
+            <Col span="6" style="text-align:right;">
+                <Button type="primary" @click="tabs('dailySellLimit')">{{vm.$t('common.bc')}}</Button>
+            </Col>
+        </Row>
+        <Row style="margin-top:10px;border-bottom:1px solid #e9eaec;padding-bottom:5px;">
+            <Col span="6">{{vm.$t('exchange.mrmyhxzmrsl')}}</Col>
+            <Col span="6">{{item.dailyBuyLimit||"无"}}</Col>
+            <Col span="6">
+                <InputNumber style="width:113px;" v-model="dailyBuyLimit" :min="0"></InputNumber>
+            </Col>
+            <Col span="6" style="text-align:right;">
+                <Button type="primary" @click="tabs('dailyBuyLimit')">{{vm.$t('common.bc')}}</Button>
+            </Col>
+        </Row>
     </Card>
 </template>
 
@@ -260,7 +280,9 @@
                 sellFixedPriceRate: null,
                 pullInterval: null,
                 role: true,
-                basePrice: null
+                basePrice: null,
+                dailySellLimit: null,
+                dailyBuyLimit: null,
             };
         },
         components: {

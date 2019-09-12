@@ -561,7 +561,9 @@ export const exchange = {
     mb: '目标',
     scffjl: '锁仓发放记录',
     dczdtbsl: '单次最大提币数量',
-    drzdtbsl: '单日最大提币数量'
+    drzdtbsl: '单日最大提币数量',
+    mrmyhxzmcsl: '每日每用户限制卖出数量',
+    mrmyhxzmrsl: '每日每用户限制买入数量'
 }
 export const risk = {
     bbycyj: '币币异常预警',
