@@ -10,10 +10,10 @@
                     <p style="margin-bottom: 20px">
                         {{$t('ieo.xmmc')}}：
                         <Input v-model="formData.projectName" clearable style="width: 200px"
-                               :placeholder="$t('common.bzdh')"></Input>
+                               :placeholder="$t('ieo.xmmc')"></Input>
                         {{$t('common.yhm')}}：
                         <Input v-model="formData.username" clearable style="width: 200px"
-                               :placeholder="$t('common.bzdh')"></Input>
+                               :placeholder="$t('common.yhm')"></Input>
                         {{$t('ieo.rgsj')}}：
                         <DatePicker type="datetime" v-model="formData.startTime" :placeholder="$t('common.kssj')"
                                     format="yyyy-MM-dd HH:mm:ss"
@@ -34,7 +34,7 @@
                         </Select>
                         {{$t('ieo.dfbz')}}：
                         <Input v-model="formData.subscriptionSymbol" clearable style="width: 200px"
-                               :placeholder="$t('common.bzdh')"></Input>
+                               :placeholder="$t('ieo.dfbz')"></Input>
                         <Button type="primary" @click="curPage=1;getList()">{{$t('common.cx')}}</Button>
                     </p>
                     <Table :columns="columns" :data="datas"></Table>
