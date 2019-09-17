@@ -29,11 +29,11 @@
                     <Input v-model="form.projectSymbol" :maxlength="32" class="w1"></Input>
                 </FormItem>
 
-                <FormItem :label="vm.$t('ieo.kksj')" prop="paidTime">
+                <FormItem :label="vm.$t('ieo.fbkssj')" prop="paidTime">
                     <DatePicker type="datetime"
                                 class="w1"
                                 v-model="form.paidTime"
-                                :placeholder="vm.$t('ieo.kksj')"
+                                :placeholder="vm.$t('ieo.fbkssj')"
                                 format="yyyy-MM-dd HH:mm:ss"></DatePicker>
                 </FormItem>
                 <FormItem :label="vm.$t('ieo.bzlogo')" prop="logoFile">
@@ -41,11 +41,11 @@
                     <input type="file" ref="logoFiles" name="logoFile" class="w1" @change="getImg()">
                 </FormItem>
 
-                <FormItem :label="vm.$t('ieo.fbsj')" prop="releaseTime">
+                <FormItem :label="vm.$t('ieo.fbjssj')" prop="releaseTime">
                     <DatePicker type="datetime"
                                 class="w1"
                                 v-model="form.releaseTime"
-                                :placeholder="vm.$t('ieo.fbsj')"
+                                :placeholder="vm.$t('ieo.fbjssj')"
                                 format="yyyy-MM-dd HH:mm:ss"></DatePicker>
                 </FormItem>
                 <FormItem :label="vm.$t('ieo.xmtp')" prop="thumbFile">
