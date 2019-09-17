@@ -4,7 +4,7 @@
             {{item ? vm.$t('exchange.xgjgfp') : vm.$t('exchange.xzjgfp')}}
             <i class="ivu-icon ivu-icon-close" style="float:right;cursor:pointer;" @click="closeDialog"></i>
         </p>
-        <Form ref="formValidate" :model="form" :rules="ruleInline" :label-width="100" class="cont" style="margin:0 20px;">
+        <Form ref="form" :model="form" :rules="ruleInline" :label-width="100" class="cont" style="margin:0 20px;">
 
             <FormItem :label="vm.$t('exchange.zfbfb')" prop="amplitudeRate">
                 <numberbox v-model="form.amplitudeRate " name="amplitudeRate"></numberbox><span>%</span>
@@ -84,16 +84,16 @@
                 },
                 ruleInline: {
                     amplitudeRate: [
-                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.zfbfb')}
+                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.zfbfb'),trigger: 'blur'}
                     ],
                     changeAmount: [
-                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.zfje')}
+                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.zfje'),trigger: 'blur'}
                     ],
                     changeRate: [
-                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.zhangfbfb')}
+                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.zhangfbfb'),trigger: 'blur'}
                     ],
                     quantityRange: [
-                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.slfw')}
+                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.slfw'),trigger: 'blur'}
                     ],
                     interval: [
                         {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.wtpl')}
@@ -141,7 +141,7 @@
                 });
             },
             add () {
-                this.$refs.formValidate.validate((valid) => {
+                this.$refs.form.validate((valid) => {
                     if (valid) {
                         let d = JSON.stringify(this.form)
                         let data = JSON.parse(d)
