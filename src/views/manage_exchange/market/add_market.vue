@@ -80,14 +80,14 @@
                                  name="basePrice"></InputNumber>
                 </FormItem>
 
-                <FormItem :label="vm.$t('exchange.mrmyhxzmcsl')" prop="dailySellLimit">
-                    <InputNumber style="width:100%;" v-model="formLeft.dailySellLimit" :min="0"
-                                 name="dailySellLimit"></InputNumber>
-                </FormItem>
-                <FormItem :label="vm.$t('exchange.mrmyhxzmrsl')" prop="dailyBuyLimit">
-                    <InputNumber style="width:100%;" v-model="formLeft.dailyBuyLimit" :min="0"
-                                 name="dailyBuyLimit"></InputNumber>
-                </FormItem>
+                <!--<FormItem :label="vm.$t('exchange.mrmyhxzmcsl')" prop="dailySellLimit">-->
+                    <!--<InputNumber style="width:100%;" v-model="formLeft.dailySellLimit" :min="0"-->
+                                 <!--name="dailySellLimit"></InputNumber>-->
+                <!--</FormItem>-->
+                <!--<FormItem :label="vm.$t('exchange.mrmyhxzmrsl')" prop="dailyBuyLimit">-->
+                    <!--<InputNumber style="width:100%;" v-model="formLeft.dailyBuyLimit" :min="0"-->
+                                 <!--name="dailyBuyLimit"></InputNumber>-->
+                <!--</FormItem>-->
                 <Button type="primary" @click="getAddMarket()">{{vm.$t('common.tj')}}</Button>
             </Form>
         </Card>
@@ -129,8 +129,8 @@
                     sellFixedPriceRate: null,
                     pullInterval: null,
                     basePrice: null,
-                    dailySellLimit: null,
-                    dailyBuyLimit: null,
+                    // dailySellLimit: null,
+                    // dailyBuyLimit: null,
                 },
                 ruleInline: {
                     market: [
@@ -242,8 +242,8 @@
                                 minPlaceOrderQuantity: this.formLeft.minPlaceOrderQuantity,
                                 state: this.formLeft.state,
                                 basePrice: this.formLeft.basePrice,
-                                dailySellLimit: this.formLeft.dailySellLimit,
-                                dailyBuyLimit: this.formLeft.dailyBuyLimit,
+                                // dailySellLimit: this.formLeft.dailySellLimit,
+                                // dailyBuyLimit: this.formLeft.dailyBuyLimit,
                                 marketType: this.type
                             }, (res) => {
                                 this.$Message.success({content: this.vm.$t('common.tjcg')});
