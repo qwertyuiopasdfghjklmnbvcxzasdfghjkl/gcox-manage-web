@@ -56,7 +56,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$t('common.bz'),
+                    title: this.$t('common.beiz'),
                     key: 'remarks'
                 },
                 {

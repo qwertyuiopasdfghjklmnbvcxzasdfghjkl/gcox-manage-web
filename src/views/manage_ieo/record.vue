@@ -36,6 +36,7 @@
                         <Input v-model="formData.subscriptionSymbol" clearable style="width: 200px"
                                :placeholder="$t('ieo.dfbz')"></Input>
                         <Button type="primary" @click="curPage=1;getList()">{{$t('common.cx')}}</Button>
+                        <Button type="primary" @click="output()">{{$t('systemlog.dc')}}</Button>
                     </p>
                     <Table :columns="columns" :data="datas"></Table>
                     <Page :current="curPage" :total="total" @on-change="changePage" :page-size="size"
@@ -105,6 +106,7 @@
                     state: 0,
                     subscriptionSymbol: null,
                 },
+                downloadparmes:{}
             };
         },
         created () {
@@ -155,6 +157,7 @@
                 data.state = data.state === 0 ? null : data.state;
                 data.size = this.size;
                 data.page = this.curPage;
+                this.downloadparmes = data
                 ieoApi.subscriptionList(data,
                     (res, total) => {
                         this.total = total;
@@ -191,6 +194,15 @@
             changePage (page) {
                 this.curPage = page;
                 this.getList();
+            },
+            output(){
+                let paramStr = []
+                for (var i in this.downloadparmes) {
+                    if(this.downloadparmes[i]){
+                        paramStr.push(`${i}=${this.downloadparmes[i]}`)
+                    }
+                }
+                window.location.href = `${util.baseURL}api/bm/ieoManage/subscription/list?${paramStr.join('&')}`
             }
         }
     };
