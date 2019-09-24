@@ -7,11 +7,7 @@
                     <select v-model="symbolType"
                             style="width:100px;height:30px;border: 1px solid #dddee1;border-radius: 4px;">
                         <option value="">{{$t('common.qb')}}</option>
-                        <option value="1">BTC</option>
-                        <option value="2">ETH</option>
-                        <option value="3">OMNI</option>
-                        <!--<option value="4">MBT</option>-->
-                        <!--<option value="5">EOS</option>-->
+                        <option v-for="item in  symbolTypeList" :value="item.code">{{item.name}}</option>
                     </select>
                 </Col>
                 <Col span="2">{{$t('common.bz')}}：</Col>

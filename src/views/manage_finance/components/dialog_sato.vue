@@ -1,7 +1,7 @@
 <template>
     <Card style="width:600px;padding-bottom: 50px;">
         <p slot="title">
-            <span>{{state==='0'? vm.$t('common.zj') :vm.$t('common.kc')}}SATO</span>
+            <span>{{state==='0'? vm.$t('common.zj') :vm.$t('common.kc')}}</span>
             <i class="ivu-icon ivu-icon-close" style="float:right;cursor:pointer;" @click="closeDialog"></i>
         </p>
         <div class="detail">

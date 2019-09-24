@@ -2,7 +2,7 @@
     <Row>
         <Card style="width:1000px;">
             <p slot="title">
-                <span>SATO{{vm.$t('finance.slxgjl')}}</span>
+                <span>{{vm.$t('finance.zhxgjl')}}</span>
                 <i class="ivu-icon ivu-icon-close" style="float:right;cursor:pointer;" @click="closeDialog"></i>
             </p>
             <Row>
@@ -79,7 +79,6 @@
                 let data = {
                     page: this.page,
                     size: 10,
-                    symbol: 'SATO'
                 };
                 if (this.formData.text) {
                     data[this.formData.type] = this.formData.text;

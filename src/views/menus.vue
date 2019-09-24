@@ -34,6 +34,7 @@
         exchangeRouter,
         communityRouter,
         voteRouter,
+        inviteRouter,
         lockRouter,
         ieoRouter,
         financeRouter,
@@ -78,7 +79,7 @@
                     {id: 'monitoring', path: 'monitoring_index', name: this.$t('nav.jkpt'), menus: monitoringRouter},
                     {id: 'fund', path: 'fund_index', name: this.$t('nav.ptzjgl'), menus: fundRouter}
                 ],
-                icon: ['ios-analytics', 'ios-pie-outline', 'ios-calculator', 'ios-cart', 'ios-pulse', 'ios-settings',
+                icon: ['ios-analytics', 'ios-pie-outline', 'ios-calculator', 'lock-combination', 'ios-cart', 'ios-pulse', 'ios-settings',
                     'ios-calendar-outline', 'ios-cart', 'ios-clock', 'ios-eye', 'ios-filing-outline',
                     'android-clipboard', 'android-drafts']
             };

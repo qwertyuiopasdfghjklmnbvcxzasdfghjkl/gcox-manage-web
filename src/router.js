@@ -514,6 +514,59 @@ export const exchangeRouter = [
         ]
     }
 ];
+export const inviteRouter = [
+    {
+        path: '/info',
+        name: 'info',
+        title: 'invite.yqxxcx',
+        component: Main,
+        icon: 'stats-bars',
+        meta: {
+            roles: ['ROLE_ADMIN','ROLE_OPERATION','ROLE_CUSTOMER'],
+        },
+        children: [
+            {
+                path: 'info-list', title: 'invite.yqxxcx', name: 'info-list', component: resolve => {
+                    require(['./views/manage_invite/info.vue'], resolve);
+                }
+            },
+        ]
+    },
+    {
+        path: '/relation',
+        name: 'relation',
+        title: 'invite.yqgxcx',
+        component: Main,
+        icon: 'network',
+        meta: {
+            roles: ['ROLE_ADMIN','ROLE_OPERATION','ROLE_CUSTOMER'],
+        },
+        children: [
+            {
+                path: 'relation-list', title: 'invite.yqgxcx', name: 'relation-list', component: resolve => {
+                    require(['./views/manage_invite/relation.vue'], resolve);
+                }
+            },
+        ]
+    },
+    {
+        path: '/relation-update',
+        name: 'relation-update',
+        title: 'invite.yqgxxg',
+        component: Main,
+        icon: 'ios-paper-outline',
+        meta: {
+            roles: ['ROLE_ADMIN','ROLE_OPERATION'],
+        },
+        children: [
+            {
+                path: 'relation-update-list', title: 'invite.yqgxxg', name: 'relation-update-list', component: resolve => {
+                    require(['./views/manage_invite/relation-update.vue'], resolve);
+                }
+            },
+        ]
+    }
+];
 export const lockRouter = [
     {
         path: '/lock',
@@ -861,23 +914,23 @@ export const financeRouter = [
             }
         ]
     },
-    // {
-    //     path: '/change_sato_data',
-    //     name: 'change_sato_data',
-    //     title: 'nav.satoslxg',
-    //     component: Main,
-    //     icon: 'ios-compose',
-    //     meta: {
-    //         roles: ['ROLE_ADMIN', 'ROLE_SATO_RECHARGE'],
-    //     },
-    //     children: [
-    //         {
-    //             path: 'index', title: 'nav.satoslxg', name: 'change_sato_data_index', component: resolve => {
-    //                 require(['./views/manage_finance/change_sato_data.vue'], resolve);
-    //             }
-    //         }
-    //     ]
-    // },
+    {
+        path: '/change_sato_data',
+        name: 'change_sato_data',
+        title: 'nav.zhxg',
+        component: Main,
+        icon: 'ios-compose',
+        meta: {
+            roles: ['ROLE_ADMIN', 'ROLE_SATO_RECHARGE'],
+        },
+        children: [
+            {
+                path: 'index', title: 'nav.satoslxg', name: 'change_sato_data_index', component: resolve => {
+                    require(['./views/manage_finance/change_sato_data.vue'], resolve);
+                }
+            }
+        ]
+    },
     {
         path: '/virtual',
         name: 'virtual',
@@ -1949,6 +2002,7 @@ export const routers = [
     ...exchangeRouter,
     ...communityRouter,
     ...voteRouter,
+    ...inviteRouter,
     ...lockRouter,
     ...ieoRouter,
     ...financeRouter,

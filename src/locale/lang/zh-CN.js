@@ -255,7 +255,8 @@ export const finance = {
     sbyy: '失败原因',
     jdthid: '解冻退还ID',
     zsjy: '真实交易',
-    xnjy: '虚拟交易'
+    xnjy: '虚拟交易',
+    zhxgjl: '账户修改记录'
 };
 export const kyc = {
     dshyhsl: '待审核用户数量',
@@ -1024,6 +1025,8 @@ export const nav = {
     m1m2: '买1卖2',
     scgl: '锁仓管理',
     yhsccx: '用户锁仓查询',
+    yqgl: '邀请管理',
+    zhxg: '账户修改'
 }
 export const home = {
     zyh: '总用户',
@@ -1167,4 +1170,23 @@ export const lock = {
     ffsl: '发放数量',
     wwc: '未完成',
     ywc: '已完成',
+    ewjscx: '额外解锁查询',
+    jyl: '交易量',
+    jd: '进度'
+}
+export const invite ={
+    yqxxcx: '邀请信息查询',
+    yqgxcx: '邀请关系查询',
+    yqgxxg: '邀请关系修改',
+    yqjl: '邀请奖励',
+    yqrs: '邀请人数',
+    yqls: '邀请历史',
+    yqzt: '邀请状态',
+    xscj: '向上层级',
+    xxcj: '向下层级',
+    cj: '层级',
+    tjr: '推荐人',
+    xgtjr: '修改推荐人',
+    xgq: '修改前',
+    xgh: '修改后',
 }
