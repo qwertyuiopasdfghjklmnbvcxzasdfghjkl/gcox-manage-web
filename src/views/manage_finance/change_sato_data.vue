@@ -9,8 +9,9 @@
                 <Col span="16">
                     {{$t('common.yhm')}}:
                     <Input v-model="formData.text" clearable style="width: 200px"></Input>
+                    {{$t('common.bz')}}
                     <Select v-model="formData.symbol" style="width: 200px">
-                        <Option :value="0">{{$t('common.qb')}}</Option>
+                        <!--<Option :value="0">{{$t('common.qb')}}</Option>-->
                         <Option v-for="item in symbolList" :value="item.symbol" :key="item.symbol">{{ item.symbol }}
                         </Option>
                     </Select>
@@ -41,7 +42,7 @@
                 formData: {
                     type: 'username',
                     text: '',
-                    symbol: 0
+                    symbol: 'BTC'
                 },
                 symbolList: [],
                 page: 1,
