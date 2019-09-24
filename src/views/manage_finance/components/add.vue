@@ -8,7 +8,7 @@
         <Form ref="formValidate" :model="formValidate" :rules="ruleInline" :label-width="90" style="margin:0 20px;">
             <FormItem :label="vm.$t('common.bzdh')" prop="symbol">
                 <Select v-model="formValidate.symbol">
-                    <Option value="USSD">USSD</Option>
+                    <Option v-for="item in symbolList" :value="item.symbol" :key="item.symbol">{{ item.symbol }}</Option>
                 </Select>
             </FormItem>
             <FormItem :label="vm.$t('common.sl')"  prop="quantity">
