@@ -7,21 +7,21 @@
         <Form ref="form" :model="form" :rules="ruleInline" :label-width="100" class="cont" style="margin:0 20px;">
 
             <FormItem :label="vm.$t('exchange.zfbfb')" prop="amplitudeRate">
-                <numberbox v-model="form.amplitudeRate " name="amplitudeRate"></numberbox><span>%</span>
+                <numberbox v-model="form.amplitudeRate "></numberbox><span>%</span>
             </FormItem>
             <FormItem :label="vm.$t('exchange.zfje')" prop="changeAmount">
-                <numberbox v-model="form.changeAmount " name="changeAmount" :minus="true"></numberbox>
+                <numberbox v-model="form.changeAmount " :minus="true"></numberbox>
             </FormItem>
             <FormItem :label="vm.$t('exchange.zhangfbfb')" prop="changeRate">
-                <numberbox v-model="form.changeRate " name="changeRate" :minus="true"></numberbox><span>%</span>
+                <numberbox v-model="form.changeRate " :minus="true"></numberbox><span>%</span>
             </FormItem>
             <FormItem :label="vm.$t('exchange.wtpl')" prop="interval">
-                <numberbox v-model="form.interval " name="interval"></numberbox><span>/ms</span>
+                <numberbox v-model="form.interval "></numberbox><span>/ms</span>
             </FormItem>
             <FormItem :label="vm.$t('exchange.slfw')" prop="quantityRange">
-                <numberbox v-model="quantityRange1" name="quantityRange1" style="width: 138px"></numberbox>
+                <numberbox v-model="quantityRange1" style="width: 138px"></numberbox>
                 <span>-</span>
-                <numberbox v-model="quantityRange2" name="quantityRange2" style="width: 138px"></numberbox>
+                <numberbox v-model="quantityRange2" style="width: 138px"></numberbox>
             </FormItem>
             <FormItem :label="vm.$t('common.kssj')" prop="startAt">
                 <DatePicker type="datetime" v-model="form.startAt"
@@ -84,16 +84,16 @@
                 },
                 ruleInline: {
                     amplitudeRate: [
-                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.zfbfb'),trigger: 'blur'}
+                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.zfbfb')}
                     ],
                     changeAmount: [
-                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.zfje'),trigger: 'blur'}
+                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.zfje')}
                     ],
                     changeRate: [
-                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.zhangfbfb'),trigger: 'blur'}
+                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.zhangfbfb')}
                     ],
                     quantityRange: [
-                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.slfw'),trigger: 'blur'}
+                        {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.slfw')}
                     ],
                     interval: [
                         {required: true, message: vm.$t('common.qsr')+vm.$t('exchange.wtpl')}
