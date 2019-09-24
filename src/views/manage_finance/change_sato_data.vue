@@ -23,7 +23,7 @@
             </Row>
             <Table :columns="columns1" :data="data1" style="margin-top:10px;"></Table>
             <Page :current="page" :total="total" @on-change="changePage"
-                  style="text-align:center;margin-top:20px;"></Page>
+                  :page-size="size" style="text-align:center;margin-top:20px;"></Page>
         </Card>
     </Row>
 </template>
