@@ -532,7 +532,8 @@
             getDistribute() {
                 let data = {
                     page: this.curPage5,
-                    size: 10
+                    size: 10,
+                    userId: this.userId
                 }
                 currenyApi.findUserDistributeRecordList(data, (res, total) => {
                     this.total5 = total;
