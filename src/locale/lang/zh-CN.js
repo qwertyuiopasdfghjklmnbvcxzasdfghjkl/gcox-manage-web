@@ -98,6 +98,8 @@ export const common = {
     bccg: '保存成功',
     shz: '审核中',
     rzsb: '认证失败',
+    wsbtg: '审核不通过',
+    wstg: '审核通过'
 };
 export const login = {
     login: '登录',
@@ -564,7 +566,8 @@ export const exchange = {
     dczdtbsl: '单次最大提币数量',
     drzdtbsl: '单日最大提币数量',
     mrmyhxzmcsl: '每日每用户限制卖出数量',
-    mrmyhxzmrsl: '每日每用户限制买入数量'
+    mrmyhxzmrsl: '每日每用户限制买入数量',
+    pctszh: '排除特殊账户'
 }
 export const risk = {
     bbycyj: '币币异常预警',
