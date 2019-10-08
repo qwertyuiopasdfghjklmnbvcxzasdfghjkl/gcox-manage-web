@@ -92,7 +92,7 @@
                     {
                         title: vm.$t('common.zt'), key: 'state',// 1，正常 2，部分成交 0，已撤销 3，全部成交
                         render: (h, params) => {
-                            return h('div', this.switchStaus(params.row.state));
+                            return h('div', this.switchStaus(params.row));
                         }
                     }
                 ],
@@ -129,7 +129,11 @@
             switchStaus (state) { // 1，正常 2，部分成交 0，已撤销 3，全部成交
                 switch (state) {
                     case 0:
-                        return this.vm.$t('exchange.ycx');
+                        if (state.exchangeQuantity < state.total) {
+                            return this.vm.$t('exchange.bfcj');
+                        } else {
+                            return this.vm.$t('exchange.ycx');
+                        }
                         break;
                     case 1:
                         return this.vm.$t('exchange.zc');
