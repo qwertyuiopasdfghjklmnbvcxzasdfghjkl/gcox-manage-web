@@ -127,7 +127,7 @@
         },
         methods: {
             switchStaus (state) { // 1，正常 2，部分成交 0，已撤销 3，全部成交
-                switch (state) {
+                switch (state.state) {
                     case 0:
                         if (state.exchangeQuantity < state.total) {
                             return this.vm.$t('exchange.bfcj');
