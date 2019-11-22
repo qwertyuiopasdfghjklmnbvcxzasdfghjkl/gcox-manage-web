@@ -223,6 +223,16 @@
                 <Button type="primary" @click="tabs('basePrice')">{{vm.$t('common.bc')}}</Button>
             </Col>
         </Row>
+        <Row style="margin-top:10px;border-bottom:1px solid #e9eaec;padding-bottom:5px;">
+            <Col span="6">{{vm.$t('exchange.marketWeight')}}</Col>
+            <Col span="6">{{item.idx||0}}</Col>
+            <Col span="6">
+                <InputNumber style="width:113px;" v-model="idx" :min="0"></InputNumber>
+            </Col>
+            <Col span="6" style="text-align:right;">
+                <Button type="primary" @click="tabs('idx')">{{vm.$t('common.bc')}}</Button>
+            </Col>
+        </Row>
         <!--<Row style="margin-top:10px;border-bottom:1px solid #e9eaec;padding-bottom:5px;">-->
             <!--<Col span="6">{{vm.$t('exchange.mrmyhxzmcsl')}}</Col>-->
             <!--<Col span="6">{{item.dailySellLimit||"无"}}</Col>-->
@@ -281,6 +291,7 @@
                 pullInterval: null,
                 role: true,
                 basePrice: null,
+                idx:null
                 // dailySellLimit: null,
                 // dailyBuyLimit: null,
             };
