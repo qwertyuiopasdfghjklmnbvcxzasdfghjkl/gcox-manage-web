@@ -79,6 +79,10 @@
                     <InputNumber style="width:100%;" v-model="formLeft.basePrice" :min="0"
                                  name="basePrice"></InputNumber>
                 </FormItem>
+                <FormItem :label="vm.$t('exchange.marketWeight')" prop="idx">
+                    <InputNumber style="width:100%;" v-model="formLeft.idx" :min="0"
+                                 name="idx"></InputNumber>
+                </FormItem>
 
                 <!--<FormItem :label="vm.$t('exchange.mrmyhxzmcsl')" prop="dailySellLimit">-->
                     <!--<InputNumber style="width:100%;" v-model="formLeft.dailySellLimit" :min="0"-->
@@ -129,6 +133,7 @@
                     sellFixedPriceRate: null,
                     pullInterval: null,
                     basePrice: null,
+                    idx:0,
                     // dailySellLimit: null,
                     // dailyBuyLimit: null,
                 },
@@ -242,6 +247,7 @@
                                 minPlaceOrderQuantity: this.formLeft.minPlaceOrderQuantity,
                                 state: this.formLeft.state,
                                 basePrice: this.formLeft.basePrice,
+                                idx:this.formLeft.idx,
                                 // dailySellLimit: this.formLeft.dailySellLimit,
                                 // dailyBuyLimit: this.formLeft.dailyBuyLimit,
                                 marketType: this.type
