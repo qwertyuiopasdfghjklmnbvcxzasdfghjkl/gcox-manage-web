@@ -233,6 +233,23 @@
                 <Button type="primary" @click="tabs('idx')">{{vm.$t('common.bc')}}</Button>
             </Col>
         </Row>
+        <Row style="margin-top:10px;border-bottom:1px solid #e9eaec;padding-bottom:5px;">
+            <Col span="6">{{vm.$t('exchange.isVisible')}}</Col>
+            <Col span="6">{{item.visible}}</Col>
+            <Col span="6">
+                <RadioGroup v-model="visible" name="visible">
+                    <Radio :label="1" style="margin-right: 5px;">
+                        <span>{{vm.$t('exchange.visible')}}</span>
+                    </Radio>
+                    <Radio :label="0" style="margin-right: 0;">
+                        <span>{{vm.$t('exchange.hidden')}}</span>
+                    </Radio>
+                </RadioGroup>
+            </Col>
+            <Col span="6" style="text-align:right;">
+                <Button type="primary" @click="tabs('visible')">{{vm.$t('common.bc')}}</Button>
+            </Col>
+        </Row>
         <!--<Row style="margin-top:10px;border-bottom:1px solid #e9eaec;padding-bottom:5px;">-->
             <!--<Col span="6">{{vm.$t('exchange.mrmyhxzmcsl')}}</Col>-->
             <!--<Col span="6">{{item.dailySellLimit||"无"}}</Col>-->
@@ -280,7 +297,7 @@
                 minPlaceOrderQuantity: null,
                 currencySymbol: '',
                 baseSymbol: '',
-                fixedPrice: '',
+                fixedPrice: null,
                 autoEntrustCount: 0,
                 volumeRatio24h: null,
                 openingPrice: null,
@@ -291,7 +308,8 @@
                 pullInterval: null,
                 role: true,
                 basePrice: null,
-                idx:null
+                idx:null,
+                visible:this.item.visible,
                 // dailySellLimit: null,
                 // dailyBuyLimit: null,
             };
@@ -342,7 +360,9 @@
                     this.item[propName] = this[propName];
                     this.$emit('okCallback');
                     this.$Message.success({content: this.vm.$t('common.xgcg')});
-                    this[propName] = '';
+                    if(propName!=='visible'){
+                        this[propName] = '';
+                    }
                 }, (msg) => {
                     this.$Message.error({content: msg});
                 });
@@ -393,5 +413,6 @@
         }
 
         // .ivu-input-number-input{width: 72%;}
+
     }
 </style>
