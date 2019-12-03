@@ -567,7 +567,11 @@ export const exchange = {
     drzdtbsl: '单日最大提币数量',
     mrmyhxzmcsl: '每日每用户限制卖出数量',
     mrmyhxzmrsl: '每日每用户限制买入数量',
-    pctszh: '排除特殊账户'
+    pctszh: '排除特殊账户',
+    marketWeight:'市场权重',
+    isVisible:'是否显示',
+    visible:'显示',
+    hidden:'隐藏'
 }
 export const risk = {
     bbycyj: '币币异常预警',

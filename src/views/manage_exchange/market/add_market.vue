@@ -79,6 +79,20 @@
                     <InputNumber style="width:100%;" v-model="formLeft.basePrice" :min="0"
                                  name="basePrice"></InputNumber>
                 </FormItem>
+                <FormItem :label="vm.$t('exchange.marketWeight')" prop="idx">
+                    <InputNumber style="width:100%;" v-model="formLeft.idx" :min="0"
+                                 name="idx"></InputNumber>
+                </FormItem>
+                <FormItem :label="vm.$t('exchange.isVisible')" prop="visible">
+                    <RadioGroup v-model="formLeft.visible" name="visible">
+                        <Radio label="1">
+                            <span>{{vm.$t('exchange.visible')}}</span>
+                        </Radio>
+                        <Radio label="0">
+                            <span>{{vm.$t('exchange.hidden')}}</span>
+                        </Radio>
+                    </RadioGroup>
+                </FormItem>
 
                 <!--<FormItem :label="vm.$t('exchange.mrmyhxzmcsl')" prop="dailySellLimit">-->
                     <!--<InputNumber style="width:100%;" v-model="formLeft.dailySellLimit" :min="0"-->
@@ -122,13 +136,15 @@
                     minPlaceOrderAmount: null,
                     minPlaceOrderQuantity: null,
                     state: '2',
-                    fixedPrice: '',
+                    fixedPrice: null,
                     autoEntrustCount: 0,
                     pullGemini: null,
                     buyFixedPriceRate: null,
                     sellFixedPriceRate: null,
                     pullInterval: null,
                     basePrice: null,
+                    idx:0,
+                    visible:'1'
                     // dailySellLimit: null,
                     // dailyBuyLimit: null,
                 },
@@ -242,6 +258,8 @@
                                 minPlaceOrderQuantity: this.formLeft.minPlaceOrderQuantity,
                                 state: this.formLeft.state,
                                 basePrice: this.formLeft.basePrice,
+                                idx:this.formLeft.idx,
+                                visible:this.formLeft.visible,
                                 // dailySellLimit: this.formLeft.dailySellLimit,
                                 // dailyBuyLimit: this.formLeft.dailyBuyLimit,
                                 marketType: this.type
