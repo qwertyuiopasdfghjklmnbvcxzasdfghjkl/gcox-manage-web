@@ -166,7 +166,7 @@ const addBannerPage = function (data, success, error) {
         if (res.rst === 1) {
             success && success(res.data);
         } else {
-            error && error(res.msg);
+            error && error(res.error);
         }
     }, error);
 };
