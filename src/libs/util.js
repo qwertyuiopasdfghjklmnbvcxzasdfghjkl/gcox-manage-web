@@ -485,4 +485,18 @@ const setCursortPosition = function (dom, pos){
   }
   util.setCursortPosition = setCursortPosition
 
+// 导出表格
+const outExl = function (url, parmas) {
+    let data = []
+    for (let i in parmas) {
+        if (parmas[i]) {
+            let v = parmas[i] ? parmas[i] : ''
+            data.push(i + '=' + v)
+        }
+    }
+    window.location.href = `${util.baseURL}${url}?${data.join('&')}`
+
+}
+util.outExl = outExl
+
 export default util;

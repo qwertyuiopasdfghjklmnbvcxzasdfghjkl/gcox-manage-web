@@ -258,7 +258,8 @@ export const finance = {
     jdthid: '解冻退还ID',
     zsjy: '真实交易',
     xnjy: '虚拟交易',
-    zhxgjl: '账户修改记录'
+    zhxgjl: '账户修改记录',
+    mbdz: '目标地址'
 };
 export const kyc = {
     dshyhsl: '待审核用户数量',
@@ -1179,7 +1180,9 @@ export const lock = {
     ywc: '已完成',
     ewjscx: '额外解锁查询',
     jyl: '交易量',
-    jd: '进度'
+    jd: '进度',
+    sy: '剩余',
+    ysx: '已失效'
 }
 export const invite ={
     yqxxcx: '邀请信息查询',
