@@ -1180,7 +1180,9 @@ export const lock = {
     ywc: '已完成',
     ewjscx: '额外解锁查询',
     jyl: '交易量',
-    jd: '进度'
+    jd: '进度',
+    sy: '剩余',
+    ysx: '已失效'
 }
 export const invite ={
     yqxxcx: '邀请信息查询',

@@ -16,8 +16,9 @@
             {{$t('common.zt')}}
             <Select v-model="form.status" style="width: 200px">
                 <Option :value="2">{{$t('common.qb')}}</Option>
-                <Option :value="0">{{$t('lock.www')}}</Option>
-                <Option :value="1">{{$t('lock.yww')}}</Option>
+                <Option :value="0">{{$t('lock.wwc')}}</Option>
+                <Option :value="1">{{$t('lock.ywc')}}</Option>
+                <Option :value="-1">{{$t('lock.ysx')}}</Option>
             </Select>
             {{$t('common.cjsj')}}：
             <DatePicker type="datetime" v-model="form.createdStart" :placeholder="$t('common.kssj')"

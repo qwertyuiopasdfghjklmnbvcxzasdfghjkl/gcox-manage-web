@@ -18,6 +18,7 @@
             this.column = [
                 {key: 'minerId', title: this.vm.$t('lock.scjlid')},
                 {key: 'username', title: this.vm.$t('common.yhm')},
+                {key: 'symbol', title: this.vm.$t('common.bz')},
                 {key: 'amount', title: this.vm.$t('lock.scsl')},
                 {
                     key: 'type', title: this.vm.$t('lock.sclx'),
@@ -25,11 +26,17 @@
                         return h('div', this.sw(params.row.type))
                     }
                 },
-                {key: 'giveAmount', title: this.vm.$t('lock.yff')},
+                {key: 'remainAmount', title: this.vm.$t('lock.sy')},
                 {
                     key: 'status', title: this.vm.$t('common.zt'),
                     render: (h, params) => {
-                        return h('div', this.state(params.row.status))
+                        let color = {
+                            //0未完成，1为已完成，-1为已失效
+                            '0': 'red',
+                            '1': 'green',
+                            '-1': '#de500c'
+                        }
+                        return h('div', {style: {color: color[params.row.status]}},this.state(params.row.status))
                     }
                 },
                 {key: 'createAt', title: this.vm.$t('common.cjsj')},
@@ -46,11 +53,11 @@
                 }
                 return state[id]
             },
-            state(id) { //-1 , 0 未挖完，1 已挖完
+            state(id) { //0未完成，1为已完成，-1为已失效
                 let state = {
-                    '-1': this.vm.$t('lock.www'),
-                    '0': this.vm.$t('lock.www'),
-                    '1': this.vm.$t('lock.yww'),
+                    '-1': this.vm.$t('lock.ysx'),
+                    '0': this.vm.$t('lock.wwc'),
+                    '1': this.vm.$t('lock.ywc'),
                 }
                 return state[id]
             }
