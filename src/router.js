@@ -603,6 +603,23 @@ export const lockRouter = [
         ]
     },
     {
+        path: '/unlock-search',
+        name: 'unlock-search',
+        title: 'lock.ewjscx',
+        component: Main,
+        icon: 'social-dropbox',
+        meta: {
+            roles: ['ROLE_ADMIN','ROLE_OPERATION','ROLE_CUSTOMER'],
+        },
+        children: [
+            {
+                path: 'unlock-search', title: 'lock.ewjscx', name: 'unlock-search', component: resolve => {
+                    require(['./views/manage_lock/unlock-search.vue'], resolve);
+                }
+            }
+        ]
+    },
+    {
         path: '/lock-list',
         name: 'lockList',
         title: 'exchange.scjl',
