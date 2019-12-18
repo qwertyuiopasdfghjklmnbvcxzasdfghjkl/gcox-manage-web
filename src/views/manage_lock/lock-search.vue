@@ -4,7 +4,7 @@
         <p style="margin-bottom: 10px">
             {{$t('common.yhm')}}
             <Input v-model="form.username" style="width: 200px"></Input>
-            <Button type="primary" @click="form.page=1;getList()">{{$t('common.cx')}}</Button>
+            <Button type="primary" @click="page=1;getList()">{{$t('common.cx')}}</Button>
         </p>
         <Table :columns="columns" :data="data"></Table>
         <Page :current="page" :total="total"

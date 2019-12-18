@@ -8,7 +8,7 @@
             <DatePicker type="datetime" v-model="form.createdStart"
                         format="yyyy-MM-dd HH:mm:ss"
                         style="width: 200px"></DatePicker>
-            <Button type="primary" @click="form.page=1;getList()">{{$t('common.cx')}}</Button>
+            <Button type="primary" @click="page=1;getList()">{{$t('common.cx')}}</Button>
         </p>
         <Table :columns="columns" :data="data"></Table>
         <Page :current="page" :total="total"
