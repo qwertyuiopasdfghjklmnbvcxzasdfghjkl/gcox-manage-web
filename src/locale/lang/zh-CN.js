@@ -1199,4 +1199,9 @@ export const invite ={
     xgtjr: '修改推荐人',
     xgq: '修改前',
     xgh: '修改后',
+    yff: '已发放',
+    wff: '未发放',
+    yyq: '已邀请',
+    wyq: '未邀请',
 }
+

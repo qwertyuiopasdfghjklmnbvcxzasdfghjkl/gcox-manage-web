@@ -15,7 +15,7 @@
                 <Icon :type="icon[index]" style="width: 12px"/>
                 {{$t(item.name)}}
             </template>
-            <MenuItem v-for="(data,i) in item.menus" :name="index+'-'+i" class="menu_left">
+            <MenuItem v-for="(data,i) in item.menus" :name="index+'-'+i" :key="i" class="menu_left">
                 <p @click="readerTo(data)">
                     <Icon :type="data.icon"/>
                     <span>{{$t(data.title)}}</span>
@@ -64,6 +64,7 @@
                     {id: 'kyc', path: 'kycauditing_index', name: this.$t('nav.kycsh'), menus: kycRouter},
                     // {id: 'otc', path: 'otc_data_statistics_index', name: 'OTC管理', menus: otcRouter},
                     {id: 'exchange', path: 'exchange_data_statistics_index', name: this.$t('nav.bbgl'), menus: exchangeRouter},
+                    { name: this.$t('nav.yqgl'), menus: inviteRouter, icon:'android-hangout'},
                     { name: this.$t('nav.scgl'), menus: lockRouter},
                     { name: this.$t('nav.ieogl'), menus: ieoRouter},
                     // {id: 'community', path: 'community_data_index', name: '社区管理', menus: communityRouter},
