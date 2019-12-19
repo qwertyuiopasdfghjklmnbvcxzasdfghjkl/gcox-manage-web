@@ -8,7 +8,7 @@ import store from 'vuex';
 let util = {
 };
 util.title = function (title) {
-    title = title || 'OTC 后台管理系统';
+    title = title || 'GCOX 后台管理系统';
     window.document.title = title;
 };
 
