@@ -8,7 +8,7 @@
                     <select v-model="symbolType"
                             style="width:100px;height:30px;border: 1px solid #dddee1;border-radius: 4px;">
                         <option value="">{{$t('common.qb')}}</option>
-                        <option v-for="item in  symbolTypeList" :value="item.code">{{item.name}}</option>
+                        <option v-for="(item,i) in symbolTypeList" :value="item.code" :key="i">{{item.name}}</option>
                     </select>
                 </span>
             <span>
@@ -62,7 +62,7 @@
 </template>
 <script>
     import expandRow from './table-expand1.vue';
-    import monitorApi from '../../api/monitoring'
+    import monitorApi from '@/api/monitoring'
 
     export default {
         components: {expandRow},
@@ -193,14 +193,30 @@
                     },
                     {
                         title: this.$t('common.cz'),
-                        fixed: 'right',
-                        width: 100,
+                        // fixed: 'right',
+                        width: 120,
                         render:(h,params)=>{
                             return h('Button', {
                                 props: {type: 'primary', size: 'small'},
                                 style: {margin: '3px'},
                                 on: {
                                     click: () => {
+                                        this.$Modal.confirm({
+                                            title: '确认框',
+                                            content: '<h3>确认后将无法更改，是否确认交易提现失败？</h3>',
+                                            closable: true,
+                                            onOk: () => {
+                                                monitorApi.updateWaitingWithdrawStatus({withdrawApplyId: params.row.withdrawApplyId}, res => {
+                                                    if((this.total>10)&&(this.total%10 == 1)){
+                                                        this.curPage = this.curPage-1
+                                                    }
+                                                    this.$Message.success({content: this.$t('common.xgcg')});
+                                                    this.getWithdrawApplyList();
+                                                }, (msg) => {
+                                                    this.$Message.error({content: msg|| this.$t('ieo.sb')});
+                                                })
+                                            }
+                                        });
 
                                     }
                                 }
