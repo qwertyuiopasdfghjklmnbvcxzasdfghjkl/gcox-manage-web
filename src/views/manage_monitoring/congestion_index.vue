@@ -193,8 +193,8 @@
                     },
                     {
                         title: this.$t('common.cz'),
-                        fixed: 'right',
-                        width: 100,
+                        // fixed: 'right',
+                        width: 120,
                         render:(h,params)=>{
                             return h('Button', {
                                 props: {type: 'primary', size: 'small'},
