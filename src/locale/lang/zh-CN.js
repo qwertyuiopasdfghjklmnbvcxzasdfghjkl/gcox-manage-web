@@ -572,7 +572,8 @@ export const exchange = {
     marketWeight:'市场权重',
     isVisible:'是否显示',
     visible:'显示',
-    hidden:'隐藏'
+    hidden:'隐藏',
+    usdtczlb: 'USDT充值列表'
 }
 export const risk = {
     bbycyj: '币币异常预警',
@@ -1034,7 +1035,8 @@ export const nav = {
     scgl: '锁仓管理',
     yhsccx: '用户锁仓查询',
     yqgl: '邀请管理',
-    zhxg: '账户修改'
+    zhxg: '账户修改',
+    usdtcz: 'USDT充值'
 }
 export const home = {
     zyh: '总用户',
