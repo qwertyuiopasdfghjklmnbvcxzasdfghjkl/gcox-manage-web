@@ -760,23 +760,23 @@ export const financeRouter = [
             }
         ]
     },
-    // {
-    //     path: '/thirdparty',
-    //     name: 'thirdparty',
-    //     title: 'nav.dsfczlb',
-    //     component: Main,
-    //     icon: 'android-exit',
-    //     meta: {
-    //         roles: ['ROLE_ADMIN', 'ROLE_FINANCE'],
-    //     },
-    //     children: [
-    //         {
-    //             path: 'thirdparty_index', title: 'nav.dsfczlb', name: 'thirdparty_index', component: resolve => {
-    //                 require(['./views/manage_finance/thirdparty.vue'], resolve);
-    //             }
-    //         }
-    //     ]
-    // },
+    {
+        path: '/thirdparty',
+        name: 'thirdparty',
+        title: 'nav.usdtcz',
+        component: Main,
+        icon: 'android-exit',
+        meta: {
+            roles: ['ROLE_ADMIN', 'ROLE_FINANCE'],
+        },
+        children: [
+            {
+                path: 'thirdparty_index', title: 'nav.usdtcz', name: 'thirdparty_index', component: resolve => {
+                    require(['./views/manage_finance/thirdparty.vue'], resolve);
+                }
+            }
+        ]
+    },
     {
         path: '/finance_withdraw',
         name: 'finance_withdraw',
@@ -845,7 +845,8 @@ export const financeRouter = [
     //             }
     //         }
     //     ]
-    // },{
+    // },
+    // {
     //     path: '/sato_list',
     //     name: 'sato_list',
     //     title: 'nav.satotxjl',
