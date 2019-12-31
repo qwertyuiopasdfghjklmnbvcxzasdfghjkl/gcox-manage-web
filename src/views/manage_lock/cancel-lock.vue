@@ -23,10 +23,10 @@
                 <Option :value="-1">{{$t('lock.ysx')}}</Option>
             </Select> -->
             {{$t('common.cjsj')}}：
-            <DatePicker type="datetime" v-model="form.createdStart" :placeholder="$t('common.kssj')"
+            <DatePicker type="datetime" v-model="form.startTime" :placeholder="$t('common.kssj')"
                         format="yyyy-MM-dd HH:mm:ss"
                         style="width: 160px"></DatePicker>
-            <DatePicker type="datetime" v-model="form.createdEnd" :placeholder="$t('common.jssj')"
+            <DatePicker type="datetime" v-model="form.endTime" :placeholder="$t('common.jssj')"
                         format="yyyy-MM-dd HH:mm:ss"
                         style="width: 160px"></DatePicker>
             <Button type="primary" @click="form.page=1;getList()">{{$t('common.cx')}}</Button>
@@ -60,8 +60,8 @@
                     username: null,
                     type: 0,
                     // status: 2,
-                    createdStart: null,
-                    createdEnd: null,
+                    startTime: null,
+                    endTime: null,
                 },
                 total: 0,
             }
@@ -74,9 +74,9 @@
                 let Data = JSON.stringify(this.form)
                 let formData = JSON.parse(Data)
                 formData.type = formData.type === 0 ? null : formData.type
-                formData.status = formData.status === 2 ? null : formData.status
-                formData.createdStart = formData.createdStart ? util.dateToStr(new Date(formData.createdStart)) : null;
-                formData.createdEnd = formData.createdEnd ? util.dateToStr(new Date(formData.createdEnd)) : null;
+                // formData.status = formData.status === 2 ? null : formData.status
+                formData.startTime = formData.startTime ? util.dateToStr(new Date(formData.startTime)) : null;
+                formData.endTime = formData.endTime ? util.dateToStr(new Date(formData.endTime)) : null;
                 lock.selectCancelStake(this.size,this.page,formData,res=>{
                     this.data = res.data;
                     this.total = res.total
