@@ -46,13 +46,13 @@
             ]
         },
         methods: {
-            sw(id) { // 1用户锁仓，2 锁仓系统奖励 ， 3 注册奖励， 4 推荐新用户奖励， 5 推荐用户锁仓奖励 ,
+            sw(id) { // 1用户锁仓，2 锁仓系统奖励 ， 3 邀请用户锁仓奖励,
                 let state = {
                     1: this.vm.$t('exchange.yhsc'),
                     2: this.vm.$t('exchange.scxtjl'),
-                    3: this.vm.$t('exchange.zhucejl'),
-                    4: this.vm.$t('exchange.tjxyhjl'),
-                    5: this.vm.$t('exchange.tjyhscjl'),
+                    3: this.vm.$t('exchange.yqyhscjl'),
+                    // 4: this.vm.$t('exchange.tjxyhjl'),
+                    // 5: this.vm.$t('exchange.tjyhscjl'),
                 }
                 return state[id]
             },
