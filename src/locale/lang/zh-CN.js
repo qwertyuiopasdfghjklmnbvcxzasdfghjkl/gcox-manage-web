@@ -553,6 +553,7 @@ export const exchange = {
     zjycffsyrq: '最近一次发放收益的日期',
     yhsc: '用户锁仓',
     scxtjl: '锁仓系统奖励',
+    yqyhscjl: '邀请用户锁仓奖励',
     zhucejl: '注册奖励',
     tjxyhjl: '推荐新用户奖励',
     tjyhscjl: '推荐用户锁仓奖励',
@@ -564,6 +565,7 @@ export const exchange = {
     yebgmx: '余额变更明细',
     mb: '目标',
     scffjl: '锁仓发放记录',
+    qxsc: '取消锁仓',
     dczdtbsl: '单次最大提币数量',
     drzdtbsl: '单日最大提币数量',
     mrmyhxzmcsl: '每日每用户限制卖出数量',
@@ -1184,7 +1186,11 @@ export const lock = {
     jyl: '交易量',
     jd: '进度',
     sy: '剩余',
-    ysx: '已失效'
+    ysx: '已失效',
+    jscid: '解锁仓ID',
+    mbscjlid: '目标锁仓记录ID',
+    fhdyhm: '返还到用户名',
+    xzjs: '新增解锁',
 }
 export const invite ={
     yqxxcx: '邀请信息查询',
