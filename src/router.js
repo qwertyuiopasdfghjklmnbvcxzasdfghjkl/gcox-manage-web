@@ -653,6 +653,23 @@ export const lockRouter = [
             }
         ]
     },
+    {
+        path: '/lock',
+        name: 'lock',
+        title: 'exchange.qxsc',
+        component: Main,
+        icon: 'ios-barcode',
+        meta: {
+            roles: ['ROLE_ADMIN','ROLE_OPERATION'],
+        },
+        children: [
+            {
+                path: 'cancel-lock', title: 'exchange.qxsc', name: 'cancel-lock', component: resolve => {
+                    require(['./views/manage_lock/cancel-lock.vue'], resolve);
+                }
+            }
+        ]
+    },
 ];
 export const ieoRouter = [
     {

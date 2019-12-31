@@ -40,6 +40,26 @@ let lock = {
                 error && error(res.msg);
             }
         }, error)
+    },
+    // 取消锁仓 api/bm/cancelStake/selectCancelStake/{pageSize}/{page}
+    selectCancelStake(pageSize,page,data, success, error){
+        api.post(`api/bm/cancelStake/selectCancelStake/${pageSize}/${page}`,data,(res) => {
+            if (res.rst === 1) {
+                success && success(res);
+            } else {
+                error && error(res.msg);
+            }
+        }, error)
+    },
+    // 新增锁仓 api/bm/cancelStake/insertCancelStake
+    insertCancelStake(data, success, error){
+        api.post(`api/bm/cancelStake/insertCancelStake`,data,(res) => {
+            if (res.rst === 201) {
+                success && success(res);
+            } else {
+                error && error(res.msg);
+            }
+        }, error)
     }
 }
 export default lock
