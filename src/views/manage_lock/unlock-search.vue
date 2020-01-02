@@ -79,11 +79,16 @@
         },
         methods: {
             getList() {
-                let data = {page: this.page, size: this.size}
+                let data = {
+                    page: this.page, 
+                    size: this.size
+                }
                 if(this.form.username){
                     data.username = this.form.username
                 }
-                lock.getAccounts(data, res => {
+                data.createdStart = this.form.createdStart ? util.dateToStr(new Date(this.form.createdStart)) : null;
+                
+                lock.getUnlock(data, res => {
                     this.data = res.data;
                     this.total = res.total;
                 })

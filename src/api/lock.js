@@ -21,6 +21,17 @@ let lock = {
             }
         }, error)
     },
+
+    // 额外解锁查询
+    getUnlock(data, success, error){
+        api.get(`api/bm/stake/unlock_target`,data,(res) => {
+            if (res.rst === 1) {
+                success && success(res);
+            } else {
+                error && error(res.msg);
+            }
+        }, error)
+    },
     // 锁仓记录
     getRecord(data, success, error){
         api.get(`api/bm/stake/record`,data,(res) => {

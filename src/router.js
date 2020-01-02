@@ -658,7 +658,7 @@ export const lockRouter = [
         name: 'lock',
         title: 'exchange.qxsc',
         component: Main,
-        icon: 'ios-barcode',
+        icon: 'toggle-filled',
         meta: {
             roles: ['ROLE_ADMIN','ROLE_OPERATION'],
         },
