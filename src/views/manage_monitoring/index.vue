@@ -255,7 +255,7 @@
                     this.total = total;
                     this.data9 = res;
                 }, (msg) => {
-                    this.$Message.error({name: msg});
+                    this.$Message.error({content: msg});
                 });
             },
             getApplyList () {
@@ -263,7 +263,7 @@
                     this.total = total;
                     this.data9 = res;
                 }, (msg) => {
-                    this.$Message.error({name: msg});
+                    this.$Message.error({content: msg});
                 });
             },
             changePage (page) {
