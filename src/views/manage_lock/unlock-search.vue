@@ -35,9 +35,9 @@
                 },
                 columns: [
                     {key: 'username', title: this.$t('common.yhm')},
-                    {key: 'accountId', title: this.$t('exchange.mb')},
-                    {key: 'totalBalance', title: this.$t('lock.jyl')},
-                    {key: 'frozenBalance', title: this.$t('lock.jd')},
+                    {key: 'lastWeekBalance', title: this.$t('exchange.mb')},
+                    {key: 'thisWeekDealAmount', title: this.$t('lock.jyl')},
+                    {key: 'ratio', title: this.$t('lock.jd')},
                     // {key: 'availableBalance', title: this.$t('lock.sczhysf')},
                     {key: '', title: this.$t('common.cz'),render:(h,params)=>{
                             return ('div', [
