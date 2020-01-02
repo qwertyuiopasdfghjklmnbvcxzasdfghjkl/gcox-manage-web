@@ -9,35 +9,34 @@
         <Card style="margin-top: 10px">
             <p slot="title">
                 {{$t('exchange.usdtczlb')}}
-                <Button type="primary" @click="outExl()">{{$t('systemlog.dc')}}</Button>
+                <Button type="primary" @click="downloadList()">{{$t('systemlog.dc')}}</Button>
             </p>
-            <!--<p style="margin-bottom: 20px">-->
-            <!--{{$t('common.bz')}}：-->
-            <!--<Select v-model="formData.symbol" style="width: 200px" :clearable="true">-->
-            <!--<Option value="0">{{$t('common.qb')}}</Option>-->
-            <!--<Option value="USSD">USSD</Option>-->
-            <!--<Option value="SATO">SATO</Option>-->
-            <!--</Select>-->
-            <!--{{$t('common.cjsj')}}：-->
-            <!--<DatePicker type="datetime" v-model="formData.createdStart" :placeholder="$t('common.kssj')"-->
-            <!--format="yyyy-MM-dd HH:mm:ss"-->
-            <!--style="width: 200px"></DatePicker>-->
-            <!--<DatePicker type="datetime" v-model="formData.createdEnd" :placeholder="$t('common.jssj')"-->
-            <!--format="yyyy-MM-dd HH:mm:ss"-->
-            <!--style="width: 200px"></DatePicker>-->
-            <!--{{$t('common.yhm')}}：-->
-            <!--<Input v-model="formData.username" clearable style="width: 200px"-->
-            <!--:placeholder="$t('common.qsryhm')"></Input>-->
-            <!--{{$t('common.sl')}}：-->
-            <!--<Select v-model="amount" style="width: 200px">-->
-            <!--<Option value="0">{{$t('common.qb')}}</Option>-->
-            <!--<Option value="1">{{$t('common.xy1')}}</Option>-->
-            <!--<Option value="2">{{$t('common.dy1xy1000')}}</Option>-->
-            <!--<Option value="3">{{$t('common.dy1000xy10000')}}</Option>-->
-            <!--<Option value="4">{{$t('common.dy10000')}}</Option>-->
-            <!--</Select>-->
-            <!--<Button type="primary" @click="curPage=1;getfindUser()">{{$t('common.cx')}}</Button>-->
-            <!--</p>-->
+            <p style="margin-bottom: 20px">
+                {{$t('common.bz')}}：
+                <Select v-model="formData.symbol" style="width: 150px" :clearable="true">
+                    <Option value="0">{{$t('common.qb')}}</Option>
+                    <Option v-for="item in symbolList" :value="item.symbol" :key="item.symbol">{{ item.symbol }}</Option>
+                </Select>
+                {{$t('common.yhm')}}：
+                <Input v-model="formData.username" clearable style="width: 200px"
+                :placeholder="$t('common.qsryhm')"></Input>
+                {{$t('common.cjsj')}}：
+                <DatePicker type="datetime" v-model="formData.createdStart" :placeholder="$t('common.kssj')"
+                format="yyyy-MM-dd HH:mm:ss"
+                style="width: 200px"></DatePicker>
+                <DatePicker type="datetime" v-model="formData.createdEnd" :placeholder="$t('common.jssj')"
+                format="yyyy-MM-dd HH:mm:ss"
+                style="width: 200px"></DatePicker>
+                <!-- {{$t('common.sl')}}：
+                <Select v-model="amount" style="width: 200px">
+                <Option value="0">{{$t('common.qb')}}</Option>
+                <Option value="1">{{$t('common.xy1')}}</Option>
+                <Option value="2">{{$t('common.dy1xy1000')}}</Option>
+                <Option value="3">{{$t('common.dy1000xy10000')}}</Option>
+                <Option value="4">{{$t('common.dy10000')}}</Option>
+                </Select> -->
+                <Button type="primary" @click="curPage=1;getfindUser()">{{$t('common.cx')}}</Button>
+            </p>
             <Table ref="test2" :columns="columns" :data="data"></Table>
             <Page :current="curPage" :total="total" @on-change="changePage"
                   :page-size="size" style="text-align:center;margin-top:20px;"></Page>
@@ -81,6 +80,7 @@
                 ],
                 data: [],
                 data1: [],
+                symbolList: [],
                 formData: {
                     username: '',
                     max: null,
@@ -90,13 +90,20 @@
                     symbol: '0'
                 },
                 amount: '0',
+                downloadparmes: {}
             };
         },
         created () {
+            this.getdataSymbol();
             this.getfindUser();
             // this.getStatisticList();
         },
         methods: {
+            getdataSymbol () {
+                currenyApi.findAllValidSymbolList((res) => {
+                    this.symbolList = res;
+                });
+            },
             getStatisticList () {
                 let data = {
                     page: this.curPage1,
@@ -132,14 +139,15 @@
                         this.formData.min = null;
                         break;
                 }
-                this.formData.page = this.curPage;
-                this.formData.size = this.size;
                 let D = JSON.stringify(this.formData);
                 let data = JSON.parse(D);
                 data.createdStart = data.createdStart ? util.dateToStr(new Date(data.createdStart)) : null;
                 data.createdEnd = data.createdEnd ? util.dateToStr(new Date(data.createdEnd)) : null;
                 data.symbol = data.symbol === '0' ? null : data.symbol;
-                financeApi.outerList(data, (res, total) => {
+                this.downloadparmes = JSON.parse(JSON.stringify(data));
+                data.page = this.curPage;
+                data.size = this.size;
+                financeApi.virtualRechargeRecordList(data, (res, total) => {
                     this.total = total;
                     this.data = res;
                 });
@@ -164,9 +172,20 @@
                 this.curPage1 = page;
                 this.getfindUser();
             },
-            outExl () {
-                util.outExl('api/bm/financialManage/import/recharge',{});
-            }
+            downloadList () {
+                util.outExl('api/bm/account/transfer/virtualRechargeRecordExport',this.downloadparmes);
+            },
+            // downloadList() {
+            //     let arr = []
+            //     for (let i in this.downloadparmes){
+            //         if(this.downloadparmes[i]){
+            //             let v = this.downloadparmes[i]
+            //             arr.push(i+'='+v)
+            //         }
+            //     }
+            //     console.log(arr)
+            //     window.location.href = `${util.baseURL}api/bm/account/transfer/virtualRechargeRecordExport?export=1&${arr.join('&')}`
+            // },
         }
     };
 </script>
