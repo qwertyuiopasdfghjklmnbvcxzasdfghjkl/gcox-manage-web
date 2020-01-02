@@ -88,7 +88,7 @@
                 }
                 data.createdStart = this.form.createdStart ? util.dateToStr(new Date(this.form.createdStart)) : null;
                 
-                lock.getAccounts(data, res => {
+                lock.getUnlock(data, res => {
                     this.data = res.data;
                     this.total = res.total;
                 })
