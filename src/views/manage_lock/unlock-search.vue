@@ -74,8 +74,7 @@
         },
         created() {
             console.log(this.page)
-            this.getList()
-
+            // this.getList()
         },
         methods: {
             getList() {
@@ -87,11 +86,16 @@
                     data.username = this.form.username
                 }
                 data.createdStart = this.form.createdStart ? util.dateToStr(new Date(this.form.createdStart)) : null;
-                
-                lock.getUnlock(data, res => {
-                    this.data = res.data;
-                    this.total = res.total;
-                })
+                if(data.username){
+                    lock.getUnlock(data, res => {
+                        this.data = res.data;
+                        this.total = res.total;
+                    },(msg) => {
+                    this.$Message.error({content: msg});
+                })   
+                }else{
+                    this.$Message.error({content: this.$t('common.qsryhm')});
+                }
             },
             changePage(e) {
                 this.page = e;
