@@ -780,7 +780,7 @@ export const financeRouter = [
     {
         path: '/thirdparty',
         name: 'thirdparty',
-        title: 'nav.usdtcz',
+        title: 'nav.dsfczlb',
         component: Main,
         icon: 'android-exit',
         meta: {

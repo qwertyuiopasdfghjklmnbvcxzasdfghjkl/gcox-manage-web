@@ -8,7 +8,7 @@
         <!--</Card>-->
         <Card style="margin-top: 10px">
             <p slot="title">
-                {{$t('exchange.usdtczlb')}}
+                {{$t('exchange.dsfczlb')}}
                 <Button type="primary" @click="downloadList()">{{$t('systemlog.dc')}}</Button>
             </p>
             <row class="selWp">
