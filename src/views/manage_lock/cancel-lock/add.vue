@@ -4,7 +4,7 @@
             {{this.item?vm.$t('common.xg'):vm.$t('lock.xzjs')}}
             <i class="ivu-icon ivu-icon-close" style="float:right;cursor:pointer;" @click="closeDialog"></i>
         </p>
-        <Form ref="formItem" :model="data" :rules="ruleInline" :label-width="110" label-position="left">
+        <Form ref="formItem" :model="data" :rules="ruleInline" :label-width="120" label-position="left">
             <FormItem :label="vm.$t('lock.mbscjlid')" prop="minerId">
                 <p>
                     <Input v-model="data.minerId"></Input>
