@@ -788,7 +788,7 @@ export const financeRouter = [
         },
         children: [
             {
-                path: 'thirdparty_index', title: 'nav.usdtcz', name: 'thirdparty_index', component: resolve => {
+                path: 'thirdparty_index', title: 'nav.dsfczlb', name: 'thirdparty_index', component: resolve => {
                     require(['./views/manage_finance/thirdparty.vue'], resolve);
                 }
             }

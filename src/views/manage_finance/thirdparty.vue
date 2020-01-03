@@ -29,7 +29,7 @@
                 <Input v-model.trim="formData.transferId" clearable style="width: 154px;"
                 :placeholder="$t('finance.hzid')"></Input>
                 </Col>
-                <Col :md='8' :lg='6'>
+                <!-- <Col :md='8' :lg='6'>
                 <label>{{$t('finance.zzlx')}}：</label>
                 <Select v-model="formData.direction" style="width: 154px;">
                     <Option value="-1">{{$t('common.qb')}}</Option>
@@ -37,8 +37,8 @@
                     <Option value="1">{{$t('finance.zzcz')}}</Option>
                     <Option value="2">{{$t('finance.zztx')}}</Option>
                 </Select>
-                </Col>
-                <Col :md='8' :lg='6'>
+                </Col> -->
+                <!-- <Col :md='8' :lg='6'>
                 <label>{{$t('finance.hzlx')}}：</label>
                 <Select v-model="formData.transferType" style="width: 154px;">
                     <Option value="-1">{{$t('common.qb')}}</Option>
@@ -50,7 +50,7 @@
                     <Option value="8">{{$t('finance.kfpthz')}}</Option>
                     <Option value="9">{{$t('finance.ptzz')}}</Option>
                 </Select>
-                </Col>
+                </Col> -->
                 <Col :lg='12' :md='16'>
                 <label>{{$t('common.cjsj')}}：</label>
                 <DatePicker type="datetime" v-model="formData.createdStart" :placeholder="$t('common.kssj')"
@@ -89,15 +89,15 @@
                     {title: this.$t('finance.hzid'), key: 'transferId'},
                     {title: this.$t('common.yhm'), key: 'username'},
                     {title: this.$t('common.bz'), key: 'symbol'},
-                    {title: this.$t('finance.zzlx'), key: 'direction',
-                        render: (h, params) => {
-                            return h('div', this.direction(params.row.direction));
-                    }},
+                    // {title: this.$t('finance.zzlx'), key: 'direction',
+                    //     render: (h, params) => {
+                    //         return h('div', this.direction(params.row.direction));
+                    // }},
                     {title: this.$t('exchange.czsl'), key: 'quantity'},
-                    {title: this.$t('finance.hzlx'), key: 'transferType',
-                        render: (h, params) => {
-                            return h('div', this.transferType(params.row.transferType));
-                    }},
+                    // {title: this.$t('finance.hzlx'), key: 'transferType',
+                    //     render: (h, params) => {
+                    //         return h('div', this.transferType(params.row.transferType));
+                    // }},
                     {
                         title: this.$t('common.zt'), key: 'status',
                         render: (h, params) => {
@@ -122,8 +122,8 @@
                     max: null,
                     min: null,
                     transferId: null,
-                    direction: null,
-                    transferType: null,
+                    // direction: null,
+                    // transferType: null,
                     createdStart: null,
                     createdEnd: null,
                     symbol: '0'
@@ -186,12 +186,12 @@
                 if(!data.transferId){
                     delete data.transferId
                 }
-                if(data.direction === '-1' || data.direction == null){
-                    delete data.direction
-                }
-                if(data.transferType === '-1' || data.transferType == null){
-                    delete data.transferType
-                }
+                // if(data.direction === '-1' || data.direction == null){
+                //     delete data.direction
+                // }
+                // if(data.transferType === '-1' || data.transferType == null){
+                //     delete data.transferType
+                // }
                 data.createdStart = data.createdStart ? util.dateToStr(new Date(data.createdStart)) : null;
                 data.createdEnd = data.createdEnd ? util.dateToStr(new Date(data.createdEnd)) : null;
                 data.symbol = data.symbol === '0' ? null : data.symbol;
