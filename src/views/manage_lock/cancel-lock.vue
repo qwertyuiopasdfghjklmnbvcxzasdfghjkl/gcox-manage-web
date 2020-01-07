@@ -37,8 +37,8 @@
             </Col>
         </Row>
         <cancel-lock-tab :data="data"></cancel-lock-tab>
-        <Page :current="form.page" :total="total"
-              @on-change="changePage" :page-size="form.size"
+        <Page :current="page" :total="total"
+              @on-change="changePage" :page-size="size"
               style="text-align:center;margin-top:20px;"></Page>
     </Card>
 </template>
@@ -90,7 +90,7 @@
                 });
             },
             changePage(e){
-                this.form.page = e;
+                this.page = e;
                 this.getList()
             },
         }
