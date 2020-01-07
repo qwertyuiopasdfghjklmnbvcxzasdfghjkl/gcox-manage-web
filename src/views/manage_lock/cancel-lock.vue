@@ -29,7 +29,7 @@
             <DatePicker type="datetime" v-model="form.endTime" :placeholder="$t('common.jssj')"
                         format="yyyy-MM-dd HH:mm:ss"
                         style="width: 160px"></DatePicker>
-            <Button type="primary" @click="form.page=1;getList()">{{$t('common.cx')}}</Button>
+            <Button type="primary" @click="page=1;getList()">{{$t('common.cx')}}</Button>
             </Col>
             <Col :xs='3'>
             <Button type="primary" style="float: right" @click="add()">{{$t('lock.xzjs')}}</Button>
@@ -55,7 +55,7 @@
             return{
                 data: [],
                 page: 1,
-                size: 10,
+                size: 1,
                 form: {
                     username: null,
                     type: 0,
