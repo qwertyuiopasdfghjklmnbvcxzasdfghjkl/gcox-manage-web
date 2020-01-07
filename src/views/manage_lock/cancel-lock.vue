@@ -55,7 +55,7 @@
             return{
                 data: [],
                 page: 1,
-                size: 1,
+                size: 10,
                 form: {
                     username: null,
                     type: 0,
