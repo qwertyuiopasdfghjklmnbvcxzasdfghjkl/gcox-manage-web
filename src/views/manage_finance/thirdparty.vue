@@ -1,11 +1,11 @@
 <template>
     <Row style="margin-top:10px;">
-        <!--<Card>-->
-        <!--<p slot="title">{{$t('exchange.bzcztj')}}</p>-->
-        <!--<Table ref="test2" :columns="columns1" :data="data1"></Table>-->
-        <!--<Page :current="curPage1" :total="total1" @on-change="changePage1"-->
-        <!--:page-size="size" style="text-align:center;margin-top:20px;"></Page>-->
-        <!--</Card>-->
+        <Card>
+            <p slot="title">{{$t('exchange.bzcztj')}}</p>
+            <Table ref="test2" :columns="columns1" :data="data1"></Table>
+            <Page :current="curPage1" :total="total1" @on-change="changePage1"
+            :page-size="size" style="text-align:center;margin-top:20px;"></Page>
+        </Card>
         <Card style="margin-top: 10px">
             <p slot="title">
                 {{$t('exchange.dsfczlb')}}
@@ -145,7 +145,7 @@
         created () {
             this.getdataSymbol();
             this.getfindUser();
-            // this.getStatisticList();
+            this.getStatisticList();
         },
         methods: {
             getdataSymbol () {
@@ -158,7 +158,7 @@
                     page: this.curPage1,
                     size: this.size
                 };
-                financeApi.statisticList(data, (res, total) => {
+                financeApi.virtualRechargeRecordStatistics(data, (res, total) => {
                     this.data1 = res;
                     this.total1 = total;
                 }, (msg) => {
