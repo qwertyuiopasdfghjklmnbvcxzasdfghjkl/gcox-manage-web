@@ -60,6 +60,16 @@
                 format="yyyy-MM-dd HH:mm:ss"
                 style="width: 154px;"></DatePicker>
                 </Col>
+                <Col :md='8' :lg='6'>
+                <label>{{$t('common.sl')}}：</label>
+                <Select v-model="amount" style="width: 154px" :clearable="true">
+                    <Option value="0">{{$t('common.qb')}}</Option>
+                    <Option value="1">{{$t('common.xy1')}}</Option>
+                    <Option value="2">{{$t('common.dy1xy1000')}}</Option>
+                    <Option value="3">{{$t('common.dy1000xy10000')}}</Option>
+                    <Option value="4">{{$t('common.dy10000')}}</Option>
+                </Select>
+                </Col>
                 <Col :md='3' :lg='3'>
                 <Button type="primary" @click="curPage=1;getfindUser()">{{$t('common.cx')}}</Button>
                 </Col>
