@@ -1,6 +1,5 @@
 <template>
-  <div class="updataMarket">
-      <Card>
+      <Card style="width: 700px;">
           <p slot="title">{{vm.$t('common.xg')}}
               <i class="ivu-icon ivu-icon-close" style="float:right;cursor:pointer;" @click="closeDialog"></i>
           </p>
@@ -20,7 +19,7 @@
           </Row>
           <Row>
               <Col span="3">
-                  {{vm.$t('common.bz')}}
+                  {{vm.$t('common.beiz')}}
               </Col>
               <Col span="3">
                 {{item.remark}}
@@ -33,7 +32,6 @@
               </Col>
           </Row>
       </Card>
-  </div>
 </template>
 <script>
 import extendApi from '../../../api/extend'

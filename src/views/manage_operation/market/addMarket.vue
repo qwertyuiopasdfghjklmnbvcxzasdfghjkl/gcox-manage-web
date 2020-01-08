@@ -12,7 +12,7 @@
           </Row>
           <Row style="margin-bottom: 20px;">
               <Col span="3">
-                  {{vm.$t('common.bz')}}
+                  {{vm.$t('common.beiz')}}
               </Col>
               <Col span="10">
                 <Input style="width:200px" v-model="remark"></Input>
