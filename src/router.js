@@ -653,6 +653,23 @@ export const lockRouter = [
             }
         ]
     },
+    {
+        path: '/lock',
+        name: 'lock',
+        title: 'exchange.qxsc',
+        component: Main,
+        icon: 'toggle-filled',
+        meta: {
+            roles: ['ROLE_ADMIN','ROLE_OPERATION'],
+        },
+        children: [
+            {
+                path: 'cancel-lock', title: 'exchange.qxsc', name: 'cancel-lock', component: resolve => {
+                    require(['./views/manage_lock/cancel-lock.vue'], resolve);
+                }
+            }
+        ]
+    },
 ];
 export const ieoRouter = [
     {
@@ -763,7 +780,7 @@ export const financeRouter = [
     {
         path: '/thirdparty',
         name: 'thirdparty',
-        title: 'nav.usdtcz',
+        title: 'nav.dsfczlb',
         component: Main,
         icon: 'android-exit',
         meta: {
@@ -771,7 +788,7 @@ export const financeRouter = [
         },
         children: [
             {
-                path: 'thirdparty_index', title: 'nav.usdtcz', name: 'thirdparty_index', component: resolve => {
+                path: 'thirdparty_index', title: 'nav.dsfczlb', name: 'thirdparty_index', component: resolve => {
                     require(['./views/manage_finance/thirdparty.vue'], resolve);
                 }
             }

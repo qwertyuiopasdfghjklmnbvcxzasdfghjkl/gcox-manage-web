@@ -149,6 +149,19 @@ export const login = {
 };
 export const finance = {
     tbsh: '提币审核',
+    hzlx: '划转类型',
+    zzlx: '转账类型',
+    hzid: '划转ID',
+    zzhdtpwkzh: '主账户到投票挖矿账户',
+    tpwkzhdzzh: '投票挖矿账户到主账户',
+    tpsyff: '投票收益发放',
+    wksyff: '挖矿收益发放',
+    zfgkfptyy: '支付给开放平台应用',
+    kfpthz: '开放平台划转',
+    ptzz: '普通转账',
+    fzz: '非自转',
+    zzcz: '自转充值',
+    zztx: '自转提现',
     rtbtj: '日提币统计',
     glbz: '公链币种',
     rdtbbs: '日待提币笔数',
@@ -553,6 +566,7 @@ export const exchange = {
     zjycffsyrq: '最近一次发放收益的日期',
     yhsc: '用户锁仓',
     scxtjl: '锁仓系统奖励',
+    yqyhscjl: '邀请用户锁仓奖励',
     zhucejl: '注册奖励',
     tjxyhjl: '推荐新用户奖励',
     tjyhscjl: '推荐用户锁仓奖励',
@@ -564,6 +578,7 @@ export const exchange = {
     yebgmx: '余额变更明细',
     mb: '目标',
     scffjl: '锁仓发放记录',
+    qxsc: '取消锁仓',
     dczdtbsl: '单次最大提币数量',
     drzdtbsl: '单日最大提币数量',
     mrmyhxzmcsl: '每日每用户限制卖出数量',
@@ -1184,7 +1199,11 @@ export const lock = {
     jyl: '交易量',
     jd: '进度',
     sy: '剩余',
-    ysx: '已失效'
+    ysx: '已失效',
+    jscid: '解锁仓ID',
+    mbscjlid: '目标锁仓记录ID',
+    fhdyhm: '返还到用户名',
+    xzjs: '新增解锁',
 }
 export const invite ={
     yqxxcx: '邀请信息查询',

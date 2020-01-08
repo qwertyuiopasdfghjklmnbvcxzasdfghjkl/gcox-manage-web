@@ -35,9 +35,9 @@
                 },
                 columns: [
                     {key: 'username', title: this.$t('common.yhm')},
-                    {key: 'accountId', title: this.$t('exchange.mb')},
-                    {key: 'totalBalance', title: this.$t('lock.jyl')},
-                    {key: 'frozenBalance', title: this.$t('lock.jd')},
+                    {key: 'lastWeekBalance', title: this.$t('exchange.mb')},
+                    {key: 'thisWeekDealAmount', title: this.$t('lock.jyl')},
+                    {key: 'ratio', title: this.$t('lock.jd')},
                     // {key: 'availableBalance', title: this.$t('lock.sczhysf')},
                     {key: '', title: this.$t('common.cz'),render:(h,params)=>{
                             return ('div', [
@@ -74,19 +74,28 @@
         },
         created() {
             console.log(this.page)
-            this.getList()
-
+            // this.getList()
         },
         methods: {
             getList() {
-                let data = {page: this.page, size: this.size}
+                let data = {
+                    page: this.page, 
+                    size: this.size
+                }
                 if(this.form.username){
                     data.username = this.form.username
                 }
-                lock.getAccounts(data, res => {
-                    this.data = res.data;
-                    this.total = res.total;
-                })
+                data.createdStart = this.form.createdStart ? util.dateToStr(new Date(this.form.createdStart)) : null;
+                if(data.username){
+                    lock.getUnlock(data, res => {
+                        this.data = res.data;
+                        this.total = res.total;
+                    },(msg) => {
+                    this.$Message.error({content: msg});
+                })   
+                }else{
+                    this.$Message.error({content: this.$t('common.qsryhm')});
+                }
             },
             changePage(e) {
                 this.page = e;
