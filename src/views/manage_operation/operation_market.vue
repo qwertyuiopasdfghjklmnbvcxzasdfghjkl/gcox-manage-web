@@ -33,7 +33,7 @@ export default {
                     key: 'market',
                 },
                 {
-                    title: this.$t('common.bz'),
+                    title: this.$t('common.beiz'),
                     key: 'remark'
                 },
                 {
