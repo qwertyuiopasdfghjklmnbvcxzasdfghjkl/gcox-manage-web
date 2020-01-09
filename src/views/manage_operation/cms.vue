@@ -5,13 +5,13 @@
         <Row>
             <Col span="20">
                 {{$t('operation.ssyjmk')}}：
-                <Select v-model="firstLevel" style="width:200px">
+                <Select v-model="firstLevel" style="width:150px">
                     <Option :value="0">{{$t('common.qb')}}</Option>
                     <Option :value="1">{{$t('operation.ggjzx')}}</Option>
                     <Option :value="2">{{$t('operation.yjnr')}}</Option>
                 </Select>
                 {{$t('operation.ssejmk')}}：
-                <Select v-model="secondLevel " style="width:200px">
+                <Select v-model="secondLevel " style="width:150px">
                     <Option :value="0">{{$t('common.qb')}}</Option>
                     <Option :value="1">{{$t('operation.gg')}}</Option>
                     <Option :value="2">{{$t('operation.zx')}}</Option>
@@ -20,10 +20,16 @@
                     <Option :value="5">{{$t('operation.bzzx')}}</Option>
                     <Option :value="6">{{$t('operation.tksm')}}</Option>
                 </Select>
+                {{$t('operation.sitebelong')}}
+                <Select v-model="siteType" style="width:150px">
+                    <Option :value="0">{{$t('common.qb')}}</Option>
+                    <Option :value="1">{{$t('operation.siteglobal')}}</Option>
+                    <Option :value="2">{{$t('operation.sitesg')}}</Option>
+                </Select>
                 {{$t('operation.bt')}}
-                <Input v-model="keyword" style="width:200px"></Input>
+                <Input v-model="keyword" style="width:150px"></Input>
                 {{$t('common.zt')}}：
-                <Select v-model="state" style="width:200px">
+                <Select v-model="state" style="width:150px">
                     <Option :value="3">{{$t('common.qb')}}</Option>
                     <Option :value="0">{{$t('operation.wfb')}}</Option>
                     <Option :value="1">{{$t('operation.yfb')}}</Option>
@@ -50,6 +56,7 @@
             return {
                 firstLevel: 0,
                 secondLevel: 0,
+                siteType:0,
                 keyword: null,
                 state: 3,
                 curPage: 1,
@@ -72,6 +79,13 @@
                         key: 'secondLevel',
                         render: (h, params) => {
                             return h('div', this.secondSwith(params.row.secondLevel))
+                        }
+                    },
+                    {
+                        title: this.$t('operation.sitebelong'),
+                        key: 'siteType',
+                        render: (h, params) => {
+                            return h('span', params.row.siteType==2?this.$t('operation.sitesg'):this.$t('operation.siteglobal'))
                         }
                     },
                     {
@@ -183,6 +197,7 @@
                 let data = {
                     firstLevel: this.firstLevel === 0 ? null : this.firstLevel,
                     secondLevel: this.secondLevel === 0 ? null : this.secondLevel,
+                    siteType: this.siteType?this.siteType:'',
                     state: this.state === 3 ? null : this.state,
                     keyword: this.keyword,
                     page: this.curPage,
