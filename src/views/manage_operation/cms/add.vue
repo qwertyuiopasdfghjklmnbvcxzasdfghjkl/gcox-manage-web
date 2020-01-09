@@ -22,6 +22,12 @@
                         <Option :value="6">{{vm.$t('operation.tksm')}}</Option>
                     </Select>
                 </FormItem>
+                <FormItem :label="vm.$t('operation.sitebelong')" prop="siteType">
+                    <Select v-model="form.siteType">
+                        <Option :value="1">{{vm.$t('operation.siteglobal')}}</Option>
+                        <Option :value="2">{{vm.$t('operation.sitesg')}}</Option>
+                    </Select>
+                </FormItem>
                 <FormItem :label="vm.$t('operation.zwbt')" prop="titleCn">
                     <Input v-model="form.titleCn" :max="100"></Input>
                 </FormItem>
@@ -59,6 +65,7 @@
                 form: {
                     firstLevel: 1,
                     secondLevel: 1,
+                    siteType: 1,
                     titleCn: null,
                     titleEn: null,
                     bodyCn: null,
@@ -70,6 +77,9 @@
                         {required: true}
                         ],
                     secondLevel: [
+                        {required: true}
+                    ],
+                    siteType: [
                         {required: true}
                     ],
                     titleCn: [
