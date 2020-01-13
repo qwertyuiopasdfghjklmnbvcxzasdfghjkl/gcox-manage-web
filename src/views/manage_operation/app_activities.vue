@@ -31,6 +31,13 @@ export default {
               key: 'adPosition'
           },
           {
+              title: this.$t('operation.sitebelong'),
+              key: 'siteType',
+              render: (h, params) => {
+                  return h('span', params.row.siteType==2?this.$t('operation.sitesg'):this.$t('operation.siteglobal'))
+              }
+          },
+          {
               title: this.$t('common.gxsj'),
               key: 'lastUpdatedTime'
           },

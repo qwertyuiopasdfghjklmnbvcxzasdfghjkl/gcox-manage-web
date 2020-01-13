@@ -34,6 +34,18 @@
                 </Col>
             </Row>
             <Row style="margin-bottom:20px;">
+                <Col span="4">{{vm.$t('operation.sitebelong')}}</Col>
+                <Col span="18">
+                    <Select v-model="form.siteType">
+                        <Option :value="1">{{vm.$t('operation.siteglobal')}}</Option>
+                        <Option :value="2">{{vm.$t('operation.sitesg')}}</Option>
+                    </Select>
+                </Col>
+                <Col span="2">
+                    <Button @click="tabRemark('siteType')">{{vm.$t('common.xg')}}</Button>
+                </Col>
+            </Row>
+            <Row style="margin-bottom:20px;">
                 <Col span="4">{{vm.$t('operation.zwbt')}}</Col>
                 <Col span="18">
                     <Input v-model="form.titleCn" :max="100"></Input>
@@ -103,6 +115,7 @@
                 form:{
                     firstLevel: 1,
                     secondLevel: 1,
+                    siteType:1,
                     titleCn: null,
                     titleEn: null,
                     bodyCn: null,

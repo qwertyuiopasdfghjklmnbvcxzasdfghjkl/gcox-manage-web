@@ -3,6 +3,12 @@
         <Card>
             <p slot="title">{{vm.$t('common.tj')}}</p>
             <Form ref="formItem" :model="formLeft" :rules="ruleInline" label-position="left" :label-width="100" style="max-height:680px;overflow:auto;">
+                    <FormItem :label="vm.$t('operation.sitebelong')" prop="siteType">
+                        <Select v-model="formLeft.siteType" name="siteType">
+                            <Option :value="1">{{vm.$t('operation.siteglobal')}}</Option>
+                            <Option :value="2">{{vm.$t('operation.sitesg')}}</Option>
+                        </Select>
+                    </FormItem>
                     <FormItem :label="vm.$t('operation.ggw')" prop="adPosition">
                         <InputNumber style="width:100%;" v-model="formLeft.adPosition" name="adPosition"></InputNumber>
                         <!-- <Input v-model="formLeft.adPosition" name="adPosition"></Input> -->
@@ -63,8 +69,7 @@ export default {
                 jumpAddress: '#',
                 imgEn: '',
                 jumpAddressEn: '#',
-                // imgCht: '',
-                // jumpAddressCht: '#'
+                siteType:1
             },
             ruleInline: {
                 adPosition: [
@@ -85,12 +90,6 @@ export default {
                 jumpAddressEn: [
                     { required: false, message: vm.$t('common.qsr')+vm.$t('operation.ywtptzdz') },
                 ],
-                // imgCht: [
-                //     { required: false, message: vm.$t('common.qsr')+vm.$t('operation.fttp')},
-                // ],
-                // jumpAddressCht: [
-                //     { required: false, message: vm.$t('common.qsr')+vm.$t('operation.fttptzdz')},
-                // ],
             }
         }
     },

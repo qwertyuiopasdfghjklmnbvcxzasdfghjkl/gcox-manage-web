@@ -773,7 +773,10 @@ export const operation = {
     ywyl: '英文预览',
     zwzw: '中文正文',
     ywzw: '英文正文',
-    fbcg: '发布成功'
+    fbcg: '发布成功',
+    sitebelong:'所属站',
+    siteglobal:'国际站',
+    sitesg:'SG站'
 }
 export const admin = {
     glyqx: '管理员权限管理',
