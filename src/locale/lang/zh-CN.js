@@ -272,7 +272,8 @@ export const finance = {
     zsjy: '真实交易',
     xnjy: '虚拟交易',
     zhxgjl: '账户修改记录',
-    mbdz: '目标地址'
+    mbdz: '目标地址',
+    cxjl:'撤销记录'
 };
 export const kyc = {
     dshyhsl: '待审核用户数量',

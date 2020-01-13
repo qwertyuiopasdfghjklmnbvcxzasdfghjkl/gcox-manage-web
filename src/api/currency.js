@@ -694,5 +694,18 @@ const updateSectionPrice = function ( data, success, error) {
 };
 curreny.updateSectionPrice = updateSectionPrice;
 
+// 撤销委托
+const revoke = function ( data, success, error) {
+    api.post(`api/bm/bbManage/orderBooks/revoke`,
+        data, (res) => {
+        if (res.rst === 1) {
+            success && success(res.data);
+        } else {
+            error && error(res.msg);
+        }
+    }, error)
+};
+curreny.revoke = revoke;
+
 
 export default curreny;
