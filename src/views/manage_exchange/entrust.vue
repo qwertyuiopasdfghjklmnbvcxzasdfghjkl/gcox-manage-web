@@ -67,8 +67,10 @@
                             </Select>
                             <InputNumber :min="0" v-model="formData.totalAmount" style="width: 100px"></InputNumber>
                         </span>
-                        <span> <Checkbox v-model="formData.excludeSpecialUser">{{$t('exchange.pctszh')}}</Checkbox></span>
+                        <span> <Checkbox
+                                v-model="formData.excludeSpecialUser">{{$t('exchange.pctszh')}}</Checkbox></span>
                         <Button type="primary" @click="curPage=1;getAuditing()">{{$t('common.cx')}}</Button>
+                        <!--<Button type="primary" @click="getList()">{{$t('finance.cxjl')}}</Button>-->
                     </p>
                     <Table :columns="columns" :data="datas"></Table>
                     <Page :current="curPage" :total="total" @on-change="changePage" :page-size="size"
@@ -150,7 +152,8 @@
                             </Select>
                             <InputNumber :min="0" v-model="formData1.totalAmount" style="width: 100px"></InputNumber>
                         </span>
-                        <span> <Checkbox v-model="formData1.excludeSpecialUser">{{$t('exchange.pctszh')}}</Checkbox></span>
+                        <span> <Checkbox
+                                v-model="formData1.excludeSpecialUser">{{$t('exchange.pctszh')}}</Checkbox></span>
                         <Button type="primary" @click="curPage1=1;getHistoryEntrust()">{{$t('common.cx')}}</Button>
                     </p>
                     <Table :columns="columns1" :data="datas1"></Table>
@@ -167,7 +170,7 @@
     import currenyApi from '../../api/currency';
 
     export default {
-        data () {
+        data() {
             return {
                 curPage: 1,
                 curPage1: 1,
@@ -195,7 +198,21 @@
                     {key: 'totalAmount', title: this.$t('exchange.zl')},
                     {key: 'dealCurrency', title: this.$t('common.je')},
                     {key: 'createdAt', title: this.$t('exchange.wtsj')},
-                    // {key: 'action', title: this.$t('common.cz')},
+                    {
+                        title: this.$t('common.cz'),
+                        render: (h, params) => {
+                            return h('Button',
+                                {
+                                    props: {type: 'primary', size: 'small'},
+                                    style: {marginRight: '10px'},
+                                    on: {
+                                        click: () => {
+                                            this.cancel(params.row.orderBookId)
+                                        }
+                                    }
+                                }, this.$t('finance.cx'));
+                        }
+                    },
                 ],
                 columns1: [
                     {key: 'orderBookId', title: this.$t('exchange.wtid')},
@@ -219,7 +236,8 @@
                     {key: 'dealCurrency', title: this.$t('exchange.cjje')},
                     {key: 'createdAt', title: this.$t('exchange.wtsj')},
                     {key: 'updatedAt', title: this.$t('common.gxsj')},
-                    {key: 'state', title: this.$t('common.zt'),
+                    {
+                        key: 'state', title: this.$t('common.zt'),
                         render: (h, params) => {
                             return h('div', this.switchStaus(params.row.state));
                         }
@@ -260,22 +278,22 @@
                     excludeSpecialUser: true
                 },
                 marketList: [],
-                exportDocPrames:{},
-                exportNowDocPrames:{}
+                exportDocPrames: {},
+                exportNowDocPrames: {}
             };
         },
-        created () {
+        created() {
             this.getAuditing();
             this.getAllMarket();
             this.getHistoryEntrust();
         },
         methods: {
-            getAllMarket () {
+            getAllMarket() {
                 currenyApi.findAllMarketList((res) => {
                     this.marketList = res;
                 });
             },
-            switchStaus (state) {// 全部成交、部分成交、撤销、部分成交余额较少被强制撤销
+            switchStaus(state) {// 全部成交、部分成交、撤销、部分成交余额较少被强制撤销
                 switch (state) {
                     case 0:
                         return this.$t('finance.cx');
@@ -289,7 +307,15 @@
                         return this.$t('exchange.bfcjyejsbqzcx');
                 }
             },
-            getAuditing () {
+            cancel(orderBookId) {
+                currenyApi.revoke({orderBookId: orderBookId}, res => {
+                    this.$Message.success({content: this.$t('finance.cxcg')});
+                    this.getAuditing();
+                }, msg => {
+                    this.$Message.error({content: msg});
+                })
+            },
+            getAuditing() {
                 let D = JSON.stringify(this.formData);
                 let data = JSON.parse(D);
                 data.startTime = data.startTime ? util.dateToStr(new Date(data.startTime)) : null;
@@ -309,7 +335,7 @@
                         this.datas = res;
                     });
             },
-            getHistoryEntrust () {
+            getHistoryEntrust() {
                 let D = JSON.stringify(this.formData1);
                 let data = JSON.parse(D);
                 data.startTime = data.startTime ? util.dateToStr(new Date(data.startTime)) : null;
@@ -330,30 +356,30 @@
                         this.datas1 = res;
                     });
             },
-            changePage (page) {
+            changePage(page) {
                 this.curPage = page;
                 this.getAuditing();
             },
-            changePage1 (page) {
+            changePage1(page) {
                 this.curPage1 = page;
                 this.getHistoryEntrust();
             },
-            downloadNow(){
+            downloadNow() {
                 let data = ['export=1']
                 for (let i in this.exportNowDocPrames) {
-                    if(this.exportNowDocPrames[i]){
+                    if (this.exportNowDocPrames[i]) {
                         let v = this.exportNowDocPrames[i] ? this.exportNowDocPrames[i] : ''
-                        data.push(i+'='+v)
+                        data.push(i + '=' + v)
                     }
                 }
                 window.location.href = `${util.baseURL}api/bm/bbManage/orderBooks/query?${data.join('&')}`
             },
-            download(){
+            download() {
                 let data = ['export=1']
                 for (let i in this.exportDocPrames) {
-                    if(this.exportDocPrames[i]){
+                    if (this.exportDocPrames[i]) {
                         let v = this.exportDocPrames[i] ? this.exportDocPrames[i] : ''
-                        data.push(i+'='+v)
+                        data.push(i + '=' + v)
                     }
                 }
                 window.location.href = `${util.baseURL}api/bm/bbManage/orderBooks/queryHistory?${data.join('&')}`
