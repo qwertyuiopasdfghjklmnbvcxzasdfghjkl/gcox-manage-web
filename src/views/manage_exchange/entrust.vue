@@ -309,10 +309,10 @@
             },
             cancel(orderBookId) {
                 currenyApi.revoke({orderBookId: orderBookId}, res => {
-                    this.$Messags.success({content: res});
+                    this.$Message.success({content: this.$t('finance.cxcg')});
                     this.getAuditing();
                 }, msg => {
-                    this.$Messags.error({content: msg});
+                    this.$Message.error({content: msg});
                 })
             },
             getAuditing() {
