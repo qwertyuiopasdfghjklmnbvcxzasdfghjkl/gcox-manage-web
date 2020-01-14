@@ -7,7 +7,7 @@ let extend = {};
 //创建分发
 const createSingleDistribute = function (data, success, error) {
     api.post('api/bm/promotionManage/distribute/createSingleDistribute', data, (res) => {
-        if (res.rst === 1) {
+        if (res.rst === 201) {
             success && success(res.data);
         } else {
             error && error(res.msg);
