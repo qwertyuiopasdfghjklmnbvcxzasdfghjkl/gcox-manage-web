@@ -659,6 +659,7 @@ export const operation = {
     wff: '未分发',
     yqx: '已取消',
     cjff: '创建分发',
+    plff: '批量分发',
     dx: '对象',
     ffcz: '分发操作',
     ffcg: '分发成功',
@@ -775,6 +776,10 @@ export const operation = {
     zwzw: '中文正文',
     ywzw: '英文正文',
     fbcg: '发布成功',
+    scwj: '上传文件',
+    scbff: '上传并分发',
+    ffz: '分发中，请稍后',
+    qxzwj: '请选择文件',
     sitebelong:'所属站',
     siteglobal:'国际站',
     sitesg:'SG站'
