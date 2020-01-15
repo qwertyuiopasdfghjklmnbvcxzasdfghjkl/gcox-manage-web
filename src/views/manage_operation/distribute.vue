@@ -62,7 +62,7 @@
                         key: 'symbol'
                     },
                     {
-                        title: this.$t('operation.mbyhid'),
+                        title: this.$t('common.yhm'),
                         key: 'username'
                     },
                     {
