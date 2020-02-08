@@ -496,11 +496,11 @@
                 this.search = 2;
                 let data = {};
                 if (this.formData3.unStaticUserType === '0') {
-                    data.unStaticUserType = this.accountsDataAll;
+                    data.unStaticUserType = '1,2';
                 } else if (this.formData3.unStaticUserType === '1') {
-                    data.unStaticUserType = this.accountsDataFee;
+                    data.unStaticUserType = '1';
                 } else if (this.formData3.unStaticUserType === '2') {
-                    data.unStaticUserType = this.accountsDataRobot;
+                    data.unStaticUserType = '2';
                 }
                 this.columns7.splice(3, 2);
                 this.columns7[2] = {title: this.$t('finance.dqsl'), key: 'currentAssetAmount', sortable: 'custom'}
