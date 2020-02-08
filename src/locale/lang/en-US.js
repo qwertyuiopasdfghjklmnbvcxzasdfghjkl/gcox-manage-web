@@ -564,6 +564,7 @@ export const operation = {
     wff: 'not distributed',
     yqx: 'cancelled',
     cjff: 'create a distribution',
+    plff: '批量分发',
     dx: 'object',
     ffcz: 'distribution operation',
     ffcg: 'distribution successfully',
@@ -629,6 +630,10 @@ export const operation = {
     wjyw: 'the file is wrong',
     sccg: 'upload successful',
     scwjfslcw: 'an error attempt occurred to upload the file',
+    scwj: '上传文件',
+    scbff: '上传并分发',
+    ffz: '分发中，请稍后',
+    qxzwj: '请选择文件',
     scbqx: 'upload cancelled or browser disconnected'
 }
 export const admin = {
