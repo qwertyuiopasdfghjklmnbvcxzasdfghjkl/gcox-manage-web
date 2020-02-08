@@ -13,14 +13,14 @@
                 <Col span="6" v-if="data.code !== 'loginLockCount'">{{data.value}}</Col>
                 <Col span="3" v-if="data.code === 'loginLockCount'">{{data.value}}{{$t('system.c')}}</Col>
                 <Col span="3" v-if="data.code === 'loginLockCount'">{{data.value2}}{{$t('system.fz')}}</Col>
-                <Col span="12" v-if="data.code === 'loginLockCount'">
+                <Col span="12" v-if="data.code === 'loginLockCount' || data.code === 'maintain'">
                     <Input ref="price" type="text" v-model="data.$value" style="width:80px;"/>
                     <Input ref="price" type="text" v-model="data.$value2" style="width:80px;"/>
                     <Button type="primary" style="margin-left:10px;" @click="updataSystem1(data)">{{$t('common.xg')}}</Button>
                 </Col>
                 <Col span="12"
                      v-if="data.code !== 'loginLockCount' && data.code !==
-                     'nicknameUpdateCount' && data.code !== 'headUpdateCount'">
+                     'nicknameUpdateCount' && data.code !== 'headUpdateCount' && data.code !== 'maintain'">
                     <Input ref="price" type="text" v-model="data.$value" style="width:80px;"/>
                     <Button type="primary" style="margin-left:10px;" @click="updataSystem(data)">{{$t('common.xg')}}</Button>
                 </Col>

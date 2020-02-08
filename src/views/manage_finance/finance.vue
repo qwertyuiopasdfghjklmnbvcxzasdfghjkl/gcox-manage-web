@@ -87,7 +87,7 @@
                     </p>
                     <p style="margin-bottom: 20px">
                         {{$t('finance.btjzh')}}:
-                        <Select v-model="formData3.username" style="width: 200px">
+                        <Select v-model="formData3.unStaticUserType" style="width: 200px">
                             <Option value="1">{{$t('finance.sxfzh')}}</Option>
                             <Option value="2">{{$t('finance.jqrzh')}}</Option>
                             <Option value="0">{{$t('finance.sxfjjqrzh')}}</Option>
@@ -230,7 +230,7 @@
                     createdEnd: null
                 },
                 formData3: {
-                    username: '0',
+                    unStaticUserType: '0',
                     value: null
                 },
                 search: 0,
@@ -489,18 +489,18 @@
                 }else{
                     this.columns7[2] = {title: this.$t('finance.dqsl'), key: 'currentAssetAmount', sortable: 'custom'}
                 }
-                this.formData3.username = '0';
+                this.formData3.unStaticUserType = '0';
                 this.getfindUserAssetList(data);
             },
             reGetfindUserAssetList1 () {
                 this.search = 2;
                 let data = {};
-                if (this.formData3.username === '0') {
-                    data.username = this.accountsDataAll;
-                } else if (this.formData3.username === '1') {
-                    data.username = this.accountsDataFee;
-                } else if (this.formData3.username === '2') {
-                    data.username = this.accountsDataRobot;
+                if (this.formData3.unStaticUserType === '0') {
+                    data.unStaticUserType = this.accountsDataAll;
+                } else if (this.formData3.unStaticUserType === '1') {
+                    data.unStaticUserType = this.accountsDataFee;
+                } else if (this.formData3.unStaticUserType === '2') {
+                    data.unStaticUserType = this.accountsDataRobot;
                 }
                 this.columns7.splice(3, 2);
                 this.columns7[2] = {title: this.$t('finance.dqsl'), key: 'currentAssetAmount', sortable: 'custom'}
