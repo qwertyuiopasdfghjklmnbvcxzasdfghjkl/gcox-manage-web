@@ -20,13 +20,13 @@
                 </Col>
 
 
-                <Col span="3" v-if="data.code === 'maintain'">{{data.value == 0 ? $t('common.s') : $t('common.f')}}</Col>
+                <Col span="3" v-if="data.code === 'maintain'">{{data.value == 1 ? $t('common.s') : $t('common.f')}}</Col>
                 <Col span="3" v-if="data.code === 'maintain'">{{data.value2}}</Col>
 
                 <Col span="12" v-if="data.code === 'maintain'">
                     <RadioGroup v-model="data.$value">
-                        <Radio label="0">{{$t('common.s')}}</Radio>
-                        <Radio label="1">{{$t('common.f')}}</Radio>
+                        <Radio label="1">{{$t('common.s')}}</Radio>
+                        <Radio label="0">{{$t('common.f')}}</Radio>
                     </RadioGroup>
 
                     <Input ref="price" type="text" v-model="data.$value2" style="width:80px;"/>
