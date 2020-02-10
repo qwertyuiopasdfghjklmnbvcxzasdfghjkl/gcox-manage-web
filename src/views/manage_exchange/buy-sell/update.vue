@@ -56,6 +56,7 @@
                     userId: this.item.userId,
                     statisticsId: this.item.statisticsId,
                     symbol: this.item.symbol,
+                    symbolType: this.item.symbolType,
                 }
                 data[id] = this[id]
                 currencyApi.updateSymbolTransaction(data,res=>{
