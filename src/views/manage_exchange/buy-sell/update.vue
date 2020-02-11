@@ -62,6 +62,9 @@
                 currencyApi.updateSymbolTransaction(data,res=>{
                     this.item[id] = this[id]
                     this.$Message.success({content: this.vm.$t('common.xgcg')});
+                    if( !this.item.statisticsId){
+                        this.closeDialog()
+                    }
                 },msg=>{
                     this.$Message.error({content: msg});
                 })
