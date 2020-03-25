@@ -914,6 +914,7 @@ export const monitoring = {
     jysgj: '交易所归集',
     lqbcz: '冷钱包充值',
     lqbtx: '冷钱包提现',
+    kgfff: '矿工费分发',
     qkddsc: '区块等待时长',
     se: '数额',
     tbzzh: '提币主账户',

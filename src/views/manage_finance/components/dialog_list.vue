@@ -71,6 +71,10 @@
                             return h('div', params.row.status == 1 ? vm.$t('common.dd') : vm.$t('common.wc'));
                         }
                     },
+                    {
+                        title: vm.$t('finance.czr'),
+                        key: 'lastUpdatedBy'
+                    }
                 ],
                 data1: []
             };
