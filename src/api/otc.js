@@ -26,7 +26,7 @@ const findUserInfoManage = function (data, success, error) {
 };
 otc.findUserInfoManage = findUserInfoManage;
 
-// 用户管理列表--用户资产 
+// 用户管理列表--用户资产
 const findAssetInfoManage = function (curPage, data, success, error) {
     api.post(`api/bm/otcManage/findAssetInfo/10/${curPage}`, data, (res) => {
         if (res.rst === 1) {
@@ -349,5 +349,42 @@ const findChartDataList = function (data, success, error) {
     }, error);
 };
 otc.findChartDataList = findChartDataList;
+
+// 矿工费分发展示
+const selectMinerDistributeList = function (data, success, error) {
+    api.post(`api/bm/minerFee/distribute/selectMinerDistributeList/${data.size}/${data.page} `, data, (res) => {
+        if (res.rst === 1) {
+            success && success(res.data,res.total);
+        } else {
+            error && error(res.msg);
+        }
+    }, error);
+};
+otc.selectMinerDistributeList = selectMinerDistributeList;
+
+// 分发矿工费
+const distributeFee = function (data, success, error) {
+    api.post(`api/bm/minerFee/distribute/distributeFee`, data, (res) => {
+        if (res.rst === 1) {
+            success && success(res.data);
+        } else {
+            error && error(res.msg);
+        }
+    }, error);
+};
+otc.distributeFee = distributeFee;
+
+// 分发记录展示
+const selectDistributeRecordList = function (data, success, error) {
+    api.post(`api/bm/minerFee/distribute/selectDistributeRecordList/${data.size}/${data.page}?${data.address}`, (res) => {
+        if (res.rst === 1) {
+            success && success(res.data, res.total);
+        } else {
+            error && error(res.msg);
+        }
+    }, error);
+};
+otc.selectDistributeRecordList = selectDistributeRecordList;
+
 
 export default otc;

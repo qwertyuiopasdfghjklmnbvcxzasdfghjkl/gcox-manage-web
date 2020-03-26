@@ -272,9 +272,13 @@ export const finance = {
     zsjy: '真实交易',
     xnjy: '虚拟交易',
     zhxgjl: '账户修改记录',
-    mbdz: '目标地址',
     cxjl:'撤销记录',
-    cxcg: '撤销成功'
+    cxcg: '撤销成功',
+    cbdz: '充值地址',
+    dzsl: '地址数量',
+    ffkgf: '分发矿工费',
+    mbdz: '目标地址',
+    ffsl: '分发数量'
 };
 export const kyc = {
     dshyhsl: '待审核用户数量',
@@ -910,6 +914,7 @@ export const monitoring = {
     jysgj: '交易所归集',
     lqbcz: '冷钱包充值',
     lqbtx: '冷钱包提现',
+    kgfff: '矿工费分发',
     qkddsc: '区块等待时长',
     se: '数额',
     tbzzh: '提币主账户',
@@ -1061,7 +1066,11 @@ export const nav = {
     yhsccx: '用户锁仓查询',
     yqgl: '邀请管理',
     zhxg: '账户修改',
-    usdtcz: 'USDT充值'
+    usdtcz: 'USDT充值',
+    kgfff: '矿工费分发',
+    khhgl: '开户行管理',
+    tjzbgl: '统计指标管理',
+    lsshcx: '历史数据查询'
 }
 export const home = {
     zyh: '总用户',
@@ -1235,4 +1244,3 @@ export const invite ={
     yyq: '已邀请',
     wyq: '未邀请',
 }
-

@@ -56,11 +56,15 @@
                     userId: this.item.userId,
                     statisticsId: this.item.statisticsId,
                     symbol: this.item.symbol,
+                    symbolType: this.item.symbolType,
                 }
                 data[id] = this[id]
                 currencyApi.updateSymbolTransaction(data,res=>{
                     this.item[id] = this[id]
                     this.$Message.success({content: this.vm.$t('common.xgcg')});
+                    if( !this.item.statisticsId){
+                        this.closeDialog()
+                    }
                 },msg=>{
                     this.$Message.error({content: msg});
                 })

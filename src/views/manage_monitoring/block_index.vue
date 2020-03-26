@@ -36,6 +36,7 @@
                     <option value="3">{{$t('monitoring.jysgj')}}</option>
                     <option value="4">{{$t('monitoring.lqbcz')}}</option>
                     <option value="5">{{$t('monitoring.lqbtx')}}</option>
+                    <option value="7">{{$t('monitoring.kgfff')}}</option>
                 </select>
             </Col>
             <Col span="1">{{$t('monitoring.qkddsc')}}：</Col>
@@ -60,7 +61,7 @@
             </Col>
             <Col span="2">
                 <Button type="primary" @click="curPage=1;getconfirmList()">{{$t('common.cx')}}</Button>
-                <!--<Button type="primary" @click="block">区块扫描进度</Button>-->
+                <Button type="primary" @click="download()">{{$t('systemlog.dc')}}</Button>
             </Col>
         </Row>
          <Table :columns="columns1" :data="data1"></Table>
@@ -177,6 +178,7 @@ import util from '../../libs/util';
                 ],
                 data1: [],
                 symbolTypeList: [],
+                exportDocPrames: {},
             }
         },
         created () {
@@ -201,6 +203,9 @@ import util from '../../libs/util';
                     case 5:
                         return this.$t('monitoring.lqbtx')
                         break;
+                    case 7:
+                        return this.$t('monitoring.kgfff')
+                        break;
                 }
             },
             block () {
@@ -214,7 +219,7 @@ import util from '../../libs/util';
                 });
             },
             getconfirmList () {
-                monitorApi.confirmList(this.curPage, {
+                let data = {
                     symbolType: this.symbolType || '',
                     symbol: this.symbol || '',
                     timeInterval: this.time || '',
@@ -222,7 +227,10 @@ import util from '../../libs/util';
                     userName: this.userName || '',
                     txId: this.txId || '',
                     status: this.status
-                }, (res, total) => {
+                }
+                this.exportDocPrames = data
+                monitorApi.confirmList(this.curPage, data,
+                    (res, total) => {
                     this.total = total
                     this.data1 = res
                 })
@@ -230,6 +238,16 @@ import util from '../../libs/util';
             changePage (page) {
                 this.curPage = page
                 this.getconfirmList()
+            },
+            download() {
+                let data = ['export=1']
+                for (let i in this.exportDocPrames) {
+                    if (this.exportDocPrames[i]) {
+                        let v = this.exportDocPrames[i] ? this.exportDocPrames[i] : ''
+                        data.push(i + '=' + v)
+                    }
+                }
+                window.location.href = `${util.baseURL}api/bm/monitor/comfirm/findWaitingTransactionConfirmList/export?${data.join('&')}`
             }
         }
     }
