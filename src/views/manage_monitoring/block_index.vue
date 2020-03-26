@@ -61,7 +61,7 @@
             </Col>
             <Col span="2">
                 <Button type="primary" @click="curPage=1;getconfirmList()">{{$t('common.cx')}}</Button>
-                <Button type="success" @click="download()">{{$t('systemlog.dc')}}</Button>
+                <Button type="primary" @click="download()">{{$t('systemlog.dc')}}</Button>
             </Col>
         </Row>
          <Table :columns="columns1" :data="data1"></Table>
