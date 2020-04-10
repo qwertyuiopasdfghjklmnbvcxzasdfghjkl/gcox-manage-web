@@ -84,6 +84,18 @@ const deleteSymbol = function ( data, success, error) {
 };
 user.deleteSymbol = deleteSymbol;
 
+// 更新主链状态
+const updateSymbol = function ( data, success, error) {
+    api.post('api/bm/sysParam/updateSymbol', data, (res) => {
+        if (res.rst === 1) {
+            success && success(res.data);
+        } else {
+            error && error(res.msg);
+        }
+    }, error)
+};
+user.updateSymbol = updateSymbol;
+
 // 获取国际化语言
 const getLang = function ( data, success, error) {
     api.get('/api/v2/language', data, (res) => {

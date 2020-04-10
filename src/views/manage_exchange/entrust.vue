@@ -133,6 +133,15 @@
                                         style="width: 160px"></DatePicker>
                         </span>
                         <span>
+                            {{$t('common.gxsj')}}：
+                            <DatePicker type="datetime" v-model="formData1.startUpdated" :placeholder="$t('common.kssj')"
+                                        format="yyyy-MM-dd HH:mm:ss"
+                                        style="width: 160px"></DatePicker>
+                            <DatePicker type="datetime" v-model="formData1.endUpdated" :placeholder="$t('common.jssj')"
+                                        format="yyyy-MM-dd HH:mm:ss"
+                                        style="width: 160px"></DatePicker>
+                        </span>
+                        <span>
                             {{$t('exchange.wtjg')}}：
                             <Select v-model="formData1.prePrice" style="width:60px">
                                 <Option :value="0">{{$t('common.qb')}}</Option>
@@ -248,13 +257,13 @@
                 formData: {
                     direction: 0,
                     endTime: null,
+                    startTime: null,
                     market: 0,
                     page: null,
                     prePrice: 0,
                     preTotalAmount: 0,
                     price: null,
                     size: null,
-                    startTime: null,
                     state: null,
                     totalAmount: null,
                     type: 0,
@@ -264,13 +273,15 @@
                 formData1: {
                     direction: 0,
                     endTime: null,
+                    startTime: null,
+                    startUpdated: null,
+                    endUpdated: null,
                     market: 0,
                     page: null,
                     prePrice: 0,
                     preTotalAmount: 0,
                     price: null,
                     size: null,
-                    startTime: null,
                     state: 3,
                     totalAmount: null,
                     type: 0,
@@ -328,6 +339,11 @@
                 data.page = this.curPage;
                 data.size = this.size;
                 data.excludeSpecialUser = this.formData.excludeSpecialUser ? 1 : 0;
+                for(let i in data){
+                    if(data[i] == null){
+                        delete data[i]
+                    }
+                }
                 this.exportNowDocPrames = data
                 currenyApi.getEntrust(data,
                     (res, total) => {
@@ -340,6 +356,8 @@
                 let data = JSON.parse(D);
                 data.startTime = data.startTime ? util.dateToStr(new Date(data.startTime)) : null;
                 data.endTime = data.endTime ? util.dateToStr(new Date(data.endTime)) : null;
+                data.startUpdated = data.startUpdated ? util.dateToStr(new Date(data.startUpdated)) : null;
+                data.endUpdated = data.endUpdated ? util.dateToStr(new Date(data.endUpdated)) : null;
                 data.market = data.market === 0 ? null : data.market;
                 data.direction = data.direction === 0 ? null : data.direction;
                 data.prePrice = data.prePrice === 0 ? null : data.prePrice;
@@ -349,6 +367,11 @@
                 data.page = this.curPage1;
                 data.size = this.size;
                 data.excludeSpecialUser = this.formData1.excludeSpecialUser ? 1 : 0;
+                for(let i in data){
+                    if(data[i] == null){
+                        delete data[i]
+                    }
+                }
                 this.exportDocPrames = data
                 currenyApi.getHistoryEntrust(data,
                     (res, total) => {

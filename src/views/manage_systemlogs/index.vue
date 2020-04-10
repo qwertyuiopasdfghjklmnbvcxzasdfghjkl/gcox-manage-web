@@ -1,15 +1,18 @@
 <!-- 系统日志 -->
 <template>
   <Card>
-    <p slot="title">{{$t('systemlog.xtrz')}}</p>
+    <p slot="title">{{$t('systemlog.xtrz')}}
+      <Button type="primary" @click="exportTable" style="height: 32px;margin-top: 5px;">{{$t('systemlog.dc')}}</Button>
+    </p>
     <Row >
-        <Col span="12"></Col>
-        <Col span="6" style="float:right;"><Button type="primary" @click="exportTable">{{$t('systemlog.dc')}}</Button></Col>
-        <Col span="6" style="float:right;">
-            {{$t('common.sj')}}： <DatePicker v-model="formItem.date" format="yyyy-MM-dd" type="daterange" placement="bottom-end" style="width: 200px"></DatePicker>
+        <Col>
+            {{$t('common.sj')}}： 
+            <DatePicker v-model="formItem.date" type="daterange" confirm  placement="bottom-end" style="width: 200px"></DatePicker>
+            <Button type="primary" @click="serach">{{$t('common.cx')}}</Button>
+
         </Col>
     </Row>
-    <Tabs @on-click="aaa">
+    <Tabs @on-click="aaa" style="margin-top:10px;">
         <TabPane :label="$t('systemlog.glydlrz')">
           <Table :columns="columns1" :data="data1"></Table>
           <Page :current="curPage" :total="total" @on-change="changePage" style="text-align:center;margin-top:20px;"></Page>
@@ -27,10 +30,12 @@ import logs from '../../api/logs'
 import util from '../../libs/util'
 export default {
   data () {
+    let beginDate=new Date(new Date(new Date().toLocaleDateString()).getTime());
+    let endDate=new Date(new Date(new Date().toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 - 1);
     return {
       type: 0,
       formItem: {
-        date: []
+        date: [beginDate, endDate]
       },
       curPage: 1,
       total: 0,
@@ -88,11 +93,29 @@ export default {
         data.push(`endDate=${util.dateToStr(new Date(), 'yyyy-MM-dd 23:59:59')}`)
       }
       return data
+    },
+    dataParams(){
+      let obg = {};
+      this.params.forEach(e=>{
+        obg[e.split('=')[0]] = e.split('=')[1]
+      })
+      return obg
+
     }
   },
   methods: {
     aaa (a) {
       this.type = a;
+    },
+    serach(){
+      // console.log(this.dataParams)
+      if(this.type === 0){
+        this.curPage = 1
+        this.getUserLogin();
+      }else{
+        this.curPage1 = 1
+        this.getLogList();
+      }
     },
     exportTable () {
       if (this.type===0) {
@@ -118,8 +141,8 @@ export default {
             break;
       }
     },
-    getLogList () {
-      logs.findOptLogList(this.curPage1, (res, total) => {
+    getLogList (data) {
+      logs.findOptLogList(this.curPage1,this.dataParams, (res, total) => {
         this.total1 = total
         this.data3 = res
       }, (msg) => {
@@ -130,8 +153,8 @@ export default {
       this.curPage1 = page
       this.getLogList()
     },
-    getUserLogin () {
-      logs.findUserLoginLogList(this.curPage, (res, total) => {
+    getUserLogin (data) {
+      logs.findUserLoginLogList(this.curPage,this.dataParams, (res, total) => {
         this.total = total
         this.data1 = res
       }, (msg) => {
