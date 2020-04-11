@@ -5,7 +5,7 @@
       <Button type="primary" @click="exportTable" style="height: 32px;margin-top: 5px;">{{$t('systemlog.dc')}}</Button>
     </p>
     <Row >
-        <Col>
+        <Col style="text-align:center;">
             {{$t('common.sj')}}： 
             <DatePicker v-model="formItem.date" type="daterange" confirm  placement="bottom-end" style="width: 200px"></DatePicker>
             <Button type="primary" @click="serach">{{$t('common.cx')}}</Button>
@@ -35,7 +35,7 @@ export default {
     return {
       type: 0,
       formItem: {
-        date: [beginDate, endDate]
+        date: []
       },
       curPage: 1,
       total: 0,
@@ -99,8 +99,7 @@ export default {
       this.params.forEach(e=>{
         obg[e.split('=')[0]] = e.split('=')[1]
       })
-      return obg
-
+      return this.formItem.date.length ? obg : {}
     }
   },
   methods: {
