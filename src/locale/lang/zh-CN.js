@@ -594,7 +594,8 @@ export const exchange = {
     isVisible:'是否显示',
     visible:'显示',
     hidden:'隐藏',
-    usdtczlb: 'USDT充值列表'
+    usdtczlb: 'USDT充值列表',
+    qsrzzs: '请输入正整数',
 }
 export const risk = {
     bbycyj: '币币异常预警',
