@@ -243,6 +243,13 @@
         box-shadow: 0 0 20px rgba(0,0,0,.1);
         background-color: #fff;
         border-radius: 10px;
+        -webkit-animation: opacitys 0.3s;
+        animation: opacitys 0.3s;
+        
+    }
+    @keyframes opacitys{
+        0%{opacity:0}
+        100%{opacity:1}
     }
     .loader {
         width: 30px;
