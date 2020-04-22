@@ -596,6 +596,13 @@ export const exchange = {
     hidden:'隐藏',
     usdtczlb: 'USDT充值列表',
     qsrzzs: '请输入正整数',
+    yhwtid: '用户委托ID',
+    dsf: '对手方',
+    dswtid: '对手委托ID',
+    yhsxf: '用户手续费',
+    sxfbz: '手续费币种',
+    fbmyje: '法币美元金额',
+    jycxbb: '交易查询报表',
 }
 export const risk = {
     bbycyj: '币币异常预警',

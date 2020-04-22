@@ -18,8 +18,13 @@
                         </span>
                         <span>
                             {{$t('common.yhm')}}：
-                            <Input v-model="formData.username" clearable style="width: 140px"
+                            <Input v-model.trim="formData.username" clearable style="width: 140px"
                                    :placeholder="$t('common.qsryhm')"></Input>
+                        </span>
+                        <span>
+                            {{$t('exchange.yhwtid')}}：
+                            <Input v-model="formData.orderBookId" clearable style="width: 140px"
+                                   :placeholder="$t('exchange.yhwtid')"></Input>
                         </span>
                         <span>
                             {{$t('exchange.cjsj')}}：
@@ -53,7 +58,7 @@
                         <span> <Checkbox v-model="formData.excludeSpecialUser">{{$t('exchange.pctszh')}}</Checkbox></span>
                         <Button type="primary" @click="curPage=1;getAuditing()">{{$t('common.cx')}}</Button>
                     </p>
-                    <Table :columns="columns" :data="datas"></Table>
+                    <Table ref="table" :columns="columns" :data="datas"></Table>
                     <Page :current="curPage" :total="total" @on-change="changePage" :page-size="size"
                           style="text-align:center;margin-top:20px;"></Page>
                 </Card>
@@ -76,14 +81,20 @@
                 size: 10,
                 columns: [
                     {key: 'orderBookLogId', title: this.$t('common.jyid')},
-                    {key: 'username', title: this.$t('exchange.mfyhm')},
-                    {key: 'reciprocalUsername', title: this.$t('exchange.m4fyhm')},
+                    {key: 'username', title: this.$t('common.yhm')},
+                    {key: 'orderBookId', title: this.$t('exchange.yhwtid')},
+                    {key: 'reciprocalUsername', title: this.$t('exchange.dsf')},
+                    {key: '', title: this.$t('exchange.dswtid')},
                     {key: 'market', title: this.$t('exchange.jysc')},
+                    {key: 'direction', title: this.$t('exchange.fx'),render: (h,params)=>{
+                        return h('span', params.row.direction&&(params.row.direction==1?this.$t('exchange.m1'):this.$t('exchange.m4')))
+                    }},
                     {key: 'dealPrice', title: this.$t('exchange.cjjg')},
                     {key: 'dealAmount', title: this.$t('exchange.cjl')},
                     {key: 'dealCurrency', title: this.$t('exchange.cjje')},
-                    {key: 'fee', title: this.$t('exchange.mfsxfsq')},
-                    {key: 'reciprocalFee', title: this.$t('exchange.m4fsxfsq')},
+                    {key: 'fee', title: this.$t('exchange.yhsxf')},
+                    {key: 'toSymbol', title: this.$t('exchange.sxfbz')},
+                    {key: 'dealAmountUsd', title: this.$t('exchange.fbmyje')},
                     {key: 'dealTime', title: this.$t('exchange.cjsj')}
                 ],
                 datas: [],
@@ -96,6 +107,7 @@
                     dealAmount: null,
                     dealPrice: null,
                     username: null,
+                    orderBookId: null,
                     excludeSpecialUser: true
                 },
                 marketList: [],
@@ -157,6 +169,38 @@
                     }
                 }
                 window.location.href = `${util.baseURL}api/bm/bbManage/orderBookLogs/query?${data.join('&')}`
+            },
+            exportCsvData(){
+                let data = JSON.parse(JSON.stringify(this.formData));
+                let that = this;
+                data.startTime = data.startTime ? util.dateToStr(new Date(data.startTime)) : null;
+                data.endTime = data.endTime ? util.dateToStr(new Date(data.endTime)) : null;
+                data.market = data.market === 0 ? null : data.market;
+                data.preDealAmount = data.preDealAmount === 0 ? null : data.preDealAmount;
+                data.preDealPrice = data.preDealPrice === 0 ? null : data.preDealPrice;
+                data.page = 1;
+                data.size = 1000;
+                data.excludeSpecialUser = this.formData.excludeSpecialUser ? 1 : 0;
+                console.table(data)
+                for(let i in data){
+                    if(data[i] == null){
+                        delete data[i]
+                    }
+                }
+                console.table(data)
+                currenyApi.getTransaction(data,(res, total) => {
+                    let dataExp = res;
+                    dataExp.forEach(e => {
+                        if(e.direction){
+                            e.direction = e.direction == 1 ? this.$t('exchange.m1') : this.$t('exchange.m4')
+                        }
+                    });
+                    that.$refs.table.exportCsv({
+                        filename: that.$t('exchange.jycxbb'),
+                        columns: that.columns,
+                        data: dataExp
+                    });
+                });
             }
         }
     };
