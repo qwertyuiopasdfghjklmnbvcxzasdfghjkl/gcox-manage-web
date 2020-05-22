@@ -7,8 +7,11 @@
         </p>
         <Form ref="formValidate" :model="formValidate" :rules="ruleInline" :label-width="80" style="margin:0 20px;">
 
+            <FormItem label="ID" prop="code">
+                <Input v-model="formValidate.code" :maxlength="20" :placeholder="vm.$t('exchange.qsrzzs')"></Input>
+            </FormItem>
             <FormItem :label="vm.$t('monitoring.gllx')" prop="name">
-                <Input v-model="formValidate.name" name="name" :maxlength="20"></Input>
+                <Input v-model="formValidate.name" :maxlength="20"></Input>
             </FormItem>
 
             <FormItem>
@@ -28,8 +31,12 @@
                 vm: vm,
                 formValidate: {
                     name: null,
+                    code: null,
                 },
                 ruleInline: {
+                    code: [
+                        {required: true, message: vm.$t('common.qsr')+'ID'}
+                    ],
                     name: [
                         {required: true, message: vm.$t('common.qsr')+vm.$t('monitoring.gllx')}
                     ]
@@ -41,7 +48,8 @@
                 this.$refs.formValidate.validate((valid) => {
                     if (valid) {
                         let data = {
-                            name: this.formValidate.name
+                            name: this.formValidate.name,
+                            code: this.formValidate.code
                         }
                         userApi.addSymbol(data, (res) => {
                             this.$Message.success({content: this.vm.$t('common.tjcg')});

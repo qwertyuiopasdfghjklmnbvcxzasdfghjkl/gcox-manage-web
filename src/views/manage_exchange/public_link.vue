@@ -16,7 +16,8 @@
                         {{$t('monitoring.gllx')}}：
                         <!--<Input v-model="value" style="width: 200px"></Input>-->
                         <Select style="width:200px" v-model="value">
-                            <Option v-for="data in datas" :value="data.name">{{data.name}}</Option>
+                            <Option value="-1">{{$t('common.qb')}}</Option>
+                            <Option v-for="data in datas" :value="data.name" :key="data.publicLinkId">{{data.name}}</Option>
                         </Select>
                         <Button type="primary" @click="page=1;getList()">{{$t('common.cx')}}</Button>
                     </p>
@@ -40,12 +41,17 @@
                 page: 1,
                 size: 20,
                 total: 0,
-                value: null,
+                value: '-1',
                 datas: [],
                 columns: [
                     {title: 'ID', key: 'code'},
                     {title: this.$t('monitoring.gllx'), key: 'name'},
                     {title: this.$t('common.cjsj'), key: 'createdAt'},
+                    {title: this.$t('common.zt'), key: 'status',
+                        render:(h,params) => {
+                            return h('span',params.row.status == 1 ? this.$t('fund.qy') : this.$t('fund.jy'))
+                        }
+                    },
                     {
                         title: this.$t('common.cz'), key: 'publicLinkId', render: (h, params) => {
                             return h('div', [
@@ -54,10 +60,19 @@
                                     style: {marginRight: '3px'},
                                     on: {
                                         click: () => {
+                                            this.updateSymbol(params.row);
+                                        }
+                                    }
+                                }, params.row.status == 1 ? this.$t('fund.jy') : this.$t('fund.qy')),
+                                h('Button', {
+                                    props: {type: 'primary', size: 'small'},
+                                    style: {marginRight: '3px'},
+                                    on: {
+                                        click: () => {
                                             this.deleteSymbol(params.row.publicLinkId);
                                         }
                                     }
-                                }, this.$t('common.sc'))
+                                }, this.$t('common.sc')),
                             ]);
                         }
                     }
@@ -84,6 +99,7 @@
                     size: this.size,
                     symbol: this.value
                 };
+                data.symbol = data.symbol == '-1' ? null : data.symbol
                 userApi.getSymbolList(data, (res, toatl) => {
                     this.data = res;
                     this.total = toatl;
@@ -101,6 +117,18 @@
                     okCallback: () => {
                         this.getList();
                     }
+                });
+            },
+            updateSymbol (row) {
+                let data = {
+                    publicLinkId: row.publicLinkId,
+                    status: row.status == 1 ? 2 : 1
+                };
+                userApi.updateSymbol(data, (res) => {
+                    this.$Message.success({content: this.$t('common.xgcg')});
+                    this.getList();
+                }, (msg) => {
+                    this.$Message.error(msg);
                 });
             },
             deleteSymbol (id) {
