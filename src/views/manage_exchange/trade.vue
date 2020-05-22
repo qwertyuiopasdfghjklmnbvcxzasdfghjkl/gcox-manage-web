@@ -115,7 +115,7 @@
             };
         },
         created () {
-            this.getAuditing();
+            // this.getAuditing();
             this.getAllMarket();
         },
         methods: {
