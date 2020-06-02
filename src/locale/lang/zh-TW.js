@@ -145,7 +145,8 @@
         "xxzx": "message center"
 },
     "finance ": {
-    "tbsh": "coin review",
+    "tbsh": "coin initial review",
+    "tbshfc": 'coin final review',
         "rtbtj": "daily currency statistics",
         "glbz": "public chain currency",
         "rdtbbs": "number of coins to be picked up",
@@ -840,7 +841,8 @@
         "jyscgl": "trading market management",
         "dzgl": "address management",
         "czgl": "topup management",
-        "tbsh": "coin review",
+        "tbsh": 'coin initial review',
+        "tbshfc": 'coin final review',
         "ussdyhzl": "ussd bank information",
         "ussdtxjl": "ussd cash withdrawal record",
         "satotxjl": "sato cash withdrawal record",

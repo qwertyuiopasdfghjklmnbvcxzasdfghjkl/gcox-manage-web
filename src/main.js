@@ -41,8 +41,8 @@ import VueDirectiveImagePreviewer from 'vue-directive-image-previewer';
 // import zh from './locale/lang/zh-CN';
 // import en from './locale/lang/en-US';
 
-import * as Sentry from '@sentry/browser';
-import * as Integrations from '@sentry/integrations';
+// import * as Sentry from '@sentry/browser';
+// import * as Integrations from '@sentry/integrations';
 
 Vue.use(VueDirectiveImagePreviewer, {
     background: {     // or : background: '#000'
@@ -280,10 +280,10 @@ const store = new Vuex.Store({
     actions: {}
 });
 
-Sentry.init({
+/*Sentry.init({
     dsn: 'https://a1fe0b15df9b4d1dbaecc0be1ba2d55b@sentry.io/1538275',
     integrations: [new Integrations.Vue({Vue, attachProps: true})],
-});
+});*/
 
 // window.console.log = ()=>{};
 // window.console.error = ()=>{};
