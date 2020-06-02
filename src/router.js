@@ -812,6 +812,23 @@ export const financeRouter = [
         ]
     },
     {
+        path: '/finance_withdraw_review',
+        name: 'finance_withdraw_review',
+        title: 'nav.tbshfc',
+        component: Main,
+        icon: 'soup-can-outline',
+        meta: {
+            roles: ['ROLE_ADMIN', 'ROLE_WITHDRAW_REVIEW_AUDIT'],
+        },
+        children: [
+            {
+                path: 'index', title: 'nav.tbshfc', name: 'finance_withdraw_review_index', component: resolve => {
+                    require(['./views/manage_finance/withdraw_review.vue'], resolve);
+                }
+            }
+        ]
+    },
+    {
         path: '/finance_withdraw_list',
         name: 'finance_withdraw_list',
         title: 'exchange.tbjl',

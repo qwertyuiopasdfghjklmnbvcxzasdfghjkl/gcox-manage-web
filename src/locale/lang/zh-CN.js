@@ -148,7 +148,8 @@ export const login = {
     xxzx: '消息中心'
 };
 export const finance = {
-    tbsh: '提币审核',
+    tbsh: '提币审核初审',
+    tbshfc: '提币审核复审',
     hzlx: '划转类型',
     zzlx: '转账类型',
     hzid: '划转ID',
@@ -1005,7 +1006,8 @@ export const nav = {
     jyscgl: '交易市场管理',
     dzgl: '地址管理',
     czgl: '充值管理',
-    tbsh: '提币审核',
+    tbsh: '提币审核初审',
+    tbshfc: '提币审核复审',
     ussdyhzl: 'USSD银行资料',
     ussdtxjl: 'USSD提现记录',
     satotxjl: 'SATO提现记录',

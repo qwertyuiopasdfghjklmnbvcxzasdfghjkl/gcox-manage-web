@@ -12,7 +12,7 @@
             <!--</FormItem>-->
             <!--<FormItem>-->
         <p class="btn_p">
-            <Button type="primary" @click="audit('2')">同意</Button>
+            <Button type="primary" @click="audit(final?'2':'3')">同意</Button>
             <Button type="ghost" style="margin-left: 8px" @click="audit('1')">不同意</Button>
         </p>
 
@@ -25,7 +25,7 @@
     import financeApi from '../../api/finance';
 
     export default {
-        props: ['id', 'withdrawApplyId'],
+        props: ['id', 'withdrawApplyId','final'],
         data () {
             return {
                 // formItem: {

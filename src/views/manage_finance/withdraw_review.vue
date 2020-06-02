@@ -35,8 +35,8 @@
                         {{$t('common.zt')}}：
                         <Select v-model="formData.status" style="width: 200px">
                             <Option value="-1">{{$t('common.qb')}}</Option>
-                            <Option value="0">{{$t('common.wsh')}}</Option>
-                            <Option value="3">{{$t('common.shtg')}}</Option>
+                            <Option value="3">{{$t('common.wsh')}}</Option>
+                            <Option value="2">{{$t('common.shtg')}}</Option>
                             <Option value="1">{{$t('common.shbtg')}}</Option>
                         </Select>
                         <Button type="primary" @click="curPage=1;getAuditing()">{{$t('common.cx')}}</Button>
@@ -79,18 +79,18 @@
                         render: (h, params) => {
                             return h('div', this.switchStaus(params.row.auditStatus));
                         }
-                    },//0 未审核 1 审核不通过 3 审核通过
+                    },//3 未审核 1 审核不通过 2 审核通过
                     {
                         key: 'action', title: this.$t('common.cz'), render: (h, params) => {
                             return h('div', [
                                 h('Button', {
-                                    props: {type: 'primary', size: 'small', disabled: params.row.auditStatus !== 0},
+                                    props: {type: 'primary', size: 'small', disabled: params.row.auditStatus !== 3},
                                     on: {
                                         click: () => {
                                             util.setDialog(check, {
                                                 id: params.row.id,
                                                 withdrawApplyId: params.row.withdrawApplyId,
-                                                final:false,
+                                                final:true,
                                                 okCallback: () => {
                                                     this.getAuditing();
                                                 }
@@ -131,15 +131,15 @@
                     this.symbolList = res;
                 });
             },
-            switchStaus (state) {//0 未审核 1 审核不通过 3 审核通过
+            switchStaus (state) {//0 未审核 1 审核不通过 2 审核通过
                 switch (state) {
-                    case 0:
+                    case 3:
                         return this.$t('common.wsh');
                         break;
                     case 1:
                         return this.$t('common.shbtg');
                         break;
-                    case 3:
+                    case 2:
                         return this.$t('common.shtg');
                         break;
                 }
@@ -151,7 +151,7 @@
                 data.createdStart = data.createdStart ? util.dateToStr(new Date(data.createdStart)) : null;
                 data.createdEnd = data.createdEnd ? util.dateToStr(new Date(data.createdEnd)) : null;
                 data.symbol = data.symbol === '0' ? null : data.symbol;
-                data.status = data.status === '-1' ? '0,1,3' : data.status;
+                data.status = data.status === '-1' ? '1,2,3' : data.status;
                 data.auditType = '';
                 this.outParams = data;
                 financeApi.getAuditingList(this.curPage, data,
