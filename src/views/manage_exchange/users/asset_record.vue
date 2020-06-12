@@ -82,6 +82,9 @@
                           <!--style="text-align:center;margin-top:20px;"></Page>-->
                 <!--</TabPane>-->
                 <TabPane :label="vm.$t('exchange.bbjyjl')">
+                    <p style="text-align: right; margin-bottom: 10px;">
+                        <Button type="primary" @click="downloadBbjy()">{{vm.$t('systemlog.dc')}}</Button>
+                    </p>
                     <Table :columns="columns9" :data="data9"></Table>
                     <Page :current="curPage9" :total="total9"
                           @on-change="changePage9" :page-size="10"
@@ -604,6 +607,11 @@
             },
             downloadList() {
                 window.location.href = `${util.baseURL}api/bm/stake/record?export=1&userId=${this.userId}`
+            },
+
+            // 币币交易导出
+            downloadBbjy() {
+                window.location.href = `${util.baseURL}api/bm/bbManage/userManage/exportExchangeRecordExcel?userId=${this.userId}`
             },
             download10() {
                 window.location.href = `${util.baseURL}api/bm/financialManage/financialStatistics/accounts?export=1&userId=${this.userId}`
