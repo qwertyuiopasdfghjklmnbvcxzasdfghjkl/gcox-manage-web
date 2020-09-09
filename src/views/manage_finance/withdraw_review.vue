@@ -4,7 +4,7 @@
         <Col span="24">
             <Row>
                 <Card style="margin-top:10px;">
-                    <p slot="title">{{$t('finance.tbsh')}}
+                    <p slot="title">{{$t('finance.tbshfc')}}
                         <Button type="primary" @click="outExl()">{{$t('systemlog.dc')}}</Button>
                     </p>
                     <p style="margin-bottom: 20px">
