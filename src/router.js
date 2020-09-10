@@ -794,23 +794,23 @@ export const financeRouter = [
             }
         ]
     },
-    {
-        path: '/finance_withdraw',
-        name: 'finance_withdraw',
-        title: 'nav.tbsh',
-        component: Main,
-        icon: 'soup-can-outline',
-        meta: {
-            roles: ['ROLE_ADMIN', 'ROLE_FINANCE', 'ROLE_WITHDRAW_AUDIT'],
-        },
-        children: [
-            {
-                path: 'index', title: 'nav.tbsh', name: 'finance_withdraw_index', component: resolve => {
-                    require(['./views/manage_finance/withdraw.vue'], resolve);
-                }
-            }
-        ]
-    },
+    // {
+    //     path: '/finance_withdraw',
+    //     name: 'finance_withdraw',
+    //     title: 'nav.tbsh',
+    //     component: Main,
+    //     icon: 'soup-can-outline',
+    //     meta: {
+    //         roles: ['ROLE_ADMIN', 'ROLE_FINANCE', 'ROLE_WITHDRAW_AUDIT'],
+    //     },
+    //     children: [
+    //         {
+    //             path: 'index', title: 'nav.tbsh', name: 'finance_withdraw_index', component: resolve => {
+    //                 require(['./views/manage_finance/withdraw.vue'], resolve);
+    //             }
+    //         }
+    //     ]
+    // },
     {
         path: '/finance_withdraw_review',
         name: 'finance_withdraw_review',
