@@ -814,7 +814,7 @@ export const financeRouter = [
     {
         path: '/finance_withdraw_review',
         name: 'finance_withdraw_review',
-        title: 'nav.tbshfc',
+        title: 'nav.tbsh1',
         component: Main,
         icon: 'soup-can-outline',
         meta: {
@@ -822,7 +822,7 @@ export const financeRouter = [
         },
         children: [
             {
-                path: 'index', title: 'nav.tbshfc', name: 'finance_withdraw_review_index', component: resolve => {
+                path: 'index', title: 'nav.tbsh1', name: 'finance_withdraw_review_index', component: resolve => {
                     require(['./views/manage_finance/withdraw_review.vue'], resolve);
                 }
             }

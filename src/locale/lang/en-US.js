@@ -845,6 +845,7 @@ export const nav = {
     jyscgl: 'trading market management',
     dzgl: 'address management',
     czgl: 'topup management',
+    tbsh1: 'coin initial',
     tbsh: 'coin initial review',
     tbshfc: 'coin final review',
     ussdyhzl: 'ussd bank information',
