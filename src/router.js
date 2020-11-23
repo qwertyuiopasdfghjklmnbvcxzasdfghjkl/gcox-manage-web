@@ -61,6 +61,11 @@ export const otherRouter = {
             }
         },
         {
+            path: 'google', title: 'login.ggyzm', name: 'google_index', component: resolve => {
+                require(['./views/own-space/own-google.vue'], resolve);
+            }
+        },
+        {
             path: 'message', title: '消息中心', name: 'message_index', component: resolve => {
                 require(['./views/message/message.vue'], resolve);
             }

@@ -100,7 +100,7 @@ export const common = {
 export const login = {
     login: 'login',
     welcome: 'welcome',
-    changelang: '切换',
+    changeLang: '切换',
     v: 'english',
     xgmm: 'change password',
     ymm: 'old password',
