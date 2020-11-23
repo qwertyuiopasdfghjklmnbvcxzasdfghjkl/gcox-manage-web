@@ -31,7 +31,7 @@ util.setDialog = setDialog;
 
 // const ajaxUrl = env === 'production' ? `${location.protocol}//${location.host}/` : 'http://10.0.5.244:9009/';
 //const ajaxUrl = env === 'production' ? `${location.protocol}//${location.host}/` : 'http://manage.dev.koall.io/';
- const ajaxUrl = env === 'production' ? `${location.protocol}//${location.host}/` : 'http://manage.gcox-test.lab.ssss.so/';
+ const ajaxUrl = env === 'production' ? `${location.protocol}//${location.host}/` : 'http://manage.gcox-dev.lab.ssss.so/';
 // const ajaxUrl = env === 'production' ? `${location.protocol}//${location.host}/` : 'http://man-exchange-staging.gcox.com/';
 // const ajaxUrl = env === 'production' ? `${location.protocol}//${location.host}/` : 'http://manage.satox.bitark.io';
 // const ajaxUrl = env === 'production' ? `${location.protocol}//${location.host}/` : 'http://manage.sit.gcox.cc';

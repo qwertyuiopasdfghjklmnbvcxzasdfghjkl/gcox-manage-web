@@ -1,9 +1,8 @@
 <style lang="less">
     @import './login.less';
 </style>
-
 <template>
-    <div class="login" @keydown.enter="handleSubmit">
+    <div class="login" @keydown.enter="googleAuthEnable">
         <div class="login-con">
             <Card :bordered="false">
                 <h2 slot="title" class="title">
@@ -27,7 +26,7 @@
                             </Input>
                         </FormItem>
                         <FormItem>
-                            <Button @click="handleSubmit" type="primary" long>{{$t('login.login')}}</Button>
+                            <Button @click="googleAuthEnable" type="primary" long>{{$t('login.login')}}</Button>
                         </FormItem>
                     </Form>
                     <p class="sw">
@@ -37,6 +36,20 @@
                 </div>
             </Card>
         </div>
+    <Modal
+        v-model="googleModel"
+        :title="$t('login.ggyzm')"
+        :loading="loading"
+        width="350"
+        @on-cancel="cancel"
+        class-name="vertical-center">
+        <div class="form">
+            <Input @keyup.native.enter="bind" type="text" v-model="googleData.code" name="code" :placeholder="$t('common.qsr')+$t('login.ggyzm')"></Input>
+        </div>
+        <div slot="footer">
+            <Button type="error" size="large" long :loading="loading" @click="bind">{{$t('common.qd')}}</Button>
+        </div>
+    </Modal>
     </div>
 </template>
 
@@ -50,6 +63,12 @@
     export default {
         data () {
             return {
+                googleStatus: null,
+                googleData: {
+                    code: null
+                },
+                googleModel: false,
+                loading: false,
                 baseUrl: util.baseURL,
                 imageT: Date.now(),
                 form: {
@@ -77,13 +96,41 @@
             this.getList();
         },
         methods: {
-            handleSubmit () {
+            cancel(){
+                this.loading = false
+                this.googleData.code = null
+            },
+            bind(){
+                let data = {
+                    googleCode: this.googleData.code,
+                    username: this.form.userName,
+                    password: this.form.password
+                }
+                this.loading = true
+                this.handleSubmit(data)
+            },
+            googleAuthEnable(){
+                userApi.googleAuthEnable(this.form.userName, res=>{
+                    let data = {
+                        code: this.googleData.code,
+                        username: this.form.userName,
+                        password: this.form.password
+                    }
+                    if(res.data!=1){
+                        this.handleSubmit(data)
+                    }else{
+                        this.googleStatus = res.data
+                        this.googleModel = true
+                    }
+                },error=>{
+                    this.$Message.error(error);
+                })
+            },
+            handleSubmit (data) {
+                // this.googleAuthEnable()
                 this.$refs.loginForm.validate((valid) => {
                     if (valid) {
-                        userApi.login({
-                            username: this.form.userName,
-                            password: this.form.password
-                        }, (res) => {
+                        userApi.login(data, (res) => {
                             Cookies.set('username', this.form.userName);
                             Cookies.set('password', hexmd5(this.form.password));
                             Cookies.set('user_id', res.id);
@@ -96,10 +143,12 @@
                                 window.localStorage.symbolTypes = JSON.stringify(res);
                             });
                             this.$router.push({name: 'home_index'});
+                            this.loading = false
                         }, (error) => {
                             this.imageT = Date.now();
                             this.$Message.error(error);
                             window.console.log(error);
+                            this.loading = false
                         });
                     }
                 });

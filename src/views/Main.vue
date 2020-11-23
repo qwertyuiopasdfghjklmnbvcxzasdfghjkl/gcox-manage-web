@@ -59,6 +59,7 @@
                                 </a>
                                 <DropdownMenu slot="list">
                                     <DropdownItem name="ownSpace">{{$t('login.xgmm')}}</DropdownItem>
+                                    <DropdownItem name="google" divided>{{$t('login.ggyzm')}}</DropdownItem>
                                     <DropdownItem name="loginout" divided>{{$t('login.tcdl')}}</DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
@@ -154,6 +155,10 @@
                 this.hideMenuText = !this.hideMenuText;
             },
             handleClickUserDropdown (name) {
+                
+                if (name === 'google') {
+                    util.openPage(this, 'google_index', this.$t('login.ggyzm'));
+                }
                 if (name === 'ownSpace') {
                     util.openPage(this, 'ownspace_index', this.$t('login.xgmm'));
                 } else if (name === 'loginout') {

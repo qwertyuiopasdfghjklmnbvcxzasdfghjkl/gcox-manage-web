@@ -61,6 +61,11 @@ export const otherRouter = {
             }
         },
         {
+            path: 'google', title: 'login.ggyzm', name: 'google_index', component: resolve => {
+                require(['./views/own-space/own-google.vue'], resolve);
+            }
+        },
+        {
             path: 'message', title: '消息中心', name: 'message_index', component: resolve => {
                 require(['./views/message/message.vue'], resolve);
             }
@@ -794,27 +799,27 @@ export const financeRouter = [
             }
         ]
     },
-    {
-        path: '/finance_withdraw',
-        name: 'finance_withdraw',
-        title: 'nav.tbsh',
-        component: Main,
-        icon: 'soup-can-outline',
-        meta: {
-            roles: ['ROLE_ADMIN', 'ROLE_FINANCE', 'ROLE_WITHDRAW_AUDIT'],
-        },
-        children: [
-            {
-                path: 'index', title: 'nav.tbsh', name: 'finance_withdraw_index', component: resolve => {
-                    require(['./views/manage_finance/withdraw.vue'], resolve);
-                }
-            }
-        ]
-    },
+    // {
+    //     path: '/finance_withdraw',
+    //     name: 'finance_withdraw',
+    //     title: 'nav.tbsh',
+    //     component: Main,
+    //     icon: 'soup-can-outline',
+    //     meta: {
+    //         roles: ['ROLE_ADMIN', 'ROLE_FINANCE', 'ROLE_WITHDRAW_AUDIT'],
+    //     },
+    //     children: [
+    //         {
+    //             path: 'index', title: 'nav.tbsh', name: 'finance_withdraw_index', component: resolve => {
+    //                 require(['./views/manage_finance/withdraw.vue'], resolve);
+    //             }
+    //         }
+    //     ]
+    // },
     {
         path: '/finance_withdraw_review',
         name: 'finance_withdraw_review',
-        title: 'nav.tbshfc',
+        title: 'finance.tbsh1',
         component: Main,
         icon: 'soup-can-outline',
         meta: {
@@ -822,7 +827,7 @@ export const financeRouter = [
         },
         children: [
             {
-                path: 'index', title: 'nav.tbshfc', name: 'finance_withdraw_review_index', component: resolve => {
+                path: 'index', title: 'finance.tbsh1', name: 'finance_withdraw_review_index', component: resolve => {
                     require(['./views/manage_finance/withdraw_review.vue'], resolve);
                 }
             }

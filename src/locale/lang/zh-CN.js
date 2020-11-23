@@ -102,6 +102,8 @@ export const common = {
     wstg: '审核通过'
 };
 export const login = {
+    ggyzm: '谷歌验证码',
+    ggyzmsy: '谷歌验证码私钥',
     login: '登录',
     welcome: '欢迎登录',
     changeLang: 'LangSwitcher',
@@ -148,6 +150,7 @@ export const login = {
     xxzx: '消息中心'
 };
 export const finance = {
+    tbsh1: '提币审核',
     tbsh: '提币审核初审',
     tbshfc: '提币审核复审',
     hzlx: '划转类型',

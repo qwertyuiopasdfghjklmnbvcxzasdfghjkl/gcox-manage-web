@@ -100,7 +100,7 @@ export const common = {
 export const login = {
     login: 'login',
     welcome: 'welcome',
-    changelang: '切换',
+    changeLang: '切换',
     v: 'english',
     xgmm: 'change password',
     ymm: 'old password',
@@ -845,6 +845,7 @@ export const nav = {
     jyscgl: 'trading market management',
     dzgl: 'address management',
     czgl: 'topup management',
+    tbsh1: 'coin initial',
     tbsh: 'coin initial review',
     tbshfc: 'coin final review',
     ussdyhzl: 'ussd bank information',

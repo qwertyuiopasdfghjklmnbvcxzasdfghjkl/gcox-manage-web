@@ -12,8 +12,8 @@
             <!--</FormItem>-->
             <!--<FormItem>-->
         <p class="btn_p">
-            <Button type="primary" @click="audit(final?'2':'3')">同意</Button>
-            <Button type="ghost" style="margin-left: 8px" @click="audit('1')">不同意</Button>
+            <Button type="primary" @click="!loading&&audit(final?'2':'3')">同意</Button>
+            <Button type="ghost" style="margin-left: 8px" @click="!loading&&audit('1')">不同意</Button>
         </p>
 
             <!--</FormItem>-->
@@ -28,6 +28,7 @@
         props: ['id', 'withdrawApplyId','final'],
         data () {
             return {
+                loading: false,
                 // formItem: {
                 //     checkbox: false, //1，已电话确认 0，未电话确认
                 //     textarea: '',
@@ -52,6 +53,7 @@
                 this.$emit('removeDialog');
             },
             audit (code) {
+                this.loading = true
                 financeApi.updateWithdrawAuditing({
                     withdrawApplyId: this.withdrawApplyId,
                     auditStatus: code
@@ -60,6 +62,7 @@
                     this.$emit('okCallback');
                     this.$emit('removeDialog');
                 }, (msg) => {
+                    this.loading = false
                     this.$Message.error({content: msg});
                 });
 
